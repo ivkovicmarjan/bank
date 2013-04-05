@@ -29,6 +29,9 @@ public class KontoTest {
 		konto.einzahlen(150.00);
 		konto.auszahlen(100.00);
 		Assert.assertEquals(50.00, konto.getKontostand());
+		
+		konto.auszahlen(100.00);
+		Assert.assertEquals(50.00, konto.getKontostand());
 	}
 
 }
