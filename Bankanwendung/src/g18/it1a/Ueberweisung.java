@@ -5,48 +5,43 @@ import java.util.Date;
 public class Ueberweisung 
 {
 	private Date datum;
-	private long betrag;
+	private int betrag;
 	private Konto quelle;
 	private Konto ziel;
-	
-	public Ueberweisung(Konto konto1, Konto konto2, int i, Date date) {
-		// TODO Auto-generated constructor stub
+
+	public Ueberweisung(Konto quelle, Konto ziel, int betrag, Date date){
+		this.datum = date;
+		this.betrag = betrag;
+		this.quelle = quelle;
+		this.ziel = ziel;
 	}
 
 	public Date getDatum() {
 		return this.datum;
 	}
 	
-	public void setDatum(Date datum) {
-		this.datum = datum;
-	}
-	
-	public long getBetrag() {
+	public int getBetrag() {
 		return this.betrag;
-	}
-	
-	public void setBetrag(long betrag) {
-		this.betrag = betrag;
 	}
 	
 	public Konto getQuelle() {
 		return this.quelle;
 	}
-	
-	public void setQuelle(Konto quelle) {
-		this.quelle = quelle;
-	}
-	
+
 	public Konto getZiel() {
 		return this.ziel;
 	}
 	
-	public void setZiel(Konto ziel) {
-		this.ziel = ziel;
-	}
-
 	public void durchfuehrenUeberweisung()
 	{
-		
+		if(this.quelle.getKontostand() > this.betrag)
+		{
+			this.quelle.auszahlen(this.betrag);
+			this.ziel.einzahlen(this.betrag);
+		}
+		else
+		{
+			System.out.println("Kein geld");
+		}
 	}
 }
