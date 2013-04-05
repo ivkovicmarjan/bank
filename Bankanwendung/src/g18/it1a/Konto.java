@@ -38,6 +38,7 @@ public class Konto {
 	}
 	
 	public String toString() {
-		return "Kontonummer: "+kontonummer+", Kontostand: "+kontostand+", Kontotyp: "+kontoTyp.name();
+		return String.format("Kontonummer: %s, Kontostand: %s, Kontotyp: %s",
+							this.kontonummer, this.kontostand, this.kontoTyp.name());
 	}
 }
