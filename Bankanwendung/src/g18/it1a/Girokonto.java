@@ -13,6 +13,6 @@ public class Girokonto
 	}
 	
 	public void operation(){
-
+		
 	}
 }

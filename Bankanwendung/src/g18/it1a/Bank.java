@@ -1,4 +1,5 @@
 package g18.it1a;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Bank
@@ -27,7 +28,7 @@ public class Bank
 			konto2.auszahlen(100);
 			System.out.println("(5) "+ kunde1.anzeigenKontostandsUebersicht());
 			
-			Ueberweisung ueb = new Ueberweisung(konto1, konto2, 25, new java.util.Date());
+			Ueberweisung ueb = new Ueberweisung(konto1, konto2, 25, new Date());
 			ueb.durchfuehrenUeberweisung();
 			System.out.println("(6) "+ kunde1.anzeigenKontostandsUebersicht());
 		}
