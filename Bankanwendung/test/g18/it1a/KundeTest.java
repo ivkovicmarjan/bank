@@ -1,6 +1,7 @@
 package g18.it1a;
 
 import static org.junit.Assert.*;
+import junit.framework.Assert;
 import g18.it1a.Konto.KontoTyp;
 
 import org.junit.Before;
@@ -35,10 +36,13 @@ public class KundeTest {
 
 	@Test
 	public void testAuszahlenBetrag() {
-		Konto konto1 = kunde.anlegenKonto(KontoTyp.GIROKONTO);
-		Konto konto2 = kunde.anlegenKonto(KontoTyp.SPARKONTO);
-		kunde.auszahlenBetrag(konto1, 100);
-		kunde.auszahlenBetrag(konto2, 75);
+		Konto girokonto = kunde.anlegenKonto(KontoTyp.GIROKONTO);
+		girokonto.einzahlen(100);
+		kunde.auszahlenBetrag(girokonto, 100);
+		Assert.assertEquals(0, girokonto.getKontostand());
+				
+		Konto sparkonto = kunde.anlegenKonto(KontoTyp.SPARKONTO);
+		kunde.auszahlenBetrag(sparkonto, 75);
 	}
 
 	@Test

@@ -35,7 +35,7 @@ public class Kunde {
 	}
 	
 	public void auszahlenBetrag(Konto konto, int betrag) {
-	 
+		konto.auszahlen(betrag);
 	}
 	
 	public void einzahlenBetrag(Konto konto) {
