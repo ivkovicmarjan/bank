@@ -30,12 +30,12 @@ public class KundeTest {
 
 	@Test
 	public void testAnlegenKonto() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	public void testAuszahlenBetrag() {
-		fail("Not yet implemented");
+		kunde.auszahlenBetrag(null);
 	}
 
 	@Test
