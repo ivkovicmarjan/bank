@@ -18,6 +18,7 @@ public class Konto {
 	}
 
 	public void auszahlen(double betrag) {
+		
 		if(this.kontostand >= betrag)
 		{
 			this.kontostand = this.kontostand - betrag;
@@ -38,6 +39,7 @@ public class Konto {
 	}
 	
 	public String toString() {
-		return "Kontonummer: "+kontonummer+", Kontostand: "+kontostand+", Kontotyp: "+KontoTyp.values();
+		return String.format("Kontonummer: %s, Kontostand: %s, Kontotyp: %s",
+							this.kontonummer, this.kontostand, this.kontoTyp.name());
 	}
 }
