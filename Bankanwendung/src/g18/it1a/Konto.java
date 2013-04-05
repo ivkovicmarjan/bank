@@ -11,14 +11,12 @@ public class Konto {
 		SPARKONTO
 	}
 
-	
-	public Konto(int kontonummer, double kontostand, KontoTyp kontoTyp) 
+	public Konto(int kontonummer, KontoTyp kontoTyp) 
 	{
-		this.setKontonummer(kontonummer);
-		this.setKontostand(kontostand);
+		this.kontonummer = kontonummer;
 		this.kontoTyp = kontoTyp;
 	}
-	
+
 	public void auszahlen(int betrag) {
 		if(this.kontostand > betrag)
 		{
@@ -26,24 +24,20 @@ public class Konto {
 		}
 	}
 
-	public void einzahlen(int betrag) {
+	public void einzahlen(double betrag) {
 		this.kontostand = this.kontostand + betrag;
+
 	}
 
 	public int getKontonummer() {
 		return kontonummer;
 	}
 
-	public void setKontonummer(int kontonummer) {
-		this.kontonummer = kontonummer;
-	}
-
 	public double getKontostand() {
 		return kontostand;
 	}
-
-	public void setKontostand(double kontostand) {
-		this.kontostand = kontostand;
-	}
 	
+	public String toString() {
+		return "Kontonummer: "+kontonummer+", Kontostand: "+kontostand+", Kontotyp: "+KontoTyp.values();
+	}
 }
