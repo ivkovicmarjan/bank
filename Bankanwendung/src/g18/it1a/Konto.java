@@ -4,16 +4,19 @@ public class Konto {
 
 	private int kontonummer;
 	private double kontostand;
-	private enum kontotyp {
+	private KontoTyp kontoTyp;
+	
+	public enum KontoTyp {
 		GIROKONTO,
 		SPARKONTO
 	}
 
-	public Konto(int kontonummer, double kontostand, enum kontotyp) {
-		setKontonummer(kontonummer);
-		setKontostand(kontostand);
-		this.kontotyp = kontotyp;
-		
+	
+	public Konto(int kontonummer, double kontostand, KontoTyp kontoTyp) 
+	{
+		this.setKontonummer(kontonummer);
+		this.setKontostand(kontostand);
+		this.kontoTyp = kontoTyp;
 	}
 	
 	public void auszahlen(int i) {

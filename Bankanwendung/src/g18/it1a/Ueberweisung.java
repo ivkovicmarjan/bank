@@ -34,7 +34,7 @@ public class Ueberweisung
 	
 	public void durchfuehrenUeberweisung()
 	{
-		if(this.quelle.kontostand > this.betrag)
+		if(this.quelle.getKontostand() > this.betrag)
 		{
 			this.quelle.auszahlen(this.betrag);
 			this.ziel.einzahlen(this.betrag);

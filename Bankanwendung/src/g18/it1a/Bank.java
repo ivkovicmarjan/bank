@@ -1,4 +1,5 @@
 package g18.it1a;
+
 import java.util.Date;
 import java.util.Scanner;
 
@@ -16,8 +17,9 @@ public class Bank
 			System.out.print("Bitte Kundenvorname eingeben: ");
 			String kundenVorname = sc.next();
 			Kunde kunde1 = new Kunde(kundenName, kundenNummer);
-			Konto konto1 = kunde1.anlegenKonto(Konto.GIROKONTO);
-			Konto konto2 = kunde1.anlegenKonto(Konto.SPARKONTO);
+		
+			Konto konto1 = kunde1.anlegenKonto(Konto.KontoTyp.GIROKONTO);
+			Konto konto2 = kunde1.anlegenKonto(Konto.KontoTyp.SPARKONTO);
 			System.out.println("(1) "+ kunde1.anzeigenKontostandsUebersicht());
 			konto1.einzahlen(1000);
 			System.out.println("(2) "+ kunde1.anzeigenKontostandsUebersicht());
