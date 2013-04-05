@@ -1,16 +1,18 @@
 package g18.it1a;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Kunde {
 	
 	private String name;
 	private int kundenNummer;
-	private List<Konto> konten;
+	private List<Konto> konten = null;
 
 	public Kunde(String kundenName, int kundenNummer) {
 		setName(kundenName);
 		this.setKundenNummer(kundenNummer);
+		konten = new ArrayList<Konto>();
 	}
 
 	public String anzeigenKontostandsUebersicht() {
@@ -18,12 +20,22 @@ public class Kunde {
 		for (Konto k: konten) {
 			ausgabe = ausgabe + k.toString() + "\n\n";
 		}
+		if (ausgabe == null) {
+			ausgabe = "keine Konten vorhanden";
+		}
 		return ausgabe;
 	}
 
 	public Konto anlegenKonto(Enum<?> gIROKONTO) {
-		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void auszahlenBetrag(Konto konto) {
+	 
+	}
+	
+	public void einzahlenBetrag(Konto konto) {
+		
 	}
 
 	public String getName() {
