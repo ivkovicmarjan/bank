@@ -10,8 +10,10 @@ public class UeberweisungTest {
 	@Test
 	public void KannÜberweiungDurchführen() 
 	{
-		Konto quelle = new Konto(1, 100, KontoTyp.GIROKONTO);
-		Konto ziel = new Konto(1, 50, KontoTyp.GIROKONTO);
+		Konto quelle = new Konto(1, KontoTyp.GIROKONTO);
+		Konto ziel = new Konto(1, KontoTyp.GIROKONTO);
+		quelle.einzahlen(100);
+		ziel.einzahlen(50);
 		Ueberweisung ueberweisung = new Ueberweisung(quelle, ziel, 50, null);
 		ueberweisung.durchfuehrenUeberweisung();
 		int actual = (int) ziel.getKontostand();
