@@ -1,7 +1,12 @@
 package g18.it1a;
 
-public class Sparkonto
+public class Sparkonto extends Konto
 {
+	public Sparkonto(int kontonummer, KontoTyp kontoTyp) {
+		super(kontonummer, kontoTyp);
+		// TODO Auto-generated constructor stub
+	}
+
 	private int zinssatz;
 	
 	public int getZinssatz() {

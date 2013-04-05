@@ -18,28 +18,52 @@ public class Kunde {
 	}
 
 	public String anzeigenKontostandsUebersicht() {
-		String ausgabe = null;
+		if (konten.isEmpty()) {
+			return "keine Konten vorhanden";
+		}
+		
+		String ausgabe = "Übersicht der Konten von " + getName() + ":\n";
 		for (Konto k: konten) {
 			ausgabe = ausgabe + k.toString() + "\n\n";
 		}
-		if (ausgabe == null) {
-			ausgabe = "keine Konten vorhanden";
-		}
+	
 		return ausgabe;
 	}
 
 	public Konto anlegenKonto(KontoTyp kontoTyp) {
-		Konto konto = new Konto(1, kontoTyp);
+		Konto konto = null;
+
+		if (kontoTyp == KontoTyp.GIROKONTO) {
+
+			konto = new Girokonto(generiereKontonummer(kontoTyp), kontoTyp);
+		} else {
+
+			konto = new Sparkonto(generiereKontonummer(kontoTyp), kontoTyp);
+		}
+
 		konten.add(konto);
 		return konto;
 	}
+
+	private int generiereKontonummer(KontoTyp kontoTyp) {
+		int typ = 0;
+		int index = konten.size()+1;
+		
+		if (kontoTyp == KontoTyp.GIROKONTO) {
+			typ = 1;
+		} else {
+			typ = 0;
+		}				
+		
+		return getKundenNummer() * (100 + typ) * 1000 + index;
+	}
 	
-	public void auszahlenBetrag(Konto konto, int betrag) {
+	public void auszahlenBetrag(Konto konto, double betrag) {
 		konto.auszahlen(betrag);
 	}
 	
-	public void einzahlenBetrag(Konto konto) {
-		
+	public void einzahlenBetrag(Konto konto, double betrag) {
+		konto.einzahlen(betrag);
 	}
 
 	public String getName() {
