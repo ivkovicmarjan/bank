@@ -1,5 +1,7 @@
 package g18.it1a;
 
+import g18.it1a.Konto.KontoTyp;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +28,10 @@ public class Kunde {
 		return ausgabe;
 	}
 
-	public Konto anlegenKonto(Enum<?> gIROKONTO) {
-		return null;
+	public Konto anlegenKonto(KontoTyp kontoTyp) {
+		Konto konto = new Konto(1, 3.2, kontoTyp);
+		konten.add(konto);
+		return konto;
 	}
 	
 	public void auszahlenBetrag(Konto konto) {
