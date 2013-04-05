@@ -41,7 +41,7 @@ public class Ueberweisung
 		}
 		else
 		{
-			System.out.println("Kein geld");
+			System.out.println("Konnte kein Geld überweisen, dar zu wenig vorhanden ist.");
 		}
 	}
 }

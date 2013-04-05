@@ -11,21 +11,22 @@ public class Konto {
 		SPARKONTO
 	}
 
-	
 	public Konto(int kontonummer, KontoTyp kontoTyp) 
 	{
 		this.kontonummer = kontonummer;
 		this.kontoTyp = kontoTyp;
 	}
-	
-	public void auszahlen(double i) {
-		// TODO Auto-generated method stub
-		
+
+	public void auszahlen(int betrag) {
+		if(this.kontostand > betrag)
+		{
+			this.kontostand = this.kontostand - betrag;
+		}
 	}
 
-	public void einzahlen(double i) {
-		// TODO Auto-generated method stub
-		
+	public void einzahlen(double betrag) {
+		this.kontostand = this.kontostand + betrag;
+
 	}
 
 	public int getKontonummer() {
