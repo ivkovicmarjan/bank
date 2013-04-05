@@ -31,19 +31,31 @@ public class Kunde {
 	}
 
 	public Konto anlegenKonto(KontoTyp kontoTyp) {
+		Konto konto = null;
+
+		if (kontoTyp == KontoTyp.GIROKONTO) {
+
+			konto = new Girokonto(generiereKontonummer(kontoTyp), kontoTyp);
+		} else {
+
+			konto = new Sparkonto(generiereKontonummer(kontoTyp), kontoTyp);
+		}
+
+		konten.add(konto);
+		return konto;
+	}
+
+	private int generiereKontonummer(KontoTyp kontoTyp) {
 		int typ = 0;
+		int index = konten.size()+1;
+		
 		if (kontoTyp == KontoTyp.GIROKONTO) {
 			typ = 1;
 		} else {
 			typ = 0;
-		}
+		}				
 		
-		int index = konten.size()+1;
-		
-		int kontoNummer = getKundenNummer() * (100 + typ) * 1000 + index;
-		Konto konto = new Konto(kontoNummer, kontoTyp);
-		konten.add(konto);
-		return konto;
+		return getKundenNummer() * (100 + typ) * 1000 + index;
 	}
 	
 	public void auszahlenBetrag(Konto konto, double betrag) {
