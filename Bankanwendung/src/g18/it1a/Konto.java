@@ -17,7 +17,7 @@ public class Konto {
 		this.kontoTyp = kontoTyp;
 	}
 
-	public void auszahlen(int betrag) {
+	public void auszahlen(double betrag) {
 		if(this.kontostand > betrag)
 		{
 			this.kontostand = this.kontostand - betrag;
