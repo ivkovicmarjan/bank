@@ -35,7 +35,10 @@ public class KundeTest {
 
 	@Test
 	public void testAuszahlenBetrag() {
-		kunde.auszahlenBetrag(null);
+		Konto konto1 = kunde.anlegenKonto(KontoTyp.GIROKONTO);
+		Konto konto2 = kunde.anlegenKonto(KontoTyp.SPARKONTO);
+		kunde.auszahlenBetrag(konto1, 100);
+		kunde.auszahlenBetrag(konto2, 75);
 	}
 
 	@Test
