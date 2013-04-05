@@ -19,14 +19,15 @@ public class Konto {
 		this.kontoTyp = kontoTyp;
 	}
 	
-	public void auszahlen(int i) {
-		// TODO Auto-generated method stub
-		
+	public void auszahlen(int betrag) {
+		if(this.kontostand > betrag)
+		{
+			this.kontostand = this.kontostand - betrag;
+		}
 	}
 
-	public void einzahlen(int i) {
-		// TODO Auto-generated method stub
-		
+	public void einzahlen(int betrag) {
+		this.kontostand = this.kontostand + betrag;
 	}
 
 	public int getKontonummer() {
