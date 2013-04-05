@@ -18,7 +18,7 @@ public class UeberweisungTest {
 		ueberweisung.durchfuehrenUeberweisung();
 		int actual = (int) ziel.getKontostand();
 		int expected = 100;
-		
+	
 		Assert.assertEquals(expected, actual);
 	}
 }
