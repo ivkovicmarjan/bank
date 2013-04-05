@@ -29,12 +29,12 @@ public class Kunde {
 	}
 
 	public Konto anlegenKonto(KontoTyp kontoTyp) {
-		Konto konto = new Konto(1, 3.2, kontoTyp);
+		Konto konto = new Konto(1, kontoTyp);
 		konten.add(konto);
 		return konto;
 	}
 	
-	public void auszahlenBetrag(Konto konto) {
+	public void auszahlenBetrag(Konto konto, int betrag) {
 	 
 	}
 	
