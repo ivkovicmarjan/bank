@@ -8,7 +8,8 @@ import org.junit.Test;
 public class UeberweisungTest {
 
 	@Test
-	public void KannÜberweiungDurchführen() {
+	public void KannÜberweiungDurchführen() 
+	{
 		Konto quelle = new Konto(1, 100, KontoTyp.GIROKONTO);
 		Konto ziel = new Konto(1, 50, KontoTyp.GIROKONTO);
 		Ueberweisung ueberweisung = new Ueberweisung(quelle, ziel, 50, null);
