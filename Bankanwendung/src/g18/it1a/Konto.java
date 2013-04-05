@@ -3,7 +3,7 @@ package g18.it1a;
 public class Konto {
 
 	private int kontonummer;
-	private double kontostand;
+	private double kontostand = 0.00;
 	private KontoTyp kontoTyp;
 	
 	public enum KontoTyp {
@@ -36,6 +36,11 @@ public class Konto {
 
 	public double getKontostand() {
 		return kontostand;
+	}
+	
+	public double setKontostand(double kontostand) {
+		this.kontostand = kontostand;
+		return this.kontostand;
 	}
 	
 	public String toString() {

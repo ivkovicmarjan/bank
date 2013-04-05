@@ -1,14 +1,30 @@
 package g18.it1a;
 
-import static org.junit.Assert.*;
+import junit.framework.Assert;
+import g18.it1a.Konto.KontoTyp;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class GirokontoTest {
 
-	@Test
+	int kontonummer;
+	KontoTyp kontotyp;
+	double dispo;
+	Girokonto girokonto;
+	
+	@Before
 	public void test() {
-		fail("Not yet implemented");
+		kontonummer = 13145657;
+		kontotyp = KontoTyp.GIROKONTO;
+		dispo = 150.00;
+		girokonto = new Girokonto(kontonummer, kontotyp, dispo);
+	}
+	
+	@Test
+	public void testAuszahlen() {
+		girokonto.auszahlen(120.00);
+		Assert.assertEquals(-120.00, girokonto.getKontostand());
 	}
 
 }

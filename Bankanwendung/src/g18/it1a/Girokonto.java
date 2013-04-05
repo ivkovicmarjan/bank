@@ -1,18 +1,27 @@
 package g18.it1a;
 
-public class Girokonto 
+public class Girokonto extends Konto
 {
-	private int dispo;
+	public Girokonto(int kontonummer, KontoTyp kontoTyp, double dispo) {
+		super(kontonummer, kontoTyp);
+		setDispo(dispo);
+	}
+
+	private double dispo;
 	
-	public int getDispo() {
+	public double getDispo() {
 		return this.dispo;
 	}
 
-	public void setDispo(int dispo) {
+	public void setDispo(double dispo) {
 		this.dispo = dispo;
 	}
 	
-	public void operation(){
-		
+	@Override
+	public void auszahlen(double betrag) {
+		double ergebnis = getKontostand() - betrag;
+		if (ergebnis >= dispo) {
+			setKontostand(ergebnis);
+		}
 	}
 }
