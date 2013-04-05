@@ -38,6 +38,6 @@ public class Konto {
 	}
 	
 	public String toString() {
-		return "Kontonummer: "+kontonummer+", Kontostand: "+kontostand+", Kontotyp: "+KontoTyp.values();
+		return "Kontonummer: "+kontonummer+", Kontostand: "+kontostand+", Kontotyp: "+kontoTyp.toString();
 	}
 }
