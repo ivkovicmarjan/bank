@@ -12,19 +12,18 @@ public class Konto {
 	}
 
 	
-	public Konto(int kontonummer, double kontostand, KontoTyp kontoTyp) 
+	public Konto(int kontonummer, KontoTyp kontoTyp) 
 	{
-		this.setKontonummer(kontonummer);
-		this.setKontostand(kontostand);
+		this.kontonummer = kontonummer;
 		this.kontoTyp = kontoTyp;
 	}
 	
-	public void auszahlen(int i) {
+	public void auszahlen(double i) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void einzahlen(int i) {
+	public void einzahlen(double i) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -33,16 +32,11 @@ public class Konto {
 		return kontonummer;
 	}
 
-	public void setKontonummer(int kontonummer) {
-		this.kontonummer = kontonummer;
-	}
-
 	public double getKontostand() {
 		return kontostand;
 	}
-
-	public void setKontostand(double kontostand) {
-		this.kontostand = kontostand;
-	}
 	
+	public String toString() {
+		return "Kontonummer: "+kontonummer+", Kontostand: "+kontostand+", Kontotyp: "+KontoTyp.values();
+	}
 }
