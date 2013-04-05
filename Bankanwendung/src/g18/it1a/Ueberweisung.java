@@ -9,6 +9,10 @@ public class Ueberweisung
 	private Konto quelle;
 	private Konto ziel;
 	
+	public Ueberweisung(Konto konto1, Konto konto2, int i, Date date) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Date getDatum() {
 		return this.datum;
 	}
