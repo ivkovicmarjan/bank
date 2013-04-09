@@ -4,7 +4,7 @@ public class Sparkonto extends Konto
 {
 	public Sparkonto(int kontonummer, KontoTyp kontoTyp) {
 		super(kontonummer, kontoTyp);
-		// TODO Auto-generated constructor stub
+
 	}
 
 	private int zinssatz;

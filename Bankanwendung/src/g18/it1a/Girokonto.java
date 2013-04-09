@@ -4,9 +4,9 @@ public class Girokonto extends Konto
 {
 	private double dispo;
 
-	public Girokonto(int kontonummer, KontoTyp kontoTyp, double dispo) {
+	public Girokonto(int kontonummer, KontoTyp kontoTyp) {
 		super(kontonummer, kontoTyp);
-		setDispo(dispo);
+		this.setDispo(0);
 	}
 
 	

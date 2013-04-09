@@ -23,8 +23,8 @@ public class Kunde {
 		}
 		
 		String ausgabe = "Übersicht der Konten von " + getName() + ":\n";
-		for (Konto k: konten) {
-			ausgabe = ausgabe + k.toString() + "\n\n";
+		for (Konto konto: konten) {
+			ausgabe = ausgabe + konto.toString() + "\n\n";
 		}
 	
 		return ausgabe;
