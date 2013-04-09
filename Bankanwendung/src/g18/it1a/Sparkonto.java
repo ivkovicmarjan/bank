@@ -2,12 +2,12 @@ package g18.it1a;
 
 public class Sparkonto extends Konto
 {
+	private int zinssatz;
+	
 	public Sparkonto(int kontonummer, KontoTyp kontoTyp) {
 		super(kontonummer, kontoTyp);
 
 	}
-
-	private int zinssatz;
 	
 	public int getZinssatz() {
 		return this.zinssatz;

@@ -8,10 +8,10 @@ import org.junit.Test;
 
 public class KontoTest {
 
-	Konto konto;
-	int kontonummer = 12345678;
-	double betrag = 150.00;
-	KontoTyp kontotyp;
+	private Konto konto;
+	private int kontonummer = 12345678;
+	private double betrag = 150.00;
+	private KontoTyp kontotyp;
 	
 	@Before
 	public void test() {

@@ -44,19 +44,6 @@ public class Kunde {
 		konten.add(konto);
 		return konto;
 	}
-
-	private int generiereKontonummer(KontoTyp kontoTyp) {
-		int typ = 0;
-		int index = konten.size()+1;
-		
-		if (kontoTyp == KontoTyp.GIROKONTO) {
-			typ = 1;
-		} else {
-			typ = 0;
-		}				
-		
-		return getKundenNummer() * (100 + typ) * 1000 + index;
-	}
 	
 	public void auszahlenBetrag(Konto konto, double betrag) {
 		konto.auszahlen(betrag);
@@ -90,4 +77,16 @@ public class Kunde {
 		this.konten = konten;
 	}
 
+	private int generiereKontonummer(KontoTyp kontoTyp) {
+		int typ = 0;
+		int index = konten.size()+1;
+		
+		if (kontoTyp == KontoTyp.GIROKONTO) {
+			typ = 1;
+		} else {
+			typ = 0;
+		}				
+		
+		return getKundenNummer() * (100 + typ) * 1000 + index;
+	}
 }

@@ -8,10 +8,10 @@ import org.junit.Test;
 
 public class GirokontoTest {
 
-	int kontonummer;
-	KontoTyp kontotyp;
-	double dispo;
-	Girokonto girokonto;
+	private int kontonummer;
+	private KontoTyp kontotyp;
+	private double dispo;
+	private Girokonto girokonto;
 	
 	@Before
 	public void test() {
