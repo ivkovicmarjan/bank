@@ -32,8 +32,7 @@ public class Ueberweisung
 		return this.ziel;
 	}
 	
-	public void durchfuehrenUeberweisung()
-	{
+	public void durchfuehrenUeberweisung() {
 		if(this.quelle.getKontostand() > this.betrag)
 		{
 			this.quelle.auszahlen(this.betrag);

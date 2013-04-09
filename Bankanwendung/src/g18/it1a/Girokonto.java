@@ -6,9 +6,7 @@ public class Girokonto extends Konto
 
 	public Girokonto(int kontonummer, KontoTyp kontoTyp) {
 		super(kontonummer, kontoTyp);
-		this.setDispo(0);
 	}
-
 	
 	public double getDispo() {
 		return this.dispo;
@@ -21,8 +19,6 @@ public class Girokonto extends Konto
 	@Override
 	public void auszahlen(double betrag) {
 		double ergebnis = getKontostand() - betrag;
-		if (ergebnis >= dispo) {
-			setKontostand(ergebnis);
-		}
+		this.setKontostand(ergebnis);
 	}
 }

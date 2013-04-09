@@ -14,16 +14,17 @@ public class GirokontoTest {
 	private Girokonto girokonto;
 	
 	@Before
-	public void test() {
-		kontonummer = 13145657;
-		kontotyp = KontoTyp.GIROKONTO;
-		dispo = 150.00;
-		girokonto = new Girokonto(kontonummer, kontotyp);
+	public void testInstanziierung() {
+		this.kontonummer = 13145657;
+		this.kontotyp = KontoTyp.GIROKONTO;
+		this.dispo = 150.00;
+		this.girokonto = new Girokonto(kontonummer, kontotyp);
 	}
 	
 	@Test
 	public void testAuszahlen() {
-		girokonto.auszahlen(120.00);
+		this.girokonto.setDispo(0);
+		this.girokonto.auszahlen(120.00);
 		Assert.assertEquals(-120.00, girokonto.getKontostand());
 	}
 
