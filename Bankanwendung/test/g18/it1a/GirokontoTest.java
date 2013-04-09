@@ -10,14 +10,12 @@ public class GirokontoTest {
 
 	private int kontonummer;
 	private KontoTyp kontotyp;
-	private double dispo;
 	private Girokonto girokonto;
 	
 	@Before
 	public void testInstanziierung() {
 		this.kontonummer = 13145657;
 		this.kontotyp = KontoTyp.GIROKONTO;
-		this.dispo = 150.00;
 		this.girokonto = new Girokonto(kontonummer, kontotyp);
 	}
 	

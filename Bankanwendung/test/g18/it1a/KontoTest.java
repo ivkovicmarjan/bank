@@ -11,27 +11,26 @@ public class KontoTest {
 	private Konto konto;
 	private int kontonummer = 12345678;
 	private double betrag = 150.00;
-	private KontoTyp kontotyp;
 	
 	@Before
 	public void test() {
-		konto = new Konto(kontonummer, KontoTyp.GIROKONTO);
+		this.konto = new Konto(kontonummer, KontoTyp.GIROKONTO);
 	}
 	
 	@Test
 	public void testEinzahlen() {
-		konto.einzahlen(betrag);
-		Assert.assertEquals(betrag, konto.getKontostand());
+		this.konto.einzahlen(this.betrag);
+		Assert.assertEquals(this.betrag, this.konto.getKontostand());
 	}
 	
 	@Test
 	public void testAuszahlen() {
-		konto.einzahlen(150.00);
-		konto.auszahlen(100.00);
-		Assert.assertEquals(50.00, konto.getKontostand());
+		this.konto.einzahlen(150.00);
+		this.konto.auszahlen(100.00);
+		Assert.assertEquals(50.00, this.konto.getKontostand());
 		
-		konto.auszahlen(100.00);
-		Assert.assertEquals(50.00, konto.getKontostand());
+		this.konto.auszahlen(100.00);
+		Assert.assertEquals(50.00, this.konto.getKontostand());
 	}
 
 }
