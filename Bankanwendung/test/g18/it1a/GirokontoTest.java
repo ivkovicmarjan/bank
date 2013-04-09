@@ -18,7 +18,7 @@ public class GirokontoTest {
 		kontonummer = 13145657;
 		kontotyp = KontoTyp.GIROKONTO;
 		dispo = 150.00;
-		girokonto = new Girokonto(kontonummer, kontotyp, dispo);
+		girokonto = new Girokonto(kontonummer, kontotyp);
 	}
 	
 	@Test
