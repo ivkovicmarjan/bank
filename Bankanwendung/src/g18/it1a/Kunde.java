@@ -34,10 +34,8 @@ public class Kunde {
 		Konto konto = null;
 
 		if (kontoTyp == KontoTyp.GIROKONTO) {
-
 			konto = new Girokonto(generiereKontonummer(kontoTyp), kontoTyp);
 		} else {
-
 			konto = new Sparkonto(generiereKontonummer(kontoTyp), kontoTyp);
 		}
 
