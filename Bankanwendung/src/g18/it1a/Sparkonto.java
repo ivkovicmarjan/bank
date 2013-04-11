@@ -17,7 +17,10 @@ public class Sparkonto extends Konto
 		this.zinssatz = zinssatz;
 	}
 	
-	public int ausszahlen(){
-		return 0;
+	public void ausszahlen(double betrag){
+		double ergebnis = getKontostand() - betrag;
+		if (ergebnis >= 0.0) {
+			setKontostand(ergebnis);
+		}
 	}
 }
