@@ -1,7 +1,9 @@
-package g18.it1a;
+package g18.it1a.test;
 
 import junit.framework.Assert;
-import g18.it1a.Konto.KontoTyp;
+import g18.it1a.model.Konto;
+import g18.it1a.model.Ueberweisung;
+import g18.it1a.model.Konto.KontoTyp;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package g18.it1a;
+package g18.it1a.view;
 
 import javax.swing.SwingUtilities;
 import java.awt.BorderLayout;

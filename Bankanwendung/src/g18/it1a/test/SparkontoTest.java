@@ -1,6 +1,7 @@
-package g18.it1a;
+package g18.it1a.test;
 
-import g18.it1a.Konto.KontoTyp;
+import g18.it1a.model.Sparkonto;
+import g18.it1a.model.Konto.KontoTyp;
 import junit.framework.Assert;
 
 import org.junit.Before;

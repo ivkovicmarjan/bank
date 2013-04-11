@@ -1,6 +1,6 @@
-package g18.it1a;
+package g18.it1a.model;
 
-import g18.it1a.Konto.KontoTyp;
+import g18.it1a.model.Konto.KontoTyp;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,13 @@
-package g18.it1a;
+package g18.it1a.test;
 
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
 import junit.framework.Assert;
-import g18.it1a.Konto.KontoTyp;
+import g18.it1a.model.Konto;
+import g18.it1a.model.Kunde;
+import g18.it1a.model.Konto.KontoTyp;
 
 import org.junit.Before;
 import org.junit.Test;

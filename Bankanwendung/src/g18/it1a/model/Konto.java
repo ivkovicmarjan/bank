@@ -1,4 +1,4 @@
-package g18.it1a;
+package g18.it1a.model;
 
 public class Konto {
 
