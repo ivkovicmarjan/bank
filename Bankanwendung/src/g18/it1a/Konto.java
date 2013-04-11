@@ -5,22 +5,19 @@ public class Konto {
 	private int kontonummer;
 	private double kontostand = 0.00;
 	private KontoTyp kontoTyp;
-	
+
 	public enum KontoTyp {
-		GIROKONTO,
-		SPARKONTO
+		GIROKONTO, SPARKONTO
 	}
 
-	public Konto(int kontonummer, KontoTyp kontoTyp) 
-	{
+	public Konto(int kontonummer, KontoTyp kontoTyp) {
 		this.kontonummer = kontonummer;
 		this.kontoTyp = kontoTyp;
 	}
 
 	public void auszahlen(double betrag) {
-		
-		if(this.kontostand >= betrag)
-		{
+
+		if (this.kontostand >= betrag) {
 			this.kontostand = this.kontostand - betrag;
 		}
 	}
@@ -37,14 +34,14 @@ public class Konto {
 	public double getKontostand() {
 		return kontostand;
 	}
-	
+
 	public double setKontostand(double kontostand) {
 		this.kontostand = kontostand;
 		return this.kontostand;
 	}
-	
+
 	public String toString() {
 		return String.format("Kontonummer: %s, Kontostand: %s, Kontotyp: %s",
-							this.kontonummer, this.kontostand, this.kontoTyp.name());
+				this.kontonummer, this.kontostand, this.kontoTyp.name());
 	}
 }

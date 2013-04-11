@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Kunde {
-	
+
 	private String name;
 	private int kundenNummer;
 	private List<Konto> konten = null;
@@ -21,12 +21,12 @@ public class Kunde {
 		if (konten.isEmpty()) {
 			return "keine Konten vorhanden";
 		}
-		
+
 		String ausgabe = "Übersicht der Konten von " + getName() + ":\n";
-		for (Konto konto: konten) {
+		for (Konto konto : konten) {
 			ausgabe = ausgabe + konto.toString() + "\n\n";
 		}
-	
+
 		return ausgabe;
 	}
 
@@ -42,11 +42,11 @@ public class Kunde {
 		konten.add(konto);
 		return konto;
 	}
-	
+
 	public void auszahlenBetrag(Konto konto, double betrag) {
 		konto.auszahlen(betrag);
 	}
-	
+
 	public void einzahlenBetrag(Konto konto, double betrag) {
 		konto.einzahlen(betrag);
 	}
@@ -77,14 +77,14 @@ public class Kunde {
 
 	private int generiereKontonummer(KontoTyp kontoTyp) {
 		int typ = 0;
-		int index = konten.size()+1;
-		
+		int index = konten.size() + 1;
+
 		if (kontoTyp == KontoTyp.GIROKONTO) {
 			typ = 1;
 		} else {
 			typ = 0;
-		}				
-		
+		}
+
 		return getKundenNummer() * (100 + typ) * 1000 + index;
 	}
 }

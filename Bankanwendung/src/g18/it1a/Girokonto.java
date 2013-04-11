@@ -1,13 +1,12 @@
 package g18.it1a;
 
-public class Girokonto extends Konto
-{
+public class Girokonto extends Konto {
 	private double dispo;
 
 	public Girokonto(int kontonummer, KontoTyp kontoTyp) {
 		super(kontonummer, kontoTyp);
 	}
-	
+
 	public double getDispo() {
 		return this.dispo;
 	}
@@ -15,7 +14,7 @@ public class Girokonto extends Konto
 	public void setDispo(double dispo) {
 		this.dispo = dispo;
 	}
-	
+
 	@Override
 	public void auszahlen(double betrag) {
 		double ergebnis = getKontostand() - betrag;
