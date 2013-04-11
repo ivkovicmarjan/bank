@@ -1,5 +1,14 @@
 package g18.it1a.view;
 
-public class AnlegenKontoDlg {
+import javax.swing.JDialog;
 
+public class AnlegenKontoDlg extends JDialog {
+
+	
+	
+	private static final long serialVersionUID = 1L;
+
+	public AnlegenKontoDlg() {
+		
+	}
 }
