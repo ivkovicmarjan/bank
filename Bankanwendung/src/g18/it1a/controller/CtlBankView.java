@@ -31,36 +31,45 @@ public class CtlBankView {
 
 	private void anlegenKundenActionPerformed() {
 		anlegenKundeDlg = new AnlegenKundeDlg(bankView, true);
-		anlegenKundeDlg.getBtAnlegen().addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				btAnlegenKundeActionPerformed();
-			}
-		});
+		anlegenKundeDlg.getAnlegenButton().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btAnlegenKundeActionPerformed();
+					}
+				});
+		anlegenKundeDlg.getBeendenButton().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						jButtonKundeAnlegenBeendenActionPerformed();
+					}
+				});
+
 	}
 
 	private void btAnlegenKundeActionPerformed() {
 		try {
-			int kundenNummer = Integer.parseInt(anlegenKundeDlg.getTfNummer()
-					.getText());
-			String kundenName = anlegenKundeDlg.getTfName().getText();
+			int kundenNummer = Integer.parseInt(anlegenKundeDlg
+					.getKundenNummerField().getText());
+			String kundenName = anlegenKundeDlg.getKundenNameField().getText();
 			Kunde neuerKunde = bankHandler.anlegenKunde(kundenName,
 					kundenNummer);
-			new JOptionPane().showInputDialog(anlegenKundeDlg, "Kunde:"
-					+ neuerKunde.getName() + " angelegt.");
+			new JOptionPane();
+			JOptionPane.showInputDialog(anlegenKundeDlg,
+					"Kunde:" + neuerKunde.getName() + " angelegt.");
 			clearDlgKundeAnlegen();
 		} catch (NumberFormatException e) {
-			new JOptionPane().showInputDialog(anlegenKundeDlg,
+			new JOptionPane();
+			JOptionPane.showInputDialog(anlegenKundeDlg,
 					"Bitte Zahl als Kundennummer eingeben.");
 		}
 	}
 
 	private void clearDlgKundeAnlegen() {
-		anlegenKundeDlg.getTfName().setText("");
-		anlegenKundeDlg.getTfNummer().setText("");
+		anlegenKundeDlg.getKundenNameField().setText("");
+		anlegenKundeDlg.getKundenNummerField().setText("");
 	}
 
 	private void jButtonKundeAnlegenBeendenActionPerformed() {
 		anlegenKundeDlg.dispose();
 	}
-
 }
