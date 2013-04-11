@@ -84,7 +84,6 @@ public class Kunde {
 		} else {
 			typ = 0;
 		}
-
 		return getKundenNummer() * (100 + typ) * 1000 + index;
 	}
 }

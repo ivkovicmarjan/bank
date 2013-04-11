@@ -36,8 +36,7 @@ public class Ueberweisung {
 			this.quelle.auszahlen(this.betrag);
 			this.ziel.einzahlen(this.betrag);
 		} else {
-			System.out
-					.println("Konnte kein Geld überweisen, dar zu wenig vorhanden ist.");
+			System.out.println("Konnte kein Geld überweisen, dar zu wenig vorhanden ist.");
 		}
 	}
 }
