@@ -2,6 +2,7 @@ package g18.it1a.view;
 
 import javax.swing.AbstractButton;
 
+
 public class AnlegenKundeDlg {
 
 	public AnlegenKundeDlg(BankView bankView, boolean b) {
