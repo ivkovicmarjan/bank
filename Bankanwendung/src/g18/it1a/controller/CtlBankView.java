@@ -57,14 +57,19 @@ public class CtlBankView implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		System.out.println(e.getActionCommand());
 		if(e.getActionCommand() == "Kunde anlegen")
 		{
 			this.anlegenKundenActionPerformed();
 		}
 		
-		//anlegenKundenActionPerformed();
-		//btAnlegenKundeActionPerformed();
-		//jButtonKundeAnlegenBeendenActionPerformed();
+		if(e.getActionCommand() == "Anlegen")
+		{
+			this.btAnlegenKundeActionPerformed();
+		}
+		
+		if(e.getActionCommand() == "Beenden")
+		{
+			this.jButtonKundeAnlegenBeendenActionPerformed();
+		}
 	}
 }
