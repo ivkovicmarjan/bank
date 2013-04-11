@@ -21,10 +21,9 @@ public class Konto {
 			this.kontostand = this.kontostand - betrag;
 		}
 	}
-
+	
 	public void einzahlen(double betrag) {
 		this.kontostand = this.kontostand + betrag;
-
 	}
 
 	public int getKontonummer() {
