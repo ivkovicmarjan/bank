@@ -15,6 +15,12 @@ public class AnlegenKundeDlg extends JDialog {
 	private static final long serialVersionUID = 2326402193059787237L;
 
 	public AnlegenKundeDlg(BankView bankView, boolean b) {
+		setTitle("Kunde anlegen");
+		setSize(200,200);
+		setVisible(true);
+		setModal(true);
+		anlegenButton = new JButton("Anlegen");
+		beendenButton = new JButton("Beenden");
 	}
 
 	public JTextField getKundenNummerField() {
