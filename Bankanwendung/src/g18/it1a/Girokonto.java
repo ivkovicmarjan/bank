@@ -19,6 +19,9 @@ public class Girokonto extends Konto
 	@Override
 	public void auszahlen(double betrag) {
 		double ergebnis = getKontostand() - betrag;
+		if (ergebnis < -dispo) {
+			return;
+		}
 		this.setKontostand(ergebnis);
 	}
 }
