@@ -9,17 +9,29 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 public class BankView extends JFrame {
-
 	private static final long serialVersionUID = 1L;
 	private JPanel jContentPane = null;
 	private JMenuBar bankMenuBar = null;
-	private JMenu menu = null;
+	private JMenu Anwendungen = null;
 	private JMenuItem anlegenKunde = null;
 	private JMenuItem anlegenKonto = null;
 	private JMenuItem durchfuehrenZahlungen = null;
 	private JMenuItem durchführenUeberweisungen = null;
 	private JMenuItem anzeigenKontostand = null;
 	private JMenuItem ende = null;
+	private JMenuItem jMenuItem = null;
+
+	public BankView() {
+		super();
+		initialize();
+	}
+
+	private void initialize() {
+		this.setSize(587, 456);
+		this.setJMenuBar(getBankMenuBar());
+		this.setContentPane(getJContentPane());
+		this.setTitle("Bank-Anwendung");
+	}
 
 	private JMenuBar getBankMenuBar() {
 		if (bankMenuBar == null) {
@@ -29,20 +41,27 @@ public class BankView extends JFrame {
 		return bankMenuBar;
 	}
 
-	private JMenu getAnwendungen() {
-		if (menu == null) {
-			menu = new JMenu();
-			menu.setText("Anwendungen");
-			menu.add(getAnlegenKunde());
-			menu.add(getAnlegenKonto());
-			menu.add(getDurchfuehrenZahlungen());
-			menu.add(getDurchführenUeberweisungen());
-			menu.add(getAnzeigenKontostand());
-			menu.add(getEnde());
-			menu.insertSeparator(5);
-		
+	private JPanel getJContentPane() {
+		if (jContentPane == null) {
+			jContentPane = new JPanel();
+			jContentPane.setLayout(new BorderLayout());
 		}
-		return menu;
+		return jContentPane;
+	}
+
+	private JMenu getAnwendungen() {
+		if (Anwendungen == null) {
+			Anwendungen = new JMenu();
+			Anwendungen.setText("Anwendungen");
+			Anwendungen.add(getAnlegenKunde());
+			Anwendungen.add(getAnlegenKonto());
+			Anwendungen.add(getDurchfuehrenZahlungen());
+			Anwendungen.add(getDurchführenUeberweisungen());
+			Anwendungen.add(getAnzeigenKontostand());
+			Anwendungen.add(getEnde());
+			Anwendungen.insertSeparator(5);
+		}
+		return Anwendungen;
 	}
 
 	public JMenuItem getAnlegenKunde() {
@@ -92,35 +111,4 @@ public class BankView extends JFrame {
 		}
 		return ende;
 	}
-
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				BankView thisClass = new BankView();
-				thisClass.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				thisClass.setVisible(true);
-			}
-		});
-	}
-
-	public BankView() {
-		super();
-		initialize();
-	}
-
-	private void initialize() {
-		this.setSize(587, 456);
-		this.setJMenuBar(getBankMenuBar());
-		this.setContentPane(getJContentPane());
-		this.setTitle("Bank-Anwendung");
-	}
-
-	private JPanel getJContentPane() {
-		if (jContentPane == null) {
-			jContentPane = new JPanel();
-			jContentPane.setLayout(new BorderLayout());
-		}
-		return jContentPane;
-	}
-
 }
