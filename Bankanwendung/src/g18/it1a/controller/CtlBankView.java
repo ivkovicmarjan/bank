@@ -2,6 +2,7 @@ package g18.it1a.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 
@@ -37,35 +38,33 @@ public class CtlBankView {
 				anlegenKontoActionPerformed();
 			}
 		});
-		
-		this.bankView.getDurchfuehrenZahlungen().addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
-				einAuszahlenActionPerformed();
-			}
-		});
+
+		this.bankView.getDurchfuehrenZahlungen().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						einAuszahlenActionPerformed();
+					}
+				});
 
 		this.bankView.setVisible(true);
 	}
 
 	private void anlegenKundenActionPerformed() {
 		anlegenKundeDlg = new AnlegenKundeDlg(bankView, true);
-		anlegenKundeDlg.getAnlegenButton().addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent evt) 
-			{
-				btAnlegenKundeActionPerformed(anlegenKundeDlg.getKundenNummerField().getText());
-			}
-		});
+		anlegenKundeDlg.getAnlegenButton().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btAnlegenKundeActionPerformed(anlegenKundeDlg
+								.getKundenNummerField().getText());
+					}
+				});
 
-		anlegenKundeDlg.getBeendenButton().addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent evt)
-			{
-				btAnlegenKundeBeendenActionPerformed();
-			}
-		});
+		anlegenKundeDlg.getBeendenButton().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btAnlegenKundeBeendenActionPerformed();
+					}
+				});
 	}
 
 	private void btAnlegenKundeActionPerformed(String value) {
@@ -97,24 +96,25 @@ public class CtlBankView {
 		anlegenKontoDlg = new AnlegenKontoDlg(bankView, true);
 		anlegenKontoDlg.getAnlegenButton().addActionListener(
 				new ActionListener() {
-					
+
 					public void actionPerformed(ActionEvent evt) {
 						try {
-						btAnlegenKontoActionPerformed(
-								""
-										+ anlegenKontoDlg
-												.getList()
-												.getModel()
-												.getElementAt(
-														anlegenKontoDlg
-																.getList()
-																.getSelectedIndex()),
-								anlegenKontoDlg.getTextfield().getText());
-						}catch(IndexOutOfBoundsException e) {
-							JOptionPane.showMessageDialog(anlegenKontoDlg, "bitte wählen Sie einen Kontotyp aus!");
+							btAnlegenKontoActionPerformed(
+									""
+											+ anlegenKontoDlg
+													.getList()
+													.getModel()
+													.getElementAt(
+															anlegenKontoDlg
+																	.getList()
+																	.getSelectedIndex()),
+									anlegenKontoDlg.getTextfield().getText());
+						} catch (IndexOutOfBoundsException e) {
+							JOptionPane.showMessageDialog(anlegenKontoDlg,
+									"bitte wählen Sie einen Kontotyp aus!");
 						}
 					}
-					
+
 				});
 
 		anlegenKontoDlg.getBeendenButton().addActionListener(
@@ -126,22 +126,22 @@ public class CtlBankView {
 	}
 
 	private void einAuszahlenActionPerformed() {
-		this.einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg(bankView, true);
-		
-		this.einAuszahlungDurchführenDlg.getEinauszahlenButton().addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent evt)
-			{
-				btEinAuszahlenActionPerformed();
-			}
-		});
-		
-		this.einAuszahlungDurchführenDlg.getBeendenButton().addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent evt) {
-				btEinAuszahlenBeendenActionPerformed();
-			}	
-		});
+		this.einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg(
+				bankView, true);
+
+		this.einAuszahlungDurchführenDlg.getEinauszahlenButton()
+				.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btEinAuszahlenActionPerformed();
+					}
+				});
+
+		this.einAuszahlungDurchführenDlg.getBeendenButton().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btEinAuszahlenBeendenActionPerformed();
+					}
+				});
 	}
 
 	private void btEinAuszahlenActionPerformed() {
@@ -158,6 +158,7 @@ public class CtlBankView {
 
 	protected void btAnlegenKontoActionPerformed(String kontotyp,
 			String kundennummer) {
+		double zahl;
 		try {
 			Integer.parseInt(kundennummer);
 		} catch (NumberFormatException e) {
@@ -165,6 +166,10 @@ public class CtlBankView {
 					"Bitte Zahl als Kundennummer eingeben:");
 			this.btAnlegenKontoActionPerformed(kontotyp, result);
 		}
-		
+		if (kontotyp.equals("Girokonto")) {
+			zahl = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):"));
+		} else {
+			zahl = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte geben sie den gewünschten Zinssatz ein(Als kommazahl Bsp.: 15.0)"));
+		}
 	}
 }
