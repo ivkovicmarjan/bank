@@ -107,10 +107,10 @@ public class CtlBankView {
 }
 
 	protected void btAnlegenKontoBeendenActionPerformed() {
-		
+		anlegenKontoDlg.dispose();
 	}
 
 	protected void btAnlegenKontoActionPerformed() {
-		anlegenKontoDlg.dispose();
+		
 	}
 }
