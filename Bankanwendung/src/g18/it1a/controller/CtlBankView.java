@@ -37,33 +37,35 @@ public class CtlBankView {
 				anlegenKontoActionPerformed();
 			}
 		});
-
-		this.bankView.getDurchfuehrenZahlungen().addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						EinAuszahlenActionPerformed();
-					}
-				});
+		
+		this.bankView.getDurchfuehrenZahlungen().addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				einAuszahlenActionPerformed();
+			}
+		});
 
 		this.bankView.setVisible(true);
 	}
 
 	private void anlegenKundenActionPerformed() {
 		anlegenKundeDlg = new AnlegenKundeDlg(bankView, true);
-		anlegenKundeDlg.getAnlegenButton().addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						btAnlegenKundeActionPerformed(anlegenKundeDlg
-								.getKundenNummerField().getText());
-					}
-				});
+		anlegenKundeDlg.getAnlegenButton().addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent evt) 
+			{
+				btAnlegenKundeActionPerformed(anlegenKundeDlg.getKundenNummerField().getText());
+			}
+		});
 
-		anlegenKundeDlg.getBeendenButton().addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						btAnlegenKundeBeendenActionPerformed();
-					}
-				});
+		anlegenKundeDlg.getBeendenButton().addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent evt)
+			{
+				btAnlegenKundeBeendenActionPerformed();
+			}
+		});
 	}
 
 	private void btAnlegenKundeActionPerformed(String value) {
@@ -123,27 +125,27 @@ public class CtlBankView {
 				});
 	}
 
-	private void EinAuszahlenActionPerformed() {
-		this.einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg(
-				bankView, true);
-
-		this.einAuszahlungDurchführenDlg.getEinauszahlenButton()
-				.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						btEinAuszahlenActionPerformed();
-					}
-				});
-
-		this.einAuszahlungDurchführenDlg.getBeendenButton().addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						btEinAuszahlenBeendenActionPerformed();
-					}
-				});
+	private void einAuszahlenActionPerformed() {
+		this.einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg(bankView, true);
+		
+		this.einAuszahlungDurchführenDlg.getEinauszahlenButton().addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent evt)
+			{
+				btEinAuszahlenActionPerformed();
+			}
+		});
+		
+		this.einAuszahlungDurchführenDlg.getBeendenButton().addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent evt) {
+				btEinAuszahlenBeendenActionPerformed();
+			}	
+		});
 	}
 
 	private void btEinAuszahlenActionPerformed() {
-		// TODO Auto-generated method stub
+
 	}
 
 	private void btEinAuszahlenBeendenActionPerformed() {
