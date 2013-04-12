@@ -18,7 +18,6 @@ public class AnlegenKundeDlg extends JDialog {
 		this.setTitle("Kunde anlegen");
 		this.setSize(229,180);
 		this.setVisible(true);
-		this.setModal(true);
 		
 		this.kundenNummerLabel = new JLabel("Kundennummer:");
 		this.kundenNummerLabel.setBounds(10, 11, 124, 23);
