@@ -1,6 +1,5 @@
-package g18.it1a.view;
+package g18.it1a.model;
 
-import g18.it1a.model.Kunde;
 
 import java.util.HashMap;
 

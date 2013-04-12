@@ -1,7 +1,7 @@
 package g18.it1a.controller;
 
 import g18.it1a.model.Kunde;
-import g18.it1a.view.Kunden;
+import g18.it1a.model.Kunden;
 
 public class BankHandler {
 	private Kunden kunden;
