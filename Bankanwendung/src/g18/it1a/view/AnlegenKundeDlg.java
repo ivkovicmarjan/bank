@@ -3,14 +3,18 @@ package g18.it1a.view;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class AnlegenKundeDlg extends JDialog {
 	
+	private JLabel kundenNummerLabel;
+	private JLabel kundenNameLabel;
 	private JTextField kundenNummerField;
 	private JTextField kundenNameField;
 	private JButton anlegenButton;
 	private JButton beendenButton;
+
 
 	private static final long serialVersionUID = 2326402193059787237L;
 
@@ -19,8 +23,14 @@ public class AnlegenKundeDlg extends JDialog {
 		setSize(200,200);
 		setVisible(true);
 		setModal(true);
+		kundenNummerLabel = new JLabel("Kundennummer");
+		kundenNameLabel = new JLabel("Kundenname");
 		anlegenButton = new JButton("Anlegen");
 		beendenButton = new JButton("Beenden");
+		add(kundenNameLabel);
+		add(kundenNummerLabel);
+		add(anlegenButton);
+		add(beendenButton);
 	}
 
 	public JTextField getKundenNummerField() {
