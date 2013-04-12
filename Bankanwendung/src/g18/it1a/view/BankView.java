@@ -70,7 +70,7 @@ public class BankView extends JFrame {
 		return anlegenKunde;
 	}
 
-	private JMenuItem getAnlegenKonto() {
+	public JMenuItem getAnlegenKonto() {
 		if (anlegenKonto == null) {
 			anlegenKonto = new JMenuItem();
 			anlegenKonto.setText("Konto anlegen");
