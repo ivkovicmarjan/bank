@@ -78,7 +78,7 @@ public class BankView extends JFrame {
 		return anlegenKonto;
 	}
 
-	private JMenuItem getDurchfuehrenZahlungen() {
+	public JMenuItem getDurchfuehrenZahlungen() {
 		if (durchfuehrenZahlungen == null) {
 			durchfuehrenZahlungen = new JMenuItem();
 			durchfuehrenZahlungen.setText("Ein-/Auszahlungen durchführen");
@@ -86,7 +86,7 @@ public class BankView extends JFrame {
 		return durchfuehrenZahlungen;
 	}
 
-	private JMenuItem getDurchführenUeberweisungen() {
+	public JMenuItem getDurchführenUeberweisungen() {
 		if (durchführenUeberweisungen == null) {
 			durchführenUeberweisungen = new JMenuItem();
 			durchführenUeberweisungen.setText("Überweisungen durchführen");
@@ -94,7 +94,7 @@ public class BankView extends JFrame {
 		return durchführenUeberweisungen;
 	}
 
-	private JMenuItem getAnzeigenKontostand() {
+	public JMenuItem getAnzeigenKontostand() {
 		if (anzeigenKontostand == null) {
 			anzeigenKontostand = new JMenuItem();
 			anzeigenKontostand.setText("Kontostandsübersicht anzeigen");
@@ -102,7 +102,7 @@ public class BankView extends JFrame {
 		return anzeigenKontostand;
 	}
 
-	private JMenuItem getEnde() {
+	public JMenuItem getEnde() {
 		if (ende == null) {
 			ende = new JMenuItem();
 			ende.setText("Beenden");
