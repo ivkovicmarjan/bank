@@ -48,7 +48,7 @@ public class CtlBankView {
 		{
 			public void actionPerformed(ActionEvent evt)
 			{
-				btAnlegenKundeActionPerformed();
+				btAnlegenKundeActionPerformed(anlegenKundeDlg.getKundenNummerField().getText());
 			}
 		});
 		
@@ -58,10 +58,6 @@ public class CtlBankView {
 				btKundeAnlegenBeendenActionPerformed();
 			}
 		});
-	}
-
-	private void btAnlegenKundeActionPerformed() {
-		this.btAnlegenKundeActionPerformed(anlegenKundeDlg.getKundenNummerField().getText());
 	}
 	
 	private void btAnlegenKundeActionPerformed(String value) {
@@ -113,6 +109,6 @@ public class CtlBankView {
 	}
 
 	protected void btAnlegenKontoActionPerformed() {
-		
+		//System.out.println(anlegenKontoDlg.getList().getModel().getElementAt(anlegenKontoDlg.getList().getSelectedIndex()));
 	}
 }

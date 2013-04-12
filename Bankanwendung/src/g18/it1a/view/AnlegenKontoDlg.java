@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.AbstractListModel;
 
 public class AnlegenKontoDlg extends JDialog {
 
@@ -18,6 +19,7 @@ public class AnlegenKontoDlg extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JButton anlegenButton;
 	private JButton beendenButton;
+	private JList list;
 
 	public AnlegenKontoDlg(BankView bankView, boolean b) {
 		setTitle("Konto anlegen");
@@ -31,11 +33,19 @@ public class AnlegenKontoDlg extends JDialog {
 		JLabel lblKontotyp = new JLabel("Kontotyp:");
 		contentPanel.add(lblKontotyp);
 
-		JList list = new JList();
+		list = new JList();
+		list.setModel(new AbstractListModel() {
+			private static final long serialVersionUID = 1L;
+			String[] values = new String[] {"Girokonto", "Sparkonto"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
 		list.setEnabled(true);
-		list.setVisibleRowCount(2);
-		list.add(new JLabel("Girokonto"), "Girokonto");
-		list.add(new JLabel("Sparkonto"), "Sparkonto");
+		
 		contentPanel.add(list);
 
 		JPanel buttonPane = new JPanel();
@@ -58,4 +68,9 @@ public class AnlegenKontoDlg extends JDialog {
 	public JButton getBeendenButton() {
 		return beendenButton;
 	}
+	
+	public JList getList() {
+		return list;
+	}
+	
 }
