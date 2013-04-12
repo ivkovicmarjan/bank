@@ -46,7 +46,7 @@ public class CtlBankView {
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				EinAuszahlenActionPerformed();
+				einAuszahlenActionPerformed();
 			}
 		});
 		
@@ -115,7 +115,7 @@ public class CtlBankView {
 		});
 	}
 
-	private void EinAuszahlenActionPerformed() {
+	private void einAuszahlenActionPerformed() {
 		this.einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg(bankView, true);
 		
 		this.einAuszahlungDurchführenDlg.getEinauszahlenButton().addActionListener(new ActionListener() 
@@ -135,7 +135,7 @@ public class CtlBankView {
 	}
 
 	private void btEinAuszahlenActionPerformed() {
-		// TODO Auto-generated method stub
+
 	}
 	
 	private void btEinAuszahlenBeendenActionPerformed() {

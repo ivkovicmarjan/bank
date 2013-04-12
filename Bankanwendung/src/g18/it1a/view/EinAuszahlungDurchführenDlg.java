@@ -4,56 +4,73 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JList;
+import javax.swing.JTable;
 
 public class EinAuszahlungDurchführenDlg extends JDialog
 {
 	private static final long serialVersionUID = 8589480193184816213L;
-	private JTextField einzahlungField;
-	private JTextField auszahlungField;
+	private JTextField betragField;
 	private JButton beendenButton;
-	private JButton einauszahlenButton;
+	private JButton einzahlenButton;
+	private JTextField kundennummerField;
+	private JTextField kundennameField;
 	
 	public EinAuszahlungDurchführenDlg(BankView bankView, boolean b) 
 	{
+		this.setTitle("Ein-/Auszahlung Durchführen");
+		this.setSize(337,200);
+		this.setVisible(true);
+		
 		this.getContentPane().setLayout(null);
 		
-		JLabel einzahlungLabel = new JLabel("Einzahlungsbetrag:");
-		einzahlungLabel.setBounds(10, 11, 105, 14);
-		this.getContentPane().add(einzahlungLabel);
+		JLabel betragLabel = new JLabel("Betrag:");
+		betragLabel.setBounds(10, 83, 64, 14);
+		this.getContentPane().add(betragLabel);
 		
-		JLabel lblAuszahlungsbetrag = new JLabel("Auszahlungsbetrag:");
-		lblAuszahlungsbetrag.setBounds(10, 49, 105, 14);
-		this.getContentPane().add(lblAuszahlungsbetrag);
+		this.betragField = new JTextField();
+		this.betragField.setBounds(116, 80, 181, 20);
+		this.getContentPane().add(this.betragField);
+		this.betragField.setColumns(10);
 		
-		this.einzahlungField = new JTextField();
-		this.einzahlungField.setBounds(114, 8, 125, 20);
-		this.getContentPane().add(this.einzahlungField);
-		this.einzahlungField.setColumns(10);
+		this.einzahlenButton = new JButton("Einzahlen");
+		this.einzahlenButton.setBounds(10, 128, 99, 23);
+		this.getContentPane().add(this.einzahlenButton);
 		
-		this.auszahlungField = new JTextField();
-		this.auszahlungField.setBounds(114, 46, 125, 20);
-		this.getContentPane().add(this.auszahlungField);
-		this.auszahlungField.setColumns(10);
+		this.beendenButton = new JButton("Beenden");
+		this.beendenButton.setBounds(230, 128, 87, 23);
+		this.getContentPane().add(this.beendenButton);
 		
-		JButton einauszahlenButton = new JButton("Ein-/Auszahlen");
-		einauszahlenButton.setBounds(10, 101, 115, 23);
-		this.getContentPane().add(einauszahlenButton);
+		JButton auszahlenButton = new JButton("Auszahlen");
+		auszahlenButton.setBounds(116, 128, 104, 23);
+		getContentPane().add(auszahlenButton);
 		
-		JButton beendenButton = new JButton("Beenden");
-		beendenButton.setBounds(135, 101, 104, 23);
-		this.getContentPane().add(beendenButton);
+		kundennummerField = new JTextField();
+		kundennummerField.setBounds(116, 11, 181, 20);
+		getContentPane().add(kundennummerField);
+		kundennummerField.setColumns(10);
+		
+		kundennameField = new JTextField();
+		kundennameField.setEditable(false);
+		kundennameField.setBounds(116, 42, 181, 20);
+		getContentPane().add(kundennameField);
+		kundennameField.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Kundennummer:");
+		lblNewLabel.setBounds(10, 14, 104, 14);
+		getContentPane().add(lblNewLabel);
+		
+		JLabel lblKundenname = new JLabel("Kundenname:");
+		lblKundenname.setBounds(10, 45, 113, 14);
+		getContentPane().add(lblKundenname);
 	}	
 	
-	public JTextField getAuszahlungField() {
-		return this.auszahlungField;
-	}
-
 	public JTextField getEinzahlungField() {
-		return this.einzahlungField;
+		return this.betragField;
 	}
 
 	public JButton getEinauszahlenButton() {
-		return this.einauszahlenButton;
+		return this.einzahlenButton;
 	}
 
 	public JButton getBeendenButton() {
