@@ -6,13 +6,15 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import g18.it1a.model.Kunde;
+import g18.it1a.view.AnlegenKontoDlg;
 import g18.it1a.view.AnlegenKundeDlg;
 import g18.it1a.view.BankView;
 
-public class CtlBankView implements ActionListener {
+public class CtlBankView {
 
 	private BankView bankView;
 	private AnlegenKundeDlg anlegenKundeDlg;
+	private AnlegenKontoDlg anlegenKontoDlg;
 	private BankHandler bankHandler;
 
 	public CtlBankView() {
@@ -21,27 +23,58 @@ public class CtlBankView implements ActionListener {
 	public void startBankView(BankHandler bankHandler) {
 		this.bankHandler = bankHandler;
 		bankView = new BankView();
-		bankView.getAnlegenKunde().addActionListener(this);
+		bankView.getAnlegenKunde().addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent evt) {
+				anlegenKundenActionPerformed();
+			}
+		});
+		
+		bankView.getAnlegenKonto().addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				anlegenKontoActionPerformed();
+			}
+			
+		});
+		
 		bankView.setVisible(true);
 	}
 
 	private void anlegenKundenActionPerformed() {
 		anlegenKundeDlg = new AnlegenKundeDlg(bankView, true);
-		anlegenKundeDlg.getAnlegenButton().addActionListener(this);
-		anlegenKundeDlg.getBeendenButton().addActionListener(this);
+		anlegenKundeDlg.getAnlegenButton().addActionListener(
+				new ActionListener() {
+
+					public void actionPerformed(ActionEvent evt) {
+						btAnlegenKundeActionPerformed();
+					}
+				});
+		
+		anlegenKundeDlg.getBeendenButton().addActionListener(
+				new ActionListener() {
+
+					public void actionPerformed(ActionEvent evt) {
+						btKundeAnlegenBeendenActionPerformed();
+					}
+				});
 	}
 
 	private void btAnlegenKundeActionPerformed() {
 		try {
-			int kundenNummer = Integer.parseInt(anlegenKundeDlg.getKundenNummerField().getText());
+			int kundenNummer = Integer.parseInt(anlegenKundeDlg
+					.getKundenNummerField().getText());
 			String kundenName = anlegenKundeDlg.getKundenNameField().getText();
-			Kunde neuerKunde = bankHandler.anlegenKunde(kundenName,	kundenNummer);
+			Kunde neuerKunde = bankHandler.anlegenKunde(kundenName,
+					kundenNummer);
 			new JOptionPane();
-			JOptionPane.showInputDialog(anlegenKundeDlg, "Kunde:" + neuerKunde.getName() + " angelegt.");
+			JOptionPane.showInputDialog(anlegenKundeDlg,
+					"Kunde:" + neuerKunde.getName() + " angelegt.");
 			clearDlgKundeAnlegen();
 		} catch (NumberFormatException e) {
 			new JOptionPane();
-			JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte Zahl als Kundennummer eingeben.");
+			JOptionPane.showInputDialog(anlegenKundeDlg,
+					"Bitte Zahl als Kundennummer eingeben.");
 		}
 	}
 
@@ -50,26 +83,34 @@ public class CtlBankView implements ActionListener {
 		anlegenKundeDlg.getKundenNummerField().setText("");
 	}
 
-	private void jButtonKundeAnlegenBeendenActionPerformed() {
+	private void btKundeAnlegenBeendenActionPerformed() {
 		anlegenKundeDlg.dispose();
 	}
+	
+	private void anlegenKontoActionPerformed() {
+		anlegenKontoDlg = new AnlegenKontoDlg(bankView, true);
+		anlegenKontoDlg.getAnlegenButton().addActionListener(
+				new ActionListener() {
 
-	@Override
-	public void actionPerformed(ActionEvent e) 
-	{
-		if(e.getActionCommand() == "Kunde anlegen")
-		{
-			this.anlegenKundenActionPerformed();
-		}
+					public void actionPerformed(ActionEvent evt) {
+						btAnlegenKontoActionPerformed();
+					}
+				});
 		
-		if(e.getActionCommand() == "Anlegen")
-		{
-			this.btAnlegenKundeActionPerformed();
-		}
+		anlegenKontoDlg.getBeendenButton().addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent evt) {
+				btAnlegenKontoBeendenActionPerformed();
+			}
+		});
 		
-		if(e.getActionCommand() == "Beenden")
-		{
-			this.jButtonKundeAnlegenBeendenActionPerformed();
-		}
+}
+
+	protected void btAnlegenKontoBeendenActionPerformed() {
+		
+	}
+
+	protected void btAnlegenKontoActionPerformed() {
+		anlegenKontoDlg.dispose();
 	}
 }
