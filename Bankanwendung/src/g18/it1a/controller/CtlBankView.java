@@ -126,11 +126,19 @@ public class CtlBankView {
 	private void einAuszahlenActionPerformed() {
 		this.einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg(bankView, true);
 		
-		this.einAuszahlungDurchführenDlg.getEinauszahlenButton().addActionListener(new ActionListener() 
+		this.einAuszahlungDurchführenDlg.getEinzahlenButton().addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent evt)
 			{
-				btEinAuszahlenActionPerformed();
+				btEinzahlenActionPerformed(einAuszahlungDurchführenDlg.getBetragsField().getText());
+			}
+		});
+		
+		this.einAuszahlungDurchführenDlg.getAuszahlenButton().addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent evt)
+			{
+				btAuszahlenActionPerformed();
 			}
 		});
 		
@@ -142,10 +150,25 @@ public class CtlBankView {
 		});
 	}
 
-	private void btEinAuszahlenActionPerformed() {
-
+	private void btEinzahlenActionPerformed(String value) {
+		double betrag;
+		int kundennummer;
+		
+		try
+		{
+			betrag = Integer.parseInt(value);
+		}
+		catch (NumberFormatException e)
+		{
+			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenDlg, "Bitte Zahl als Betrag eingeben.");
+			this.btEinzahlenActionPerformed(result);
+		}
 	}
 
+	private void btAuszahlenActionPerformed() {
+
+	}
+	
 	private void btEinAuszahlenBeendenActionPerformed() {
 		this.einAuszahlungDurchführenDlg.dispose();
 	}

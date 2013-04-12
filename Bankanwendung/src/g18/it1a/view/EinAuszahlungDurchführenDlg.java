@@ -15,6 +15,7 @@ public class EinAuszahlungDurchführenDlg extends JDialog
 	private JButton einzahlenButton;
 	private JTextField kundennummerField;
 	private JTextField kundennameField;
+	private JButton auszahlenButton;
 	
 	public EinAuszahlungDurchführenDlg(BankView bankView, boolean b) 
 	{
@@ -41,20 +42,20 @@ public class EinAuszahlungDurchführenDlg extends JDialog
 		this.beendenButton.setBounds(230, 128, 87, 23);
 		this.getContentPane().add(this.beendenButton);
 		
-		JButton auszahlenButton = new JButton("Auszahlen");
-		auszahlenButton.setBounds(116, 128, 104, 23);
-		getContentPane().add(auszahlenButton);
+		this.auszahlenButton = new JButton("Auszahlen");
+		this.auszahlenButton.setBounds(116, 128, 104, 23);
+		this.getContentPane().add(this.auszahlenButton);
 		
-		kundennummerField = new JTextField();
-		kundennummerField.setBounds(116, 11, 181, 20);
-		getContentPane().add(kundennummerField);
-		kundennummerField.setColumns(10);
+		this.kundennummerField = new JTextField();
+		this.kundennummerField.setBounds(116, 11, 181, 20);
+		this.getContentPane().add(this.kundennummerField);
+		this.kundennummerField.setColumns(10);
 		
-		kundennameField = new JTextField();
-		kundennameField.setEditable(false);
-		kundennameField.setBounds(116, 42, 181, 20);
-		getContentPane().add(kundennameField);
-		kundennameField.setColumns(10);
+		this.kundennameField = new JTextField();
+		this.kundennameField.setEditable(false);
+		this.kundennameField.setBounds(116, 42, 181, 20);
+		this.getContentPane().add(this.kundennameField);
+		this.kundennameField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Kundennummer:");
 		lblNewLabel.setBounds(10, 14, 104, 14);
@@ -65,12 +66,16 @@ public class EinAuszahlungDurchführenDlg extends JDialog
 		getContentPane().add(lblKundenname);
 	}	
 	
-	public JTextField getEinzahlungField() {
+	public JTextField getBetragsField() {
 		return this.betragField;
 	}
 
-	public JButton getEinauszahlenButton() {
+	public JButton getEinzahlenButton() {
 		return this.einzahlenButton;
+	}
+	
+	public JButton getAuszahlenButton() {
+		return this.auszahlenButton;
 	}
 
 	public JButton getBeendenButton() {
