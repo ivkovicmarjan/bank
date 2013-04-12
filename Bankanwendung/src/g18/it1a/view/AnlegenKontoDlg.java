@@ -23,7 +23,6 @@ public class AnlegenKontoDlg extends JDialog {
 		setTitle("Konto anlegen");
 		setSize(200, 200);
 		setVisible(true);
-		setModal(true);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
