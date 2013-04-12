@@ -91,7 +91,7 @@ public class CtlBankView {
 		{
 			public void actionPerformed(ActionEvent evt) 
 			{
-				btAnlegenKontoActionPerformed();
+				btAnlegenKontoActionPerformed(""+anlegenKontoDlg.getList().getModel().getElementAt(anlegenKontoDlg.getList().getSelectedIndex()));
 			}
 		});
 		
@@ -108,7 +108,7 @@ public class CtlBankView {
 		anlegenKontoDlg.dispose();
 	}
 
-	protected void btAnlegenKontoActionPerformed() {
-		//System.out.println(anlegenKontoDlg.getList().getModel().getElementAt(anlegenKontoDlg.getList().getSelectedIndex()));
+	protected void btAnlegenKontoActionPerformed(String value) {
+		
 	}
 }

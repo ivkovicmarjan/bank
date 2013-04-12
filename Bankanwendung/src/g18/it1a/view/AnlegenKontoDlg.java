@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
+import javax.swing.JTextField;
 
 public class AnlegenKontoDlg extends JDialog {
 
@@ -20,20 +21,23 @@ public class AnlegenKontoDlg extends JDialog {
 	private JButton anlegenButton;
 	private JButton beendenButton;
 	private JList list;
+	private JTextField textField;
 
 	public AnlegenKontoDlg(BankView bankView, boolean b) {
 		setTitle("Konto anlegen");
 		setSize(200, 200);
 		setVisible(true);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
 
 		JLabel lblKontotyp = new JLabel("Kontotyp:");
+		lblKontotyp.setBounds(10, 16, 79, 14);
 		contentPanel.add(lblKontotyp);
 
 		list = new JList();
+		list.setBounds(91, 7, 83, 32);
 		list.setModel(new AbstractListModel() {
 			private static final long serialVersionUID = 1L;
 			String[] values = new String[] {"Girokonto", "Sparkonto"};
@@ -47,6 +51,15 @@ public class AnlegenKontoDlg extends JDialog {
 		list.setEnabled(true);
 		
 		contentPanel.add(list);
+		
+		JLabel lblNewLabel = new JLabel("Kundennummer:");
+		lblNewLabel.setBounds(10, 41, 79, 14);
+		contentPanel.add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBounds(91, 41, 83, 20);
+		contentPanel.add(textField);
+		textField.setColumns(1);
 
 		JPanel buttonPane = new JPanel();
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -72,5 +85,4 @@ public class AnlegenKontoDlg extends JDialog {
 	public JList getList() {
 		return list;
 	}
-	
 }
