@@ -95,7 +95,9 @@ public class CtlBankView {
 		anlegenKontoDlg = new AnlegenKontoDlg(bankView, true);
 		anlegenKontoDlg.getAnlegenButton().addActionListener(
 				new ActionListener() {
+					
 					public void actionPerformed(ActionEvent evt) {
+						try {
 						btAnlegenKontoActionPerformed(
 								""
 										+ anlegenKontoDlg
@@ -106,7 +108,11 @@ public class CtlBankView {
 																.getList()
 																.getSelectedIndex()),
 								anlegenKontoDlg.getTextfield().getText());
+						}catch(IndexOutOfBoundsException e) {
+							JOptionPane.showMessageDialog(anlegenKontoDlg, "bitte wählen Sie einen Kontotyp aus!");
+						}
 					}
+					
 				});
 
 		anlegenKontoDlg.getBeendenButton().addActionListener(
