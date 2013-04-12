@@ -68,17 +68,17 @@ public class CtlBankView {
 	}
 
 	private void btAnlegenKundeActionPerformed(String value) {
-		try {
+		try
+		{
 			String kundenName = anlegenKundeDlg.getKundenNameField().getText();
 			int kundenNummer = Integer.parseInt(value);
-			Kunde neuerKunde = bankHandler.anlegenKunde(kundenName,
-					kundenNummer);
-			JOptionPane.showMessageDialog(anlegenKundeDlg, "Kunde: "
-					+ neuerKunde.getName() + " angelegt.");
+			Kunde neuerKunde = bankHandler.anlegenKunde(kundenName,	kundenNummer);
+			JOptionPane.showMessageDialog(anlegenKundeDlg, "Kunde: " + neuerKunde.getName() + " angelegt.");
 			clearDlgKundeAnlegen();
-		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(anlegenKundeDlg,
-					"Bitte Zahl als Kundennummer eingeben.");
+		} 
+		catch (NumberFormatException e) 
+		{
+			String result = JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte Zahl als Kundennummer eingeben.");
 			this.btAnlegenKundeActionPerformed(result);
 		}
 	}
@@ -94,60 +94,81 @@ public class CtlBankView {
 
 	private void anlegenKontoActionPerformed() {
 		anlegenKontoDlg = new AnlegenKontoDlg(bankView, true);
-		anlegenKontoDlg.getAnlegenButton().addActionListener(
-				new ActionListener() {
 
-					public void actionPerformed(ActionEvent evt) {
-						try {
-							btAnlegenKontoActionPerformed(
-									""
-											+ anlegenKontoDlg
-													.getList()
-													.getModel()
-													.getElementAt(
-															anlegenKontoDlg
-																	.getList()
-																	.getSelectedIndex()),
-									anlegenKontoDlg.getTextfield().getText());
-						} catch (IndexOutOfBoundsException e) {
-							JOptionPane.showMessageDialog(anlegenKontoDlg,
-									"bitte wählen Sie einen Kontotyp aus!");
-						}
-					}
+		anlegenKontoDlg.getAnlegenButton().addActionListener(new ActionListener() 
+		{	
+			public void actionPerformed(ActionEvent evt) 
+			{
+				try 
+				{
+					btAnlegenKontoActionPerformed("" + anlegenKontoDlg.getList()
+																	  .getModel()
+																	  .getElementAt(anlegenKontoDlg.getList()
+																			  					   .getSelectedIndex()),
+													   anlegenKontoDlg.getTextfield().getText());
+				}
+				catch(IndexOutOfBoundsException e)
+				{
+					JOptionPane.showMessageDialog(anlegenKontoDlg, "bitte wählen Sie einen Kontotyp aus!");
+				}
+			}
+		});
 
-				});
-
-		anlegenKontoDlg.getBeendenButton().addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						btAnlegenKontoBeendenActionPerformed();
-					}
-				});
+		anlegenKontoDlg.getBeendenButton().addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent evt)
+			{
+				btAnlegenKontoBeendenActionPerformed();
+			}
+		});
 	}
 
 	private void einAuszahlenActionPerformed() {
-		this.einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg(
-				bankView, true);
-
-		this.einAuszahlungDurchführenDlg.getEinauszahlenButton()
-				.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						btEinAuszahlenActionPerformed();
-					}
-				});
-
-		this.einAuszahlungDurchführenDlg.getBeendenButton().addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						btEinAuszahlenBeendenActionPerformed();
-					}
-				});
+		this.einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg(bankView, true);
+		
+		this.einAuszahlungDurchführenDlg.getEinzahlenButton().addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent evt)
+			{
+				btEinzahlenActionPerformed(einAuszahlungDurchführenDlg.getBetragsField().getText());
+			}
+		});
+		
+		this.einAuszahlungDurchführenDlg.getAuszahlenButton().addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent evt)
+			{
+				btAuszahlenActionPerformed();
+			}
+		});
+		
+		this.einAuszahlungDurchführenDlg.getBeendenButton().addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent evt) {
+				btEinAuszahlenBeendenActionPerformed();
+			}	
+		});
 	}
 
-	private void btEinAuszahlenActionPerformed() {
-
+	private void btEinzahlenActionPerformed(String value) {
+		double betrag;
+		int kundennummer;
+		
+		try
+		{
+			betrag = Integer.parseInt(value);
+		}
+		catch (NumberFormatException e)
+		{
+			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenDlg, "Bitte Zahl als Betrag eingeben.");
+			this.btEinzahlenActionPerformed(result);
+		}
 	}
 
+	private void btAuszahlenActionPerformed() {
+
+	}
+	
 	private void btEinAuszahlenBeendenActionPerformed() {
 		this.einAuszahlungDurchführenDlg.dispose();
 	}
@@ -155,17 +176,20 @@ public class CtlBankView {
 	protected void btAnlegenKontoBeendenActionPerformed() {
 		anlegenKontoDlg.dispose();
 	}
-
-	protected void btAnlegenKontoActionPerformed(String kontotyp,
-			String kundennummer) {
+		
+	protected void btAnlegenKontoActionPerformed(String kontotyp, String kundennummer) {
 		double zahl;
-		try {
+		try 
+		{
+
 			Integer.parseInt(kundennummer);
-		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(anlegenKontoDlg,
-					"Bitte Zahl als Kundennummer eingeben:");
+		}
+		catch (NumberFormatException e)
+		{
+			String result = JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte Zahl als Kundennummer eingeben:");
 			this.btAnlegenKontoActionPerformed(kontotyp, result);
 		}
+
 		if (kontotyp.equals("Girokonto")) {
 			zahl = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):"));
 		} else {
