@@ -25,7 +25,7 @@ public class AnlegenKontoDlg extends JDialog {
 
 	public AnlegenKontoDlg(BankView bankView, boolean b) {
 		setTitle("Konto anlegen");
-		setSize(200, 200);
+		setSize(250, 200);
 		setVisible(true);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -37,7 +37,7 @@ public class AnlegenKontoDlg extends JDialog {
 		contentPanel.add(lblKontotyp);
 
 		list = new JList();
-		list.setBounds(91, 7, 83, 32);
+		list.setBounds(109, 11, 115, 37);
 		list.setModel(new AbstractListModel() {
 			private static final long serialVersionUID = 1L;
 			String[] values = new String[] {"Girokonto", "Sparkonto"};
@@ -53,11 +53,11 @@ public class AnlegenKontoDlg extends JDialog {
 		contentPanel.add(list);
 		
 		JLabel lblNewLabel = new JLabel("Kundennummer:");
-		lblNewLabel.setBounds(10, 41, 79, 14);
+		lblNewLabel.setBounds(10, 62, 97, 14);
 		contentPanel.add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(91, 41, 83, 20);
+		textField.setBounds(109, 59, 115, 20);
 		contentPanel.add(textField);
 		textField.setColumns(1);
 
@@ -84,5 +84,9 @@ public class AnlegenKontoDlg extends JDialog {
 	
 	public JList getList() {
 		return list;
+	}
+	
+	public JTextField getTextfield() {
+		return textField;
 	}
 }

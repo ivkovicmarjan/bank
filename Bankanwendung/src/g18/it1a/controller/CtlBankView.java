@@ -25,64 +25,59 @@ public class CtlBankView {
 	public void startBankView(BankHandler bankHandler) {
 		this.bankHandler = bankHandler;
 		this.bankView = new BankView();
-		
-		this.bankView.getAnlegenKunde().addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent evt) 
-			{
+
+		this.bankView.getAnlegenKunde().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
 				anlegenKundenActionPerformed();
 			}
 		});
-		
-		this.bankView.getAnlegenKonto().addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
+
+		this.bankView.getAnlegenKonto().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				anlegenKontoActionPerformed();
 			}
 		});
-		
-		this.bankView.getDurchfuehrenZahlungen().addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
-				EinAuszahlenActionPerformed();
-			}
-		});
-		
+
+		this.bankView.getDurchfuehrenZahlungen().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						EinAuszahlenActionPerformed();
+					}
+				});
+
 		this.bankView.setVisible(true);
 	}
 
 	private void anlegenKundenActionPerformed() {
 		anlegenKundeDlg = new AnlegenKundeDlg(bankView, true);
-		anlegenKundeDlg.getAnlegenButton().addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent evt)
-			{
-				btAnlegenKundeActionPerformed(anlegenKundeDlg.getKundenNummerField().getText());
-			}
-		});
-		
-		anlegenKundeDlg.getBeendenButton().addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent evt) {
-				btAnlegenKundeBeendenActionPerformed();
-			}
-		});
+		anlegenKundeDlg.getAnlegenButton().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btAnlegenKundeActionPerformed(anlegenKundeDlg
+								.getKundenNummerField().getText());
+					}
+				});
+
+		anlegenKundeDlg.getBeendenButton().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btAnlegenKundeBeendenActionPerformed();
+					}
+				});
 	}
-	
+
 	private void btAnlegenKundeActionPerformed(String value) {
-		try 
-		{
+		try {
 			String kundenName = anlegenKundeDlg.getKundenNameField().getText();
 			int kundenNummer = Integer.parseInt(value);
-			Kunde neuerKunde = bankHandler.anlegenKunde(kundenName,	kundenNummer);
-			JOptionPane.showMessageDialog(anlegenKundeDlg, "Kunde: " + neuerKunde.getName() + " angelegt.");
+			Kunde neuerKunde = bankHandler.anlegenKunde(kundenName,
+					kundenNummer);
+			JOptionPane.showMessageDialog(anlegenKundeDlg, "Kunde: "
+					+ neuerKunde.getName() + " angelegt.");
 			clearDlgKundeAnlegen();
-		} 
-		catch (NumberFormatException e)
-		{
-			String result = JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte Zahl als Kundennummer eingeben.");
+		} catch (NumberFormatException e) {
+			String result = JOptionPane.showInputDialog(anlegenKundeDlg,
+					"Bitte Zahl als Kundennummer eingeben.");
 			this.btAnlegenKundeActionPerformed(result);
 		}
 	}
@@ -95,58 +90,73 @@ public class CtlBankView {
 	private void btAnlegenKundeBeendenActionPerformed() {
 		anlegenKundeDlg.dispose();
 	}
-	
+
 	private void anlegenKontoActionPerformed() {
 		anlegenKontoDlg = new AnlegenKontoDlg(bankView, true);
-		anlegenKontoDlg.getAnlegenButton().addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent evt) 
-			{
-				btAnlegenKontoActionPerformed(""+anlegenKontoDlg.getList().getModel().getElementAt(anlegenKontoDlg.getList().getSelectedIndex()));
-			}
-		});
-		
-		anlegenKontoDlg.getBeendenButton().addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent evt)
-			{
-				btAnlegenKontoBeendenActionPerformed();
-			}
-		});
+		anlegenKontoDlg.getAnlegenButton().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btAnlegenKontoActionPerformed(
+								""
+										+ anlegenKontoDlg
+												.getList()
+												.getModel()
+												.getElementAt(
+														anlegenKontoDlg
+																.getList()
+																.getSelectedIndex()),
+								anlegenKontoDlg.getTextfield().getText());
+					}
+				});
+
+		anlegenKontoDlg.getBeendenButton().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btAnlegenKontoBeendenActionPerformed();
+					}
+				});
 	}
 
 	private void EinAuszahlenActionPerformed() {
-		this.einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg(bankView, true);
-		
-		this.einAuszahlungDurchführenDlg.getEinauszahlenButton().addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent evt)
-			{
-				btEinAuszahlenActionPerformed();
-			}
-		});
-		
-		this.einAuszahlungDurchführenDlg.getBeendenButton().addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent evt) {
-				btEinAuszahlenBeendenActionPerformed();
-			}	
-		});
+		this.einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg(
+				bankView, true);
+
+		this.einAuszahlungDurchführenDlg.getEinauszahlenButton()
+				.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btEinAuszahlenActionPerformed();
+					}
+				});
+
+		this.einAuszahlungDurchführenDlg.getBeendenButton().addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btEinAuszahlenBeendenActionPerformed();
+					}
+				});
 	}
 
 	private void btEinAuszahlenActionPerformed() {
 		// TODO Auto-generated method stub
 	}
-	
+
 	private void btEinAuszahlenBeendenActionPerformed() {
 		this.einAuszahlungDurchführenDlg.dispose();
 	}
-	
+
 	protected void btAnlegenKontoBeendenActionPerformed() {
 		anlegenKontoDlg.dispose();
 	}
 
-	protected void btAnlegenKontoActionPerformed(String value) {
+	protected void btAnlegenKontoActionPerformed(String kontotyp,
+			String kundennummer) {
+		try {
+			Integer.parseInt(kundennummer);
+		} catch (NumberFormatException e) {
+			String result = JOptionPane.showInputDialog(anlegenKontoDlg,
+					"Bitte Zahl als Kundennummer eingeben:");
+			this.btAnlegenKontoActionPerformed(kontotyp, result);
+		}
 		
 	}
 }
