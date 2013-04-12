@@ -9,12 +9,14 @@ import g18.it1a.model.Kunde;
 import g18.it1a.view.AnlegenKontoDlg;
 import g18.it1a.view.AnlegenKundeDlg;
 import g18.it1a.view.BankView;
+import g18.it1a.view.EinAuszahlungDurchführenDlg;
 
 public class CtlBankView {
 
 	private BankView bankView;
 	private AnlegenKundeDlg anlegenKundeDlg;
 	private AnlegenKontoDlg anlegenKontoDlg;
+	private EinAuszahlungDurchführenDlg einAuszahlungDurchführenDlg;
 	private BankHandler bankHandler;
 
 	public CtlBankView() {
@@ -22,8 +24,9 @@ public class CtlBankView {
 
 	public void startBankView(BankHandler bankHandler) {
 		this.bankHandler = bankHandler;
-		bankView = new BankView();
-		bankView.getAnlegenKunde().addActionListener(new ActionListener() 
+		this.bankView = new BankView();
+		
+		this.bankView.getAnlegenKunde().addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent evt) 
 			{
@@ -31,7 +34,7 @@ public class CtlBankView {
 			}
 		});
 		
-		bankView.getAnlegenKonto().addActionListener(new ActionListener() 
+		this.bankView.getAnlegenKonto().addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -39,7 +42,15 @@ public class CtlBankView {
 			}
 		});
 		
-		bankView.setVisible(true);
+		this.bankView.getDurchfuehrenZahlungen().addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				EinAuszahlenActionPerformed();
+			}
+		});
+		
+		this.bankView.setVisible(true);
 	}
 
 	private void anlegenKundenActionPerformed() {
@@ -55,7 +66,7 @@ public class CtlBankView {
 		anlegenKundeDlg.getBeendenButton().addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent evt) {
-				btKundeAnlegenBeendenActionPerformed();
+				btAnlegenKundeBeendenActionPerformed();
 			}
 		});
 	}
@@ -81,7 +92,7 @@ public class CtlBankView {
 		anlegenKundeDlg.getKundenNummerField().setText("");
 	}
 
-	private void btKundeAnlegenBeendenActionPerformed() {
+	private void btAnlegenKundeBeendenActionPerformed() {
 		anlegenKundeDlg.dispose();
 	}
 	
@@ -104,6 +115,33 @@ public class CtlBankView {
 		});
 	}
 
+	private void EinAuszahlenActionPerformed() {
+		this.einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg(bankView, true);
+		
+		this.einAuszahlungDurchführenDlg.getEinauszahlenButton().addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent evt)
+			{
+				btEinAuszahlenActionPerformed();
+			}
+		});
+		
+		this.einAuszahlungDurchführenDlg.getBeendenButton().addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent evt) {
+				btEinAuszahlenBeendenActionPerformed();
+			}	
+		});
+	}
+
+	private void btEinAuszahlenActionPerformed() {
+		// TODO Auto-generated method stub
+	}
+	
+	private void btEinAuszahlenBeendenActionPerformed() {
+		this.einAuszahlungDurchführenDlg.dispose();
+	}
+	
 	protected void btAnlegenKontoBeendenActionPerformed() {
 		anlegenKontoDlg.dispose();
 	}
