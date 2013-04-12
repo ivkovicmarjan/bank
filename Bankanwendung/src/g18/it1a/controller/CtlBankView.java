@@ -32,22 +32,23 @@ public class CtlBankView implements ActionListener {
 	}
 
 	private void btAnlegenKundeActionPerformed() {
-		
-		String kundenName = anlegenKundeDlg.getKundenNameField().getText();
-		int kundenNummer = 0;
-		
+		this.btAnlegenKundeActionPerformed(anlegenKundeDlg.getKundenNummerField().getText());
+	}
+	
+	private void btAnlegenKundeActionPerformed(String value) {
 		try 
 		{
-			 kundenNummer = Integer.parseInt(anlegenKundeDlg.getKundenNummerField().getText());
+			String kundenName = anlegenKundeDlg.getKundenNameField().getText();
+			int kundenNummer = Integer.parseInt(value);
+			Kunde neuerKunde = bankHandler.anlegenKunde(kundenName,	kundenNummer);
+			JOptionPane.showMessageDialog(anlegenKundeDlg, "Kunde: " + neuerKunde.getName() + " angelegt.");
+			clearDlgKundeAnlegen();
 		} 
 		catch (NumberFormatException e)
 		{
-			JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte Zahl als Kundennummer eingeben.");
+			String result = JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte Zahl als Kundennummer eingeben.");
+			this.btAnlegenKundeActionPerformed(result);
 		}
-		System.out.println(""+kundenNummer);
-		Kunde neuerKunde = bankHandler.anlegenKunde(kundenName,	kundenNummer);
-		JOptionPane.showMessageDialog(anlegenKundeDlg, "Kunde: " + neuerKunde.getName() + " angelegt.");
-		clearDlgKundeAnlegen();
 	}
 
 	private void clearDlgKundeAnlegen() {

@@ -30,22 +30,22 @@ public class AnlegenKundeDlg extends JDialog {
 		this.beendenButton.setBounds(111, 105, 84, 23);
 		
 		this.getContentPane().setLayout(null);
-		this.getContentPane().add(kundenNummerLabel);
-		this.getContentPane().add(anlegenButton);
-		this.getContentPane().add(beendenButton);
+		this.getContentPane().add(this.kundenNummerLabel);
+		this.getContentPane().add(this.anlegenButton);
+		this.getContentPane().add(this.beendenButton);
 		
 		JLabel lblKundenname = new JLabel("Kundenname:");
 		lblKundenname.setBounds(10, 48, 89, 14);
-		getContentPane().add(lblKundenname);
+		this.getContentPane().add(lblKundenname);
 		
 		this.kundenNummerField = new JTextField();
 		this.kundenNummerField.setBounds(111, 12, 89, 20);
-		this.getContentPane().add(kundenNummerField);
+		this.getContentPane().add(this.kundenNummerField);
 		this.kundenNummerField.setColumns(10);
 		
 		this.kundenNameField = new JTextField();
 		this.kundenNameField.setBounds(111, 45, 89, 20);
-		this.getContentPane().add(kundenNameField);
+		this.getContentPane().add(this.kundenNameField);
 		this.kundenNameField.setColumns(10);
 	}
 
@@ -62,6 +62,6 @@ public class AnlegenKundeDlg extends JDialog {
 	}
 
 	public JButton getBeendenButton() {
-		return beendenButton;
+		return this.beendenButton;
 	}
 }
