@@ -86,7 +86,15 @@ public class EinAuszahlungDurchführenDlg extends JDialog
 		return this.alterKontostandField;
 	}
 	
+	public void setAlterKontostandField(int betrag) {
+		this.alterKontostandField.setText(""+betrag);
+	}
+	
 	public JTextField getNeuerKontostandField() {
 		return this.neuerKontostandField;
+	}
+	
+	public void setNeuerKontostandField(int betrag) {
+		this.neuerKontostandField.setText(""+betrag);
 	}
 }
