@@ -2,7 +2,6 @@ package g18.it1a.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 
@@ -11,6 +10,7 @@ import g18.it1a.view.AnlegenKontoDlg;
 import g18.it1a.view.AnlegenKundeDlg;
 import g18.it1a.view.BankView;
 import g18.it1a.view.EinAuszahlungDurchführenDlg;
+import g18.it1a.view.ÜberweisungDurchführenDlg;
 
 public class CtlBankView {
 
@@ -19,6 +19,7 @@ public class CtlBankView {
 	private AnlegenKontoDlg anlegenKontoDlg;
 	private EinAuszahlungDurchführenDlg einAuszahlungDurchführenDlg;
 	private BankHandler bankHandler;
+	private ÜberweisungDurchführenDlg überweisungDurchführenDlg;
 
 	public CtlBankView() {
 	}
@@ -38,6 +39,13 @@ public class CtlBankView {
 				anlegenKontoActionPerformed();
 			}
 		});
+		
+		bankView.getAnlegenKonto().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				anlegenKontoActionPerformed();
+			}
+		});
+
 
 		this.bankView.getDurchfuehrenZahlungen().addActionListener(
 				new ActionListener() {
@@ -50,7 +58,7 @@ public class CtlBankView {
 	}
 
 	private void anlegenKundenActionPerformed() {
-		anlegenKundeDlg = new AnlegenKundeDlg(bankView, true);
+		anlegenKundeDlg = new AnlegenKundeDlg();
 		anlegenKundeDlg.getAnlegenButton().addActionListener(
 				new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
@@ -138,13 +146,6 @@ public class CtlBankView {
 				btAuszahlenActionPerformed();
 			}
 		});
-		
-		this.einAuszahlungDurchführenDlg.getBeendenButton().addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent evt) {
-				btEinAuszahlenBeendenActionPerformed();
-			}	
-		});
 	}
 
 	private void btEinzahlenActionPerformed(String value) {
@@ -166,8 +167,8 @@ public class CtlBankView {
 
 	}
 	
-	private void btEinAuszahlenBeendenActionPerformed() {
-		this.einAuszahlungDurchführenDlg.dispose();
+	private void überweisungDurchführenActionPerformed() {
+		überweisungDurchführenDlg = new ÜberweisungDurchführenDlg();
 	}
 
 	protected void btAnlegenKontoBeendenActionPerformed() {
