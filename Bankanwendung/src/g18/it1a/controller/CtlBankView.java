@@ -2,7 +2,6 @@ package g18.it1a.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
 
 import javax.swing.JOptionPane;
 
@@ -50,7 +49,7 @@ public class CtlBankView {
 	}
 
 	private void anlegenKundenActionPerformed() {
-		anlegenKundeDlg = new AnlegenKundeDlg(bankView, true);
+		anlegenKundeDlg = new AnlegenKundeDlg();
 		anlegenKundeDlg.getAnlegenButton().addActionListener(
 				new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {

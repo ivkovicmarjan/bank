@@ -14,7 +14,7 @@ public class AnlegenKundeDlg extends JDialog {
 	private JButton beendenButton;
 	private static final long serialVersionUID = 2326402193059787237L;
 
-	public AnlegenKundeDlg(BankView bankView, boolean b) {
+	public AnlegenKundeDlg() {
 		this.setTitle("Kunde anlegen");
 		this.setSize(229,180);
 		this.setVisible(true);
