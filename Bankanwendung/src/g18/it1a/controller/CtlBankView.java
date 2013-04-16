@@ -141,13 +141,6 @@ public class CtlBankView {
 				btAuszahlenActionPerformed();
 			}
 		});
-		
-		this.einAuszahlungDurchführenDlg.getBeendenButton().addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent evt) {
-				btEinAuszahlenBeendenActionPerformed();
-			}	
-		});
 	}
 
 	private void btEinzahlenActionPerformed(String value) {
@@ -167,10 +160,6 @@ public class CtlBankView {
 
 	private void btAuszahlenActionPerformed() {
 
-	}
-	
-	private void btEinAuszahlenBeendenActionPerformed() {
-		this.einAuszahlungDurchführenDlg.dispose();
 	}
 
 	protected void btAnlegenKontoBeendenActionPerformed() {
