@@ -11,59 +11,63 @@ public class EinAuszahlungDurchführenDlg extends JDialog
 {
 	private static final long serialVersionUID = 8589480193184816213L;
 	private JTextField betragField;
-	private JButton beendenButton;
 	private JButton einzahlenButton;
 	private JTextField kundennummerField;
-	private JTextField kundennameField;
+	private JTextField alterKontostandField;
 	private JButton auszahlenButton;
+	private JTextField neuerKontostandField;
 	
 	public EinAuszahlungDurchführenDlg(BankView bankView, boolean b) 
 	{
 		this.setTitle("Ein-/Auszahlung Durchführen");
-		this.setSize(337,200);
+		this.setSize(280,221);
 		this.setVisible(true);
 		
 		this.getContentPane().setLayout(null);
 		
 		JLabel betragLabel = new JLabel("Betrag:");
-		betragLabel.setBounds(10, 83, 64, 14);
+		betragLabel.setBounds(10, 76, 64, 14);
 		this.getContentPane().add(betragLabel);
 		
 		this.betragField = new JTextField();
-		this.betragField.setBounds(116, 80, 181, 20);
+		this.betragField.setBounds(137, 73, 117, 20);
 		this.getContentPane().add(this.betragField);
 		this.betragField.setColumns(10);
 		
 		this.einzahlenButton = new JButton("Einzahlen");
-		this.einzahlenButton.setBounds(10, 128, 99, 23);
+		this.einzahlenButton.setBounds(10, 149, 99, 23);
 		this.getContentPane().add(this.einzahlenButton);
 		
-		this.beendenButton = new JButton("Beenden");
-		this.beendenButton.setBounds(230, 128, 87, 23);
-		this.getContentPane().add(this.beendenButton);
-		
 		this.auszahlenButton = new JButton("Auszahlen");
-		this.auszahlenButton.setBounds(116, 128, 104, 23);
+		this.auszahlenButton.setBounds(150, 149, 104, 23);
 		this.getContentPane().add(this.auszahlenButton);
 		
 		this.kundennummerField = new JTextField();
-		this.kundennummerField.setBounds(116, 11, 181, 20);
+		this.kundennummerField.setBounds(137, 11, 117, 20);
 		this.getContentPane().add(this.kundennummerField);
 		this.kundennummerField.setColumns(10);
 		
-		this.kundennameField = new JTextField();
-		this.kundennameField.setEditable(false);
-		this.kundennameField.setBounds(116, 42, 181, 20);
-		this.getContentPane().add(this.kundennameField);
-		this.kundennameField.setColumns(10);
+		this.alterKontostandField = new JTextField();
+		this.alterKontostandField.setBounds(137, 42, 117, 20);
+		this.getContentPane().add(this.alterKontostandField);
+		this.alterKontostandField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Kundennummer:");
 		lblNewLabel.setBounds(10, 14, 104, 14);
-		getContentPane().add(lblNewLabel);
+		this.getContentPane().add(lblNewLabel);
 		
-		JLabel lblKundenname = new JLabel("Kundenname:");
-		lblKundenname.setBounds(10, 45, 113, 14);
-		getContentPane().add(lblKundenname);
+		JLabel lblAlterKontostand = new JLabel("Alter Kontostand:");
+		lblAlterKontostand.setBounds(10, 45, 104, 14);
+		this.getContentPane().add(lblAlterKontostand);
+		
+		this.neuerKontostandField = new JTextField();
+		this.neuerKontostandField.setColumns(10);
+		this.neuerKontostandField.setBounds(137, 104, 117, 20);
+		this.getContentPane().add(this.neuerKontostandField);
+		
+		JLabel lblNeuerKontostand = new JLabel("Neuer Kontostand:");
+		lblNeuerKontostand.setBounds(10, 107, 117, 14);
+		this.getContentPane().add(lblNeuerKontostand);
 	}	
 	
 	public JTextField getBetragsField() {
@@ -77,8 +81,12 @@ public class EinAuszahlungDurchführenDlg extends JDialog
 	public JButton getAuszahlenButton() {
 		return this.auszahlenButton;
 	}
-
-	public JButton getBeendenButton() {
-		return this.beendenButton;
+	
+	public JTextField getAlterKontostandField() {
+		return this.alterKontostandField;
+	}
+	
+	public JTextField getNeuerKontostandField() {
+		return this.neuerKontostandField;
 	}
 }
