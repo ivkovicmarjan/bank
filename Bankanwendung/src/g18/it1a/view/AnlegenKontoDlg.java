@@ -7,10 +7,12 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class AnlegenKontoDlg extends JDialog {
@@ -20,8 +22,10 @@ public class AnlegenKontoDlg extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JButton anlegenButton;
 	private JButton beendenButton;
-	private JList list;
-	private JTextField textField;
+	private ButtonGroup buttonGroup;
+	private JRadioButton giroButton;
+	private JRadioButton sparButton;
+	private JTextField kundenNummerFeld;
 
 	public AnlegenKontoDlg(BankView bankView, boolean b) {
 		setTitle("Konto anlegen");
@@ -36,30 +40,32 @@ public class AnlegenKontoDlg extends JDialog {
 		lblKontotyp.setBounds(10, 16, 79, 14);
 		contentPanel.add(lblKontotyp);
 
-		list = new JList();
-		list.setBounds(109, 11, 115, 37);
-		list.setModel(new AbstractListModel() {
-			private static final long serialVersionUID = 1L;
-			String[] values = new String[] {"Girokonto", "Sparkonto"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		list.setEnabled(true);
+		buttonGroup = new ButtonGroup();
 		
-		contentPanel.add(list);
+		giroButton = new JRadioButton();
+		giroButton.setText("Girokonto");
+		giroButton.setBounds(105, 10, 100, 15);
+		giroButton.setActionCommand("Girokonto");
+		buttonGroup.add(giroButton);
+		
+		sparButton = new JRadioButton();
+		sparButton.setText("Sparkonto");
+		sparButton.setBounds(105, 25, 100, 15);
+		sparButton.setActionCommand("Sparkonto");
+		buttonGroup.add(sparButton);
+		
+		contentPanel.add(giroButton);
+		contentPanel.add(sparButton);
+		
 		
 		JLabel lblNewLabel = new JLabel("Kundennummer:");
 		lblNewLabel.setBounds(10, 62, 97, 14);
 		contentPanel.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(109, 59, 115, 20);
-		contentPanel.add(textField);
-		textField.setColumns(1);
+		kundenNummerFeld = new JTextField();
+		kundenNummerFeld.setBounds(109, 59, 115, 20);
+		contentPanel.add(kundenNummerFeld);
+		kundenNummerFeld.setColumns(1);
 
 		JPanel buttonPane = new JPanel();
 		buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -82,11 +88,19 @@ public class AnlegenKontoDlg extends JDialog {
 		return beendenButton;
 	}
 	
-	public JList getList() {
-		return list;
+	public JTextField getKundenNummerFeld() {
+		return kundenNummerFeld;
 	}
 	
-	public JTextField getTextfield() {
-		return textField;
+	public ButtonGroup getButtonGroup() {
+		return buttonGroup;
+	}
+
+	public JRadioButton getGiroButton() {
+		return giroButton;
+	}
+
+	public JRadioButton getSparButton() {
+		return sparButton;
 	}
 }

@@ -101,13 +101,10 @@ public class CtlBankView {
 			{
 				try 
 				{
-					btAnlegenKontoActionPerformed("" + anlegenKontoDlg.getList()
-																	  .getModel()
-																	  .getElementAt(anlegenKontoDlg.getList()
-																			  					   .getSelectedIndex()),
-													   anlegenKontoDlg.getTextfield().getText());
+					btAnlegenKontoActionPerformed("" + anlegenKontoDlg.getButtonGroup().getSelection().getActionCommand(),
+													   anlegenKontoDlg.getKundenNummerFeld().getText());
 				}
-				catch(IndexOutOfBoundsException e)
+				catch(NullPointerException e)
 				{
 					JOptionPane.showMessageDialog(anlegenKontoDlg, "bitte wählen Sie einen Kontotyp aus!");
 				}
