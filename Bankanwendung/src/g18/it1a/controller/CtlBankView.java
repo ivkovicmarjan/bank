@@ -10,6 +10,7 @@ import g18.it1a.view.AnlegenKontoDlg;
 import g18.it1a.view.AnlegenKundeDlg;
 import g18.it1a.view.BankView;
 import g18.it1a.view.EinAuszahlungDurchführenDlg;
+import g18.it1a.view.KontostandsübersichtAnzeigenDlg;
 import g18.it1a.view.ÜberweisungDurchführenDlg;
 
 public class CtlBankView {
@@ -20,6 +21,7 @@ public class CtlBankView {
 	private EinAuszahlungDurchführenDlg einAuszahlungDurchführenDlg;
 	private BankHandler bankHandler;
 	private ÜberweisungDurchführenDlg überweisungDurchführenDlg;
+	private KontostandsübersichtAnzeigenDlg kontostandsübersichtAnzeigenDlg;
 
 	public CtlBankView() {
 	}
@@ -40,13 +42,12 @@ public class CtlBankView {
 			}
 		});
 		
-		bankView.getAnlegenKonto().addActionListener(new ActionListener() {
+		this.bankView.getAnzeigenKontostand().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				anlegenKontoActionPerformed();
+				anzeigenKontostandActionPerformed();
 			}
 		});
-
-
+		
 		this.bankView.getDurchfuehrenZahlungen().addActionListener(
 				new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -55,6 +56,18 @@ public class CtlBankView {
 				});
 
 		this.bankView.setVisible(true);
+	}
+
+	private void anzeigenKontostandActionPerformed() {
+		kontostandsübersichtAnzeigenDlg = new KontostandsübersichtAnzeigenDlg();
+
+		kontostandsübersichtAnzeigenDlg.getbtnKontobersicht().addActionListener(new ActionListener() 
+		{	
+			public void actionPerformed(ActionEvent evt) 
+			{
+				btKontobersichtActionPerformed();
+			}
+		});
 	}
 
 	private void anlegenKundenActionPerformed() {
@@ -89,10 +102,11 @@ public class CtlBankView {
 		anlegenKundeDlg.getKundenNummerField().setText("");
 	}
 
-	private void btAnlegenKundeBeendenActionPerformed() {
-		anlegenKundeDlg.dispose();
+	private void btKontobersichtActionPerformed() {
+		// TODO Auto-generated method stub
+		
 	}
-
+	
 	private void anlegenKontoActionPerformed() {
 		anlegenKontoDlg = new AnlegenKontoDlg(bankView, true);
 
