@@ -66,13 +66,6 @@ public class CtlBankView {
 								.getKundenNummerField().getText());
 					}
 				});
-
-		anlegenKundeDlg.getBeendenButton().addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						btAnlegenKundeBeendenActionPerformed();
-					}
-				});
 	}
 
 	private void btAnlegenKundeActionPerformed(String value) {
