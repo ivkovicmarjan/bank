@@ -1,18 +1,17 @@
 package g18.it1a.model;
 
 public class Sparkonto extends Konto {
-	private int zinssatz;
+	private double zinssatz;
 
 	public Sparkonto(int kontonummer, KontoTyp kontoTyp) {
 		super(kontonummer, kontoTyp);
-
 	}
 
-	public int getZinssatz() {
+	public double getZinssatz() {
 		return this.zinssatz;
 	}
 
-	public void setZinssatz(int zinssatz) {
+	public void setZinssatz(double zinssatz) {
 		this.zinssatz = zinssatz;
 	}
 
