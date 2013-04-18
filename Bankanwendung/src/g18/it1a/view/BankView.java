@@ -1,6 +1,7 @@
 package g18.it1a.view;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
@@ -18,6 +19,7 @@ public class BankView extends JFrame {
 	private JMenuItem durchführenUeberweisungen = null;
 	private JMenuItem anzeigenKontostand = null;
 	private JMenuItem ende = null;
+	private JMenuItem überweisungDurchführen = null;
 
 	public BankView() {
 		super();
