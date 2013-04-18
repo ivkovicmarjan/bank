@@ -48,13 +48,18 @@ public class CtlBankView {
 			}
 		});
 		
-		bankView.getDurchfuehrenZahlungen().addActionListener(
+		this.bankView.getDurchführenUeberweisungen().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				überweisungDurchführenActionPerformed();
+			}
+		});
 
-				new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						einAuszahlenActionPerformed();
-					}
-				});
+
+		bankView.getDurchfuehrenZahlungen().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				einAuszahlenActionPerformed();
+			}
+		});
 
 		this.bankView.setVisible(true);
 	}
@@ -106,8 +111,6 @@ public class CtlBankView {
 	}
 
 	private void btKontobersichtActionPerformed() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	private void anlegenKontoActionPerformed() {
@@ -171,12 +174,15 @@ public class CtlBankView {
 	
 	private void überweisungDurchführenActionPerformed() {
 		überweisungDurchführenDlg = new ÜberweisungDurchführenDlg();
+		
+		überweisungDurchführenDlg.getÜberweisenButton().addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 	}
 
-	protected void btAnlegenKontoBeendenActionPerformed() {
-		anlegenKontoDlg.dispose();
-	}
-		
 	protected void btAnlegenKontoActionPerformed(String kontotyp, String kundennummer) {
 		double zahl;
 		try 
