@@ -157,7 +157,7 @@ public class CtlBankView {
 		
 		try
 		{
-			betrag = Integer.parseInt(value);
+			betrag = Double.parseDouble(value);
 		}
 		catch (NumberFormatException e)
 		{
