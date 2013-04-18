@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import g18.it1a.model.Konto;
 import g18.it1a.model.Kunde;
 import g18.it1a.view.AnlegenKontoDlg;
 import g18.it1a.view.AnlegenKundeDlg;
@@ -166,22 +167,34 @@ public class CtlBankView {
 	}
 		
 	protected void btAnlegenKontoActionPerformed(String kontotyp, String kundennummer) {
-		double zahl;
+		double zahl = 0;
+		int kundenNummer = 0;
 		try 
 		{
 
-			Integer.parseInt(kundennummer);
+			kundenNummer = Integer.parseInt(kundennummer);
+			
 		}
 		catch (NumberFormatException e)
 		{
 			String result = JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte Zahl als Kundennummer eingeben:");
 			this.btAnlegenKontoActionPerformed(kontotyp, result);
 		}
-
+		
 		if (kontotyp.equals("Girokonto")) {
 			zahl = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):"));
 		} else {
 			zahl = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte geben sie den gewünschten Zinssatz ein(Als kommazahl Bsp.: 15.0)"));
+		}
+		
+		try {
+			
+		Konto konto = bankHandler.anlegenKonto(kundenNummer, kontotyp, zahl);
+		JOptionPane.showMessageDialog(anlegenKontoDlg, "Ihr Konto wurde angelegt!\n Ihre Kontonummer lautet:"+konto.getKontonummer());
+		
+		} catch (NullPointerException e) {
+			JOptionPane.showMessageDialog(anlegenKontoDlg, "Dieser Kunde existiert nicht!");
+			anlegenKontoDlg.getKundenNummerFeld().setText("");
 		}
 	}
 }
