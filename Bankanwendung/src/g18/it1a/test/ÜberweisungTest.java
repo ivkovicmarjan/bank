@@ -7,7 +7,7 @@ import g18.it1a.model.Konto.KontoTyp;
 
 import org.junit.Test;
 
-public class UeberweisungTest {
+public class ÜberweisungTest {
 
 	@Test
 	public void KannÜberweiungDurchführen() 
