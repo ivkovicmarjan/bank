@@ -1,14 +1,11 @@
 package g18.it1a.view;
 
-import java.awt.Component;
 import java.awt.Container;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
-import javax.swing.JPanel;
 
 public class ÜberweisungDurchführenDlg extends JDialog {
 

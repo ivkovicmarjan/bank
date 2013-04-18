@@ -31,6 +31,7 @@ public class BankView extends JFrame {
 		this.setJMenuBar(getBankMenuBar());
 		this.setContentPane(getJContentPane());
 		this.setTitle("Bank-Anwendung");
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
 	private JMenuBar getBankMenuBar() {
