@@ -34,7 +34,7 @@ public class KontostandsübersichtAnzeigenDlg extends JDialog {
 		getContentPane().add(kontostandTable);
 		
 		kundennummerField = new JTextField();
-		kundennummerField.setBounds(103, 8, 139, 20);
+		kundennummerField.setBounds(109, 8, 133, 20);
 		getContentPane().add(kundennummerField);
 		kundennummerField.setColumns(10);
 	}
