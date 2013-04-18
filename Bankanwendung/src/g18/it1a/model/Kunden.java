@@ -1,6 +1,8 @@
 package g18.it1a.model;
 
 
+import g18.it1a.model.Konto.KontoTyp;
+
 import java.util.HashMap;
 
 public class Kunden {
@@ -14,5 +16,21 @@ public class Kunden {
 		Kunde kunde = new Kunde(kundenName, kundenNummer);
 		kunden.put(new Integer(kundenNummer), kunde);
 		return kunde;
+	}
+	
+	public Konto anlegenKonto(int kundennummer, String kontotyp, double kontoZahl) throws NullPointerException {
+		Konto konto;
+		
+		if (!kunden.containsKey(kundennummer)) {
+			throw new NullPointerException();
+		}
+		
+		if (kontotyp.equals("Girokonto")) {
+			konto = kunden.get(kundennummer).anlegenKonto(KontoTyp.GIROKONTO);
+		} else {
+			konto = kunden.get(kundennummer).anlegenKonto(KontoTyp.SPARKONTO);
+		}
+		
+		return konto;
 	}
 }
