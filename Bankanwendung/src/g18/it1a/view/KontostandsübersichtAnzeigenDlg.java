@@ -15,7 +15,7 @@ public class KontostandsübersichtAnzeigenDlg extends JDialog {
 
 	public KontostandsübersichtAnzeigenDlg() 
 	{
-		this.setTitle("Kontostandübersicht Anzeign");
+		this.setTitle("Kontostandübersicht Anzeigen");
 		this.setSize(408,261);
 		this.setVisible(true);
 		
@@ -39,7 +39,7 @@ public class KontostandsübersichtAnzeigenDlg extends JDialog {
 		kundennummerField.setColumns(10);
 	}
 	
-	public JTable btnKontobersicht() {
+	public JTable getKontoubersicht() {
 		return this.kontostandTable;
 	}
 
@@ -47,7 +47,7 @@ public class KontostandsübersichtAnzeigenDlg extends JDialog {
 		return this.kundennummerField;
 	}
 	
-	public JButton getbtnKontobersicht() {
+	public JButton getbtnKontoubersicht() {
 		return this.btnKontobersicht;
 	}
 }

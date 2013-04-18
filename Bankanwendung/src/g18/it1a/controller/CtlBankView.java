@@ -62,7 +62,7 @@ public class CtlBankView {
 	private void anzeigenKontostandActionPerformed() {
 		kontostandsübersichtAnzeigenDlg = new KontostandsübersichtAnzeigenDlg();
 
-		kontostandsübersichtAnzeigenDlg.getbtnKontobersicht().addActionListener(new ActionListener() 
+		kontostandsübersichtAnzeigenDlg.getbtnKontoubersicht().addActionListener(new ActionListener() 
 		{	
 			public void actionPerformed(ActionEvent evt) 
 			{
@@ -106,7 +106,7 @@ public class CtlBankView {
 	}
 
 	private void btKontobersichtActionPerformed() {
-		// TODO Auto-generated method stub
+	
 		
 	}
 	
