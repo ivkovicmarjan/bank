@@ -16,13 +16,13 @@ public class KontostandsübersichtAnzeigenDlg extends JDialog {
 	public KontostandsübersichtAnzeigenDlg() 
 	{
 		this.setTitle("Kontostandübersicht Anzeign");
-		this.setSize(407,261);
+		this.setSize(408,261);
 		this.setVisible(true);
 		
 		getContentPane().setLayout(null);
 		
 		JLabel lblKundennummer = new JLabel("Kundennummer:");
-		lblKundennummer.setBounds(10, 11, 114, 14);
+		lblKundennummer.setBounds(10, 11, 133, 14);
 		getContentPane().add(lblKundennummer);
 		
 		btnKontobersicht = new JButton("Konto\u00FCbersicht");
@@ -34,7 +34,7 @@ public class KontostandsübersichtAnzeigenDlg extends JDialog {
 		getContentPane().add(kontostandTable);
 		
 		kundennummerField = new JTextField();
-		kundennummerField.setBounds(93, 8, 149, 20);
+		kundennummerField.setBounds(103, 8, 139, 20);
 		getContentPane().add(kundennummerField);
 		kundennummerField.setColumns(10);
 	}
