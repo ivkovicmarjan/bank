@@ -155,12 +155,12 @@ public class CtlBankView {
 	}
 
 	private void btEinzahlenActionPerformed(String value) {
-		double betrag;
-		int kundennummer;
+		//double betrag;
+		//int kundennummer;
 		
 		try
 		{
-			betrag = Double.parseDouble(value);
+			//betrag = Double.parseDouble(value);
 		}
 		catch (NumberFormatException e)
 		{

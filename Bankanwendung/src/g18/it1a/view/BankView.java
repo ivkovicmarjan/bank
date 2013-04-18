@@ -19,7 +19,6 @@ public class BankView extends JFrame {
 	private JMenuItem durchführenUeberweisungen = null;
 	private JMenuItem anzeigenKontostand = null;
 	private JMenuItem ende = null;
-	private JMenuItem überweisungDurchführen = null;
 
 	public BankView() {
 		super();

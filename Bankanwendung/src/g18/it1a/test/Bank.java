@@ -3,8 +3,6 @@ package g18.it1a.test;
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kunde;
 import g18.it1a.model.Ueberweisung;
-import g18.it1a.model.Konto.KontoTyp;
-
 import java.util.Date;
 import java.util.Scanner;
 
