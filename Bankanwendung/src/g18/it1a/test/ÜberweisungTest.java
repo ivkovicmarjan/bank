@@ -2,7 +2,7 @@ package g18.it1a.test;
 
 import junit.framework.Assert;
 import g18.it1a.model.Konto;
-import g18.it1a.model.Ueberweisung;
+import g18.it1a.model.Überweisung;
 import g18.it1a.model.Konto.KontoTyp;
 
 import org.junit.Test;
@@ -16,7 +16,7 @@ public class ÜberweisungTest {
 		Konto ziel = new Konto(1, KontoTyp.GIROKONTO);
 		quelle.einzahlen(100);
 		ziel.einzahlen(50);
-		Ueberweisung ueberweisung = new Ueberweisung(quelle, ziel, 50, null);
+		Überweisung ueberweisung = new Überweisung(quelle, ziel, 50, null);
 		ueberweisung.durchfuehrenUeberweisung();
 		int actual = (int) ziel.getKontostand();
 		int expected = 100;

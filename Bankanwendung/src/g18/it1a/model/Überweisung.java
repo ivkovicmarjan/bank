@@ -2,13 +2,13 @@ package g18.it1a.model;
 
 import java.util.Date;
 
-public class Ueberweisung {
+public class Überweisung {
 	private Date datum;
 	private int betrag;
 	private Konto quelle;
 	private Konto ziel;
 
-	public Ueberweisung(Konto quelle, Konto ziel, int betrag, Date date) {
+	public Überweisung(Konto quelle, Konto ziel, int betrag, Date date) {
 		this.datum = date;
 		this.betrag = betrag;
 		this.quelle = quelle;

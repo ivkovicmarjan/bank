@@ -2,7 +2,7 @@ package g18.it1a.test;
 
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kunde;
-import g18.it1a.model.Ueberweisung;
+import g18.it1a.model.Überweisung;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -30,7 +30,7 @@ public class Bank {
 			konto2.auszahlen(100);
 			System.out.println("(5) " + kunde1.anzeigenKontostandsUebersicht());
 
-			Ueberweisung ueb = new Ueberweisung(konto1, konto2, 25, new Date());
+			Überweisung ueb = new Überweisung(konto1, konto2, 25, new Date());
 			ueb.durchfuehrenUeberweisung();
 			System.out.println("(6) " + kunde1.anzeigenKontostandsUebersicht());
 		} catch (Exception e) {
