@@ -9,9 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -26,7 +23,7 @@ public class AnlegenKontoDlg extends JDialog {
 	private JRadioButton sparButton;
 	private JTextField kundenNummerFeld;
 
-	public AnlegenKontoDlg(BankView bankView, boolean b) {
+	public AnlegenKontoDlg() {
 		setTitle("Konto anlegen");
 		setSize(250, 200);
 		setVisible(true);

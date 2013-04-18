@@ -4,8 +4,6 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JList;
-import javax.swing.JTable;
 
 public class EinAuszahlungDurchführenDlg extends JDialog
 {
