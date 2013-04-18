@@ -3,9 +3,8 @@ package g18.it1a.model;
 public class Sparkonto extends Konto {
 	private double zinssatz;
 
-	public Sparkonto(int kontonummer, KontoTyp kontoTyp, double zahl) {
+	public Sparkonto(int kontonummer, KontoTyp kontoTyp) {
 		super(kontonummer, kontoTyp);
-		setZinssatz(zahl);
 	}
 
 	public double getZinssatz() {

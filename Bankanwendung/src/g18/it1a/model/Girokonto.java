@@ -3,9 +3,8 @@ package g18.it1a.model;
 public class Girokonto extends Konto {
 	private double dispo;
 
-	public Girokonto(int kontonummer, KontoTyp kontoTyp, double zahl) {
+	public Girokonto(int kontonummer, KontoTyp kontoTyp) {
 		super(kontonummer, kontoTyp);
-		setDispo(zahl);
 	}
 
 	/**
