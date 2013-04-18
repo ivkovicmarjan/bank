@@ -118,14 +118,6 @@ public class CtlBankView {
 				}
 			}
 		});
-
-		anlegenKontoDlg.getBeendenButton().addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent evt)
-			{
-				btAnlegenKontoBeendenActionPerformed();
-			}
-		});
 	}
 
 	private void einAuszahlenActionPerformed() {

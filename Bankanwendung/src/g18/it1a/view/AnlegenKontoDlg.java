@@ -21,7 +21,6 @@ public class AnlegenKontoDlg extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JButton anlegenButton;
-	private JButton beendenButton;
 	private ButtonGroup buttonGroup;
 	private JRadioButton giroButton;
 	private JRadioButton sparButton;
@@ -75,17 +74,10 @@ public class AnlegenKontoDlg extends JDialog {
 		buttonPane.add(anlegenButton);
 		getRootPane().setDefaultButton(anlegenButton);
 
-		beendenButton = new JButton("Beenden");
-		buttonPane.add(beendenButton);
-
 	}
 
 	public JButton getAnlegenButton() {
 		return anlegenButton;
-	}
-
-	public JButton getBeendenButton() {
-		return beendenButton;
 	}
 	
 	public JTextField getKundenNummerFeld() {
