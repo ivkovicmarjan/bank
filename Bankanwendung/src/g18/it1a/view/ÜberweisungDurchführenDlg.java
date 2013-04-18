@@ -15,6 +15,7 @@ public class ÜberweisungDurchführenDlg extends JDialog {
 	private JButton überweisenButton;
 	private JButton datumButton;
 	private Container contentPane;
+	private JDateChooser dateChooser;
 	
 	public ÜberweisungDurchführenDlg() {
 		this.setTitle("Überweisung durchführen");
@@ -42,7 +43,7 @@ public class ÜberweisungDurchführenDlg extends JDialog {
 		datumLabel.setBounds(10, 77, 60, 20);
 		contentPane.add(datumLabel);
 		
-		JDateChooser dateChooser = new JDateChooser();
+		dateChooser = new JDateChooser();
 		dateChooser.setBounds(90, 77, 140, 20);
 		getContentPane().add(dateChooser);
 		
@@ -73,5 +74,9 @@ public class ÜberweisungDurchführenDlg extends JDialog {
 
 	public void setDatumButton(JButton datumButton) {
 		this.datumButton = datumButton;
+	}
+
+	public JDateChooser getDateChooser() {
+		return dateChooser;
 	}
 }
