@@ -26,15 +26,15 @@ public class CtlBankView {
 
 	public void startBankView(BankHandler bankHandler) {
 		this.bankHandler = bankHandler;
-		this.bankView = new BankView();
+		bankView = new BankView();
 
-		this.bankView.getAnlegenKunde().addActionListener(new ActionListener() {
+		bankView.getAnlegenKunde().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				anlegenKundenActionPerformed();
 			}
 		});
 
-		this.bankView.getAnlegenKonto().addActionListener(new ActionListener() {
+		bankView.getAnlegenKonto().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				anlegenKontoActionPerformed();
 			}
@@ -45,16 +45,21 @@ public class CtlBankView {
 				anlegenKontoActionPerformed();
 			}
 		});
+		
+		bankView.getDurchführenUeberweisungen().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				überweisungDurchführenActionPerformed();
+			}
+		});
 
-
-		this.bankView.getDurchfuehrenZahlungen().addActionListener(
+		bankView.getDurchfuehrenZahlungen().addActionListener(
 				new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						einAuszahlenActionPerformed();
 					}
 				});
 
-		this.bankView.setVisible(true);
+		bankView.setVisible(true);
 	}
 
 	private void anlegenKundenActionPerformed() {
