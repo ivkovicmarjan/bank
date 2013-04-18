@@ -26,9 +26,9 @@ public class Kunden {
 		}
 		
 		if (kontotyp.equals("Girokonto")) {
-			konto = kunden.get(kundennummer).anlegenKonto(KontoTyp.GIROKONTO);
+			konto = kunden.get(kundennummer).anlegenKonto(KontoTyp.GIROKONTO, kontoZahl);
 		} else {
-			konto = kunden.get(kundennummer).anlegenKonto(KontoTyp.SPARKONTO);
+			konto = kunden.get(kundennummer).anlegenKonto(KontoTyp.SPARKONTO, kontoZahl);
 		}
 		
 		return konto;

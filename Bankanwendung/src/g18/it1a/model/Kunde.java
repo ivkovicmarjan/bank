@@ -30,13 +30,13 @@ public class Kunde {
 		return ausgabe;
 	}
 
-	public Konto anlegenKonto(KontoTyp kontoTyp) {
+	public Konto anlegenKonto(KontoTyp kontoTyp, double zahl) {
 		Konto konto = null;
 
 		if (kontoTyp == KontoTyp.GIROKONTO) {
-			konto = new Girokonto(generiereKontonummer(kontoTyp), kontoTyp);
+			konto = new Girokonto(generiereKontonummer(kontoTyp), kontoTyp, zahl);
 		} else {
-			konto = new Sparkonto(generiereKontonummer(kontoTyp), kontoTyp);
+			konto = new Sparkonto(generiereKontonummer(kontoTyp), kontoTyp, zahl);
 		}
 
 		konten.add(konto);
