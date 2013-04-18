@@ -202,7 +202,8 @@ public class CtlBankView {
 		try {
 			
 		Konto konto = bankHandler.anlegenKonto(kundenNummer, kontotyp, zahl);
-		JOptionPane.showMessageDialog(anlegenKontoDlg, "Ihr Konto wurde angelegt!\n Ihre Kontonummer lautet:"+konto.getKontonummer());
+		JOptionPane.showMessageDialog(anlegenKontoDlg, "Ihr Konto wurde angelegt!\n Ihre Kontonummer lautet: "+konto.getKontonummer());
+		anlegenKontoDlg.dispose();
 		
 		} catch (NullPointerException e) {
 			JOptionPane.showMessageDialog(anlegenKontoDlg, "Dieser Kunde existiert nicht!");
