@@ -9,9 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
