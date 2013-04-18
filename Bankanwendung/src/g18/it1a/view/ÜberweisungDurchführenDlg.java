@@ -1,8 +1,6 @@
 package g18.it1a.view;
 
 import java.awt.Container;
-import java.awt.GridLayout;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
