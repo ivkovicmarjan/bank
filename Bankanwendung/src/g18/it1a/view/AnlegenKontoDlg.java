@@ -26,7 +26,7 @@ public class AnlegenKontoDlg extends JDialog {
 	private JRadioButton sparButton;
 	private JTextField kundenNummerFeld;
 
-	public AnlegenKontoDlg(BankView bankView, boolean b) {
+	public AnlegenKontoDlg() {
 		setTitle("Konto anlegen");
 		setSize(250, 200);
 		setVisible(true);

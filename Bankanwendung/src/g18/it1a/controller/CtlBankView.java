@@ -101,7 +101,7 @@ public class CtlBankView {
 	}
 
 	private void anlegenKontoActionPerformed() {
-		anlegenKontoDlg = new AnlegenKontoDlg(bankView, true);
+		anlegenKontoDlg = new AnlegenKontoDlg();
 
 		anlegenKontoDlg.getAnlegenButton().addActionListener(new ActionListener() 
 		{	
