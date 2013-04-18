@@ -7,6 +7,8 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import com.toedter.calendar.JDateChooser;
+
 public class ÜberweisungDurchführenDlg extends JDialog {
 
 	private static final long serialVersionUID = -4868982222389995803L;
@@ -16,7 +18,7 @@ public class ÜberweisungDurchführenDlg extends JDialog {
 	
 	public ÜberweisungDurchführenDlg() {
 		this.setTitle("Überweisung durchführen");
-		this.setSize(354,230);
+		this.setSize(260,230);
 		this.setVisible(true);
 		
 		contentPane = this.getContentPane();
@@ -26,30 +28,33 @@ public class ÜberweisungDurchführenDlg extends JDialog {
 		vonKontoLabel.setBounds(10, 15, 60, 20);
 		contentPane.add(vonKontoLabel);
 		JTextField vonKontoField = new JTextField();
-		vonKontoField.setBounds(90, 15, 100, 20);
+		vonKontoField.setBounds(90, 15, 120, 20);
 		contentPane.add(vonKontoField);
 		
 		JLabel nachKontoLabel = new JLabel("Nach Konto");
 		nachKontoLabel.setBounds(10, 46, 70, 20);
 		contentPane.add(nachKontoLabel);
 		JTextField nachKontoField = new JTextField();
-		nachKontoField.setBounds(90, 46, 100, 20);
+		nachKontoField.setBounds(90, 46, 120, 20);
 		contentPane.add(nachKontoField);		
 		
 		JLabel datumLabel = new JLabel("Datum");
 		datumLabel.setBounds(10, 77, 60, 20);
 		contentPane.add(datumLabel);
 		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(90, 77, 140, 20);
+		getContentPane().add(dateChooser);
 		
 		JLabel betragLabel = new JLabel("Betrag");
-		betragLabel.setBounds(10, 128, 60, 20);
+		betragLabel.setBounds(10, 110, 60, 20);
 		contentPane.add(betragLabel);
 		JTextField betragField = new JTextField();
-		betragField.setBounds(90, 126, 100, 20);
+		betragField.setBounds(90, 108, 120, 20);
 		contentPane.add(betragField);
 		
 		überweisenButton = new JButton("Überweisen");
-		überweisenButton.setBounds(205, 126, 120, 20);
+		überweisenButton.setBounds(90, 149, 120, 20);
 		contentPane.add(überweisenButton);			
 		
 	}
