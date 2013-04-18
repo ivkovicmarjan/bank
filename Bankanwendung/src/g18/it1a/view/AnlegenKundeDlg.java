@@ -11,27 +11,22 @@ public class AnlegenKundeDlg extends JDialog {
 	private JTextField kundenNummerField;
 	private JTextField kundenNameField;
 	private JButton anlegenButton;
-	private JButton beendenButton;
 	private static final long serialVersionUID = 2326402193059787237L;
 
 	public AnlegenKundeDlg() {
 		this.setTitle("Kunde anlegen");
-		this.setSize(229,180);
+		this.setSize(229,148);
 		this.setVisible(true);
 		
 		this.kundenNummerLabel = new JLabel("Kundennummer:");
 		this.kundenNummerLabel.setBounds(10, 11, 124, 23);
 		
 		this.anlegenButton = new JButton("Anlegen");
-		this.anlegenButton.setBounds(10, 105, 84, 23);
-		
-		this.beendenButton = new JButton("Beenden");
-		this.beendenButton.setBounds(111, 105, 84, 23);
+		this.anlegenButton.setBounds(116, 76, 84, 23);
 		
 		this.getContentPane().setLayout(null);
 		this.getContentPane().add(this.kundenNummerLabel);
 		this.getContentPane().add(this.anlegenButton);
-		this.getContentPane().add(this.beendenButton);
 		
 		JLabel lblKundenname = new JLabel("Kundenname:");
 		lblKundenname.setBounds(10, 48, 89, 14);
@@ -58,9 +53,5 @@ public class AnlegenKundeDlg extends JDialog {
 
 	public JButton getAnlegenButton() {
 		return this.anlegenButton;
-	}
-
-	public JButton getBeendenButton() {
-		return this.beendenButton;
 	}
 }
