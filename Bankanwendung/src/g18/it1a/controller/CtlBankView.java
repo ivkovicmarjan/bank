@@ -77,6 +77,12 @@ public class CtlBankView {
 
 	private void kontobewegungActionPerformed() {
 		kontobewegungDlg = new KontobewegungDlg();
+		
+		kontobewegungDlg.getAnzeigenButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+			}
+		});
 	}
 
 	private void anzeigenKontostandActionPerformed() {
