@@ -37,7 +37,8 @@ public class CtlBankView {
 
 		bankView.getDurchführenUeberweisungen().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new ÜberweisungDurchführenController().überweisungDurchführenActionPerformed();
+				final ÜberweisungDurchführenController überweisungDurchführenController = new ÜberweisungDurchführenController();
+				überweisungDurchführenController.überweisungDurchführenActionPerformed();
 			}
 		});
 
@@ -50,7 +51,7 @@ public class CtlBankView {
 
 		bankView.getAnzeigenKontobewegung().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				KontobewegungController kontobewegungController = new KontobewegungController();
+				final KontobewegungController kontobewegungController = new KontobewegungController();
 				kontobewegungController.kontobewegungActionPerformed();
 			}
 		});
