@@ -78,12 +78,16 @@ public class CtlBankView {
 
 	private void kontobewegungActionPerformed() {
 		kontobewegungDlg = new KontobewegungDlg();
-
+		
 		kontobewegungDlg.getAnzeigenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				btKontobewegungActionPerformed();
 			}
 		});
+	}
+
+	protected void btKontobewegungActionPerformed() {
+		
 	}
 
 	private void anzeigenKontostandActionPerformed() {
@@ -94,6 +98,8 @@ public class CtlBankView {
 				btKontobersichtActionPerformed();
 			}
 		});
+
+		bankView.setVisible(true);
 	}
 
 	private void anlegenKundenActionPerformed() {
@@ -125,23 +131,13 @@ public class CtlBankView {
 
 	private void btKontobersichtActionPerformed() {
 		int kundennummer = 0;
-		JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
-		DefaultTableModel model = (DefaultTableModel) table.getModel();
-
-		for (int i = 0; i < model.getRowCount(); i++) {
-			model.removeRow(i);
-		}
 
 		try {
 			kundennummer = Integer.parseInt(kontostandsübersichtAnzeigenDlg.getKundennummerField().getText());
 
-			Kunde kunde = Kunden.getKunde(kundennummer);
-			if (kunde != null) {
-				for (Konto konto : kunde.getKonten().values()) {
-
-					model.addRow(new Object[] { konto.getKontoTyp(), kundennummer, konto.getKontostand() });
-				}
-			}
+			JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
+			DefaultTableModel model = (DefaultTableModel) table.getModel();
+			model.addRow(new Object[] { "Kontoart", kundennummer, "Kontostand" });
 		} catch (NumberFormatException e) {
 
 		}
@@ -216,9 +212,12 @@ public class CtlBankView {
 	private boolean checkKonto(int kundenNummer, int kontoNummer, double betrag) {
 		boolean accountFound = false;
 		Kunde kunde = Kunden.getKunde(kundenNummer);
-		Konto konto = kunde.getKonto(kontoNummer);
-		if (konto != null) {
-			accountFound = true;
+		for (Konto konto : kunde.getKonten()) {
+			if (konto.getKontoNummer() == kontoNummer) {
+				if (konto.getKontostand() >= betrag) {
+					accountFound = true;
+				}
+			}
 		}
 		return accountFound;
 	}
