@@ -9,6 +9,7 @@ public class Konto {
 	private double kontostand = 0.00;
 	private KontoTyp kontoTyp;
 	private ArrayList<Kontobewegung> kontobewegung;
+	private Kontobewegung bewegung = null;
 
 	public enum KontoTyp {
 		GIROKONTO, SPARKONTO
@@ -27,8 +28,8 @@ public class Konto {
 	}
 
 	public void einzahlen(double betrag) {
-		Kontobewegung kontobewegung = new Kontobewegung(betrag, new Date(), "");
-		getKontobewegung().add(kontobewegung);
+		setBewegung(new Kontobewegung(betrag, new Date(), ""));
+		getKontobewegung().add(getBewegung());
 		this.kontostand = this.kontostand + betrag;
 	}
 
@@ -46,11 +47,22 @@ public class Konto {
 	}
 
 	public ArrayList<Kontobewegung> getKontobewegung() {
+		if (kontobewegung == null) {
+			kontobewegung = new ArrayList<Kontobewegung>();
+		}
 		return kontobewegung;
 	}
 
 	public void setKontobewegung(ArrayList<Kontobewegung> kontobewegung) {
 		this.kontobewegung = kontobewegung;
+	}
+
+	public Kontobewegung getBewegung() {
+		return bewegung;
+	}
+	
+	public void setBewegung(Kontobewegung bewegung) {
+		this.bewegung = bewegung;
 	}
 
 	public String toString() {

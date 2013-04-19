@@ -22,8 +22,8 @@ public class Girokonto extends Konto {
 		if (ergebnis < -dispo) {
 			return;
 		}
-		Kontobewegung kontobewegung = new Kontobewegung(-betrag, new Date(), "");
-		getKontobewegung().add(kontobewegung);
+		setBewegung(new Kontobewegung(betrag, new Date(), ""));
+		getKontobewegung().add(getBewegung());
 		this.setKontostand(ergebnis);
 	}
 
