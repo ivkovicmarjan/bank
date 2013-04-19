@@ -4,6 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kunde;
@@ -104,6 +107,20 @@ public class CtlBankView {
 	}
 
 	private void btKontobersichtActionPerformed() {
+		int kundennummer = 0;
+		
+		try
+		{
+			kundennummer = Integer.parseInt(kontostandsübersichtAnzeigenDlg.getKundennummerField().getText());
+			
+			JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
+			DefaultTableModel model = (DefaultTableModel) table.getModel();
+			model.addRow(new Object[]{"Column 1", "Column 2", "Column 3"});
+		}
+		catch(NumberFormatException e)
+		{
+			
+		}
 	}
 
 	private void anlegenKontoActionPerformed() {

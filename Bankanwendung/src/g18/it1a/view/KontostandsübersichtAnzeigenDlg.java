@@ -47,7 +47,6 @@ public class KontostandsübersichtAnzeigenDlg extends JDialog {
 		kontostandTable = new JTable(new String[][]{{"", "", ""}}, new String[]{"Kontoart", "Kontonummer", "Kontostand"});
 		kontostandTable.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"", "", ""},
 			},
 			new String[] {
 				"Kontoart", "Kontonummer", "Kontostand"
