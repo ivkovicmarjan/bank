@@ -46,6 +46,7 @@ public class EinAuszahlungDurchführenDlg extends JDialog
 		this.kundennummerField.setColumns(10);
 		
 		this.alterKontostandField = new JTextField();
+		alterKontostandField.setEditable(false);
 		this.alterKontostandField.setBounds(137, 42, 117, 20);
 		this.getContentPane().add(this.alterKontostandField);
 		this.alterKontostandField.setColumns(10);
@@ -59,6 +60,7 @@ public class EinAuszahlungDurchführenDlg extends JDialog
 		this.getContentPane().add(lblAlterKontostand);
 		
 		this.neuerKontostandField = new JTextField();
+		neuerKontostandField.setEditable(false);
 		this.neuerKontostandField.setColumns(10);
 		this.neuerKontostandField.setBounds(137, 104, 117, 20);
 		this.getContentPane().add(this.neuerKontostandField);
