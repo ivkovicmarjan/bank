@@ -8,10 +8,7 @@ public class CtlBankView {
 
 	private BankView bankView;
 
-	public CtlBankView() {
-	}
-
-	public void startBankView(final BankHandler bankHandler) {
+	public CtlBankView(final BankHandler bankHandler) {
 		bankView = new BankView();
 
 		bankView.getAnlegenKunde().addActionListener(new ActionListener() {
