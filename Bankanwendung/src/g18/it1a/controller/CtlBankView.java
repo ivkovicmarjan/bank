@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kunde;
@@ -197,13 +198,8 @@ public class CtlBankView {
 		});
 	}
 
-	private boolean checkKonto(int kundennummer, int kontonummer) {
-		return checkKonto(kundennummer, kontonummer, 0);
-	}
+	private void checkKonto(int kundennummer, int kontonummer) {
 
-	private boolean checkKonto(int kundennummer, int kontonummer, int i) {
-		
-		return false;
 	}
 
 	private int getKundenNummer(int vonKonto) {
