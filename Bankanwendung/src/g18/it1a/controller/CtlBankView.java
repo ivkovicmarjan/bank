@@ -184,8 +184,13 @@ public class CtlBankView {
 		});
 	}
 
-	private void checkKonto(int kundennummer, int kontonummer) {
+	private boolean checkKonto(int kundennummer, int kontonummer) {
+		return checkKonto(kundennummer, kontonummer, 0);
+	}
 
+	private boolean checkKonto(int kundennummer, int kontonummer, int i) {
+		
+		return false;
 	}
 
 	private int getKundenNummer(int vonKonto) {
