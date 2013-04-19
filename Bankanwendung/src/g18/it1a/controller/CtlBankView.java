@@ -115,7 +115,7 @@ public class CtlBankView {
 			
 			JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
 			DefaultTableModel model = (DefaultTableModel) table.getModel();
-			model.addRow(new Object[]{"Column 1", "Column 2", "Column 3"});
+			model.addRow(new Object[]{"Kontoart", kundennummer, "Kontostand"});
 		}
 		catch(NumberFormatException e)
 		{
