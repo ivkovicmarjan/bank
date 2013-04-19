@@ -112,7 +112,8 @@ public class CtlBankView {
 		anlegenKontoDlg.getAnlegenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				try {
-					btAnlegenKontoActionPerformed("" + anlegenKontoDlg.getButtonGroup().getSelection().getActionCommand(), anlegenKontoDlg.getKundenNummerFeld().getText());
+					btAnlegenKontoActionPerformed("" + anlegenKontoDlg.getButtonGroup().getSelection().getActionCommand(), anlegenKontoDlg
+							.getKundenNummerFeld().getText());
 				} catch (NullPointerException e) {
 					JOptionPane.showMessageDialog(anlegenKontoDlg, "bitte wählen Sie einen Kontotyp aus!");
 				}
@@ -171,8 +172,7 @@ public class CtlBankView {
 	}
 
 	private int getKundenNummer(int vonKonto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return vonKonto;
 	}
 
 	protected void btAnlegenKontoActionPerformed(String kontotyp, String kundennummer) {
@@ -188,9 +188,11 @@ public class CtlBankView {
 		}
 
 		if (kontotyp.equals("Girokonto")) {
-			zahl = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):"));
+			zahl = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
+					"Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):"));
 		} else {
-			zahl = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte geben sie den gewünschten Zinssatz ein(Als kommazahl Bsp.: 15.0)"));
+			zahl = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
+					"Bitte geben sie den gewünschten Zinssatz ein(Als kommazahl Bsp.: 15.0)"));
 		}
 
 		try {
