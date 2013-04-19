@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kunde;
