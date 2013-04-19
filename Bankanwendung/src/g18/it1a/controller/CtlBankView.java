@@ -92,30 +92,30 @@ public class CtlBankView {
 		});
 	}
 
-	private void btKontobewegungActionPerformed(String kontonummer) {
+	private void btKontobewegungActionPerformed(String kontoNummerString) {
 		int kontoNummer = 0;
 		try {
-			kontoNummer = Integer.parseInt(kontonummer);
+			kontoNummer = Integer.parseInt(kontoNummerString);
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(kontobewegungDlg, "Bitte nur Zahlen eingeben!");
 		}
-		
-		int kundennummer = Integer.parseInt(kontonummer.substring(0, kontonummer.length()-5));
-		
-		Konto k = Kunden.getKunde(kundennummer).getKonto(kontoNummer);
-		
-		ArrayList<Kontobewegung> list = k.getKontobewegung();
-		
+
+		int kundennummer = getKundenNummer(kontoNummer);
+
+		Konto konto = Kunden.getKunde(kundennummer).getKonto(kontoNummer);
+
+		ArrayList<Kontobewegung> kontoBewegungen = konto.getKontobewegung();
+
 		JTable table = kontobewegungDlg.getTable();
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0);
-		
-			for (Kontobewegung kontobewegung : list) {
-				
-				model.addRow(new Object [] {kontobewegung.getDatum().toString(), kontobewegung.getBetrag(), kontobewegung.getBemerkung()});
-				
-			}
-		
+
+		for (Kontobewegung kontobewegung : kontoBewegungen) {
+
+			model.addRow(new Object[] { kontobewegung.getDatum().toString(), kontobewegung.getBetrag(), kontobewegung.getBemerkung() });
+
+		}
+
 	}
 
 	private void anzeigenKontostandActionPerformed() {
@@ -160,7 +160,7 @@ public class CtlBankView {
 		JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0);
-		
+
 		try {
 			kundennummer = Integer.parseInt(kontostandsübersichtAnzeigenDlg.getKundennummerField().getText());
 
@@ -226,15 +226,15 @@ public class CtlBankView {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//TODO Try/Catch, Exceptions und Fehlerbehandlung
+				// TODO Try/Catch, Exceptions und Fehlerbehandlung
 				double betrag = Double.valueOf(überweisungDurchführenDlg.getBetragField().getText());
 				int vonKontoNummer = Integer.valueOf(überweisungDurchführenDlg.getVonKontoField().getText());
-				Date datum = null;
+				Date datum = überweisungDurchführenDlg.getDateChooser().getDate();
 				Konto quelle = getKonto(vonKontoNummer);
-				
+
 				int nachKontoNummer = Integer.valueOf(überweisungDurchführenDlg.getNachKontoField().getText());
 				Konto ziel = getKonto(nachKontoNummer);
-				
+
 				new Überweisung(quelle, ziel, betrag, datum).durchfuehrenUeberweisung();
 			}
 
@@ -246,9 +246,8 @@ public class CtlBankView {
 		Kunde kunde = Kunden.getKunde(kundenNummer);
 		return kunde.getKonto(kontoNummer);
 	}
-
 	
-
+	// TODO Try/Catch, Exceptions und Fehlerbehandlung
 	private int getKundenNummer(int vonKonto) {
 		String kontoNummer = Integer.toString(vonKonto);
 		int kontoNummerLength = kontoNummer.length();
