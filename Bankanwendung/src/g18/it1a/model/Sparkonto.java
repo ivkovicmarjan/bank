@@ -20,11 +20,15 @@ public class Sparkonto extends Konto {
 
 	@Override
 	public void auszahlen(double betrag) {
-		double ergebnis = getKontostand() - betrag;
-		if (ergebnis >= 0.0) {
+		if (checkLiquidity(betrag)) {
 			setBewegung(new Kontobewegung(betrag, new Date(), ""));
 			getKontobewegung().add(getBewegung());
-			setKontostand(ergebnis);
+			setKontostand(getKontostand() - betrag);
 		}
+	}
+
+	@Override
+	public boolean checkLiquidity(double betrag) {
+		return (getKontostand() - betrag) >= 0.0;
 	}
 }

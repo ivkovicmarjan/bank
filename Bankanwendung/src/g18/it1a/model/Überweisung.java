@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class Überweisung {
 	private Date datum;
-	private int betrag;
+	private double betrag;
 	private Konto quelle;
 	private Konto ziel;
 
-	public Überweisung(Konto quelle, Konto ziel, int betrag, Date date) {
+	public Überweisung(Konto quelle, Konto ziel, double betrag, Date date) {
 		this.datum = date;
 		this.betrag = betrag;
 		this.quelle = quelle;
@@ -19,23 +19,24 @@ public class Überweisung {
 		return this.datum;
 	}
 
-	public int getBetrag() {
-		return this.betrag;
+	public double getBetrag() {
+		return betrag;
 	}
 
 	public Konto getQuelle() {
-		return this.quelle;
+		return quelle;
 	}
 
 	public Konto getZiel() {
-		return this.ziel;
+		return ziel;
 	}
 
 	public void durchfuehrenUeberweisung() {
-		if (this.quelle.getKontostand() > this.betrag) {
-			this.quelle.auszahlen(this.betrag);
-			this.ziel.einzahlen(this.betrag);
+		if (quelle.checkLiquidity(betrag)) {
+			quelle.auszahlen(this.betrag);
+			ziel.einzahlen(this.betrag);
 		} else {
+			//TODO Exception, Fehlerdialog
 			System.out.println("Konnte kein Geld überweisen, dar zu wenig vorhanden ist.");
 		}
 	}

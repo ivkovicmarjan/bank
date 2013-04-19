@@ -3,6 +3,7 @@ package g18.it1a.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -10,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kontobewegung;
+import g18.it1a.model.Überweisung;
 
 import g18.it1a.model.KontoTyp;
 
@@ -224,33 +226,28 @@ public class CtlBankView {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				int vonKonto = Integer.valueOf(überweisungDurchführenDlg.getVonKontoField().getText());
-				int kundenNummerVon = getKundenNummer(vonKonto);
-				checkKonto(kundenNummerVon, vonKonto);
-
-				int nachKonto = Integer.valueOf(überweisungDurchführenDlg.getNachKontoField().getText());
-				int kundenNummerNach = getKundenNummer(nachKonto);
-				checkKonto(kundenNummerNach, nachKonto);
+				//TODO Try/Catch, Exceptions und Fehlerbehandlung
+				double betrag = Double.valueOf(überweisungDurchführenDlg.getBetragField().getText());
+				int vonKontoNummer = Integer.valueOf(überweisungDurchführenDlg.getVonKontoField().getText());
+				Date datum = null;
+				Konto quelle = getKonto(vonKontoNummer);
+				
+				int nachKontoNummer = Integer.valueOf(überweisungDurchführenDlg.getNachKontoField().getText());
+				Konto ziel = getKonto(nachKontoNummer);
+				
+				new Überweisung(quelle, ziel, betrag, datum).durchfuehrenUeberweisung();
 			}
 
 		});
 	}
 
-	private boolean checkKonto(int kundenNummer, int kontoNummer) {
-		return checkKonto(kundenNummer, kontoNummer, 0);
-	}
-
-	private boolean checkKonto(int kundenNummer, int kontoNummer, double betrag) {
-		boolean accountFound = false;
+	private Konto getKonto(int kontoNummer) {
+		int kundenNummer = getKundenNummer(kontoNummer);
 		Kunde kunde = Kunden.getKunde(kundenNummer);
-		Konto konto = kunde.getKonto(kontoNummer);
-
-		if (konto != null) {
-			accountFound = true;
-		}
-
-		return accountFound;
+		return kunde.getKonto(kontoNummer);
 	}
+
+	
 
 	private int getKundenNummer(int vonKonto) {
 		String kontoNummer = Integer.toString(vonKonto);

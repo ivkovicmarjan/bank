@@ -17,6 +17,8 @@ public abstract class Konto {
 	}
 
 	public abstract void auszahlen(double betrag);
+	
+	public abstract boolean checkLiquidity(double betrag);
 
 	public void einzahlen(double betrag) {
 		setBewegung(new Kontobewegung(betrag, new Date(), ""));
