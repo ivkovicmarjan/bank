@@ -1,9 +1,8 @@
 package g18.it1a.model;
 
 
-import g18.it1a.model.Konto.KontoTyp;
-
 import java.util.HashMap;
+import g18.it1a.model.KontoTyp;
 
 public class Kunden {
 	private static HashMap<Integer, Kunde> kunden;

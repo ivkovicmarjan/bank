@@ -9,8 +9,10 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import g18.it1a.model.Konto;
-import g18.it1a.model.Konto.KontoTyp;
 import g18.it1a.model.Kontobewegung;
+
+import g18.it1a.model.KontoTyp;
+
 import g18.it1a.model.Kunde;
 import g18.it1a.model.Kunden;
 import g18.it1a.view.AnlegenKontoDlg;
@@ -164,7 +166,7 @@ public class CtlBankView {
 			if (kunde != null) {
 				for (Konto konto : kunde.getKonten().values()) {
 
-					model.addRow(new Object[] { konto.getKontoTyp(), kundennummer, konto.getKontostand() });
+					model.addRow(new Object[] { konto.getKontoTyp(), konto.getKontoNummer(), konto.getKontostand() });
 				}
 			}
 		} catch (NumberFormatException e) {
@@ -270,7 +272,7 @@ public class CtlBankView {
 			btAnlegenKontoActionPerformed(kontotyp, result);
 		}
 
-		if (kontotyp.equals(KontoTyp.GIROKONTO)) {
+		if (kontotyp.equals(KontoTyp.Girokonto)) {
 			dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
 					"Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):"));
 		} else {
