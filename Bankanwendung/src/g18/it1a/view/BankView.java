@@ -29,7 +29,7 @@ public class BankView extends JFrame {
 		this.setSize(587, 456);
 		this.setJMenuBar(getBankMenuBar());
 		this.setContentPane(getJContentPane());
-		this.setTitle("Bank-Anwendung");
+		this.setTitle("Bank Anwendung");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
@@ -109,7 +109,7 @@ public class BankView extends JFrame {
 			ende = new JMenuItem();
 			ende.setText("Beenden");
 		}
-		
+
 		return ende;
 	}
 }

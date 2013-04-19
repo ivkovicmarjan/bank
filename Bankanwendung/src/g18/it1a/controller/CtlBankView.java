@@ -189,7 +189,11 @@ public class CtlBankView {
 	}
 
 	private int getKundenNummer(int vonKonto) {
-		return vonKonto;
+		String kontoNummer = Integer.toString(vonKonto);
+		int kontoNummerLength = kontoNummer.length();
+		String kundenNummerStr = kontoNummer.substring(0, kontoNummerLength - 5);
+		int kundenNummer = Integer.valueOf(kundenNummerStr);
+		return kundenNummer;
 	}
 
 	protected void btAnlegenKontoActionPerformed(String kontotyp, String kundennummer) {
