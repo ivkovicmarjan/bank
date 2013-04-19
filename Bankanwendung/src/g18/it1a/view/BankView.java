@@ -18,6 +18,7 @@ public class BankView extends JFrame {
 	private JMenuItem durchfuehrenZahlungen = null;
 	private JMenuItem durchführenUeberweisungen = null;
 	private JMenuItem anzeigenKontostand = null;
+	private JMenuItem anzeigenKontobewegung = null;
 	private JMenuItem ende = null;
 
 	public BankView() {
@@ -58,8 +59,9 @@ public class BankView extends JFrame {
 			Anwendungen.add(getDurchfuehrenZahlungen());
 			Anwendungen.add(getDurchführenUeberweisungen());
 			Anwendungen.add(getAnzeigenKontostand());
+			Anwendungen.add(getAnzeigenKontobewegung());
 			Anwendungen.add(getEnde());
-			Anwendungen.insertSeparator(5);
+			Anwendungen.insertSeparator(6);
 		}
 		return Anwendungen;
 	}
@@ -102,6 +104,14 @@ public class BankView extends JFrame {
 			anzeigenKontostand.setText("Kontostandsübersicht anzeigen");
 		}
 		return anzeigenKontostand;
+	}
+
+	public JMenuItem getAnzeigenKontobewegung() {
+		if (anzeigenKontobewegung == null) {
+			anzeigenKontobewegung = new JMenuItem();
+			anzeigenKontobewegung.setText("Kontobewegung anzeigen");
+		}
+		return anzeigenKontobewegung;
 	}
 
 	public JMenuItem getEnde() {

@@ -1,5 +1,7 @@
 package g18.it1a.model;
 
+import java.util.Date;
+
 public class Girokonto extends Konto {
 	private double dispo;
 
@@ -20,6 +22,8 @@ public class Girokonto extends Konto {
 		if (ergebnis < -dispo) {
 			return;
 		}
+		Kontobewegung kontobewegung = new Kontobewegung(-betrag, new Date(), "");
+		getKontobewegung().add(kontobewegung);
 		this.setKontostand(ergebnis);
 	}
 

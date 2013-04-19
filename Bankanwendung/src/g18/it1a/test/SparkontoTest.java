@@ -23,7 +23,7 @@ public class SparkontoTest {
 	@Test
 	public void testAuszahlen() {
 		sparkonto.setKontostand(100.0);
-		sparkonto.ausszahlen(110.0);
+		sparkonto.auszahlen(110.0);
 		Assert.assertEquals(100.0, sparkonto.getKontostand());
 		sparkonto.auszahlen(90.0);
 		Assert.assertEquals(10.0, sparkonto.getKontostand());

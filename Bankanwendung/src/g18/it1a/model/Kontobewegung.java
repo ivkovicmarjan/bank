@@ -4,8 +4,14 @@ import java.util.Date;
 
 public class Kontobewegung {
 	private Date datum;
-	private long betrag;
+	private double betrag;
 	private String bemerkung;
+	
+	public Kontobewegung(double betrag, Date datum, String bemerkung) {
+		setDatum(datum);
+		setBetrag(betrag);
+		setBemerkung(bemerkung);
+	}
 
 	public Date getDatum() {
 		return this.datum;
@@ -15,11 +21,11 @@ public class Kontobewegung {
 		this.datum = datum;
 	}
 
-	public long getBetrag() {
+	public double getBetrag() {
 		return betrag;
 	}
 
-	public void setBetrag(long betrag) {
+	public void setBetrag(double betrag) {
 		this.betrag = betrag;
 	}
 

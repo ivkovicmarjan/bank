@@ -11,6 +11,7 @@ import g18.it1a.view.AnlegenKontoDlg;
 import g18.it1a.view.AnlegenKundeDlg;
 import g18.it1a.view.BankView;
 import g18.it1a.view.EinAuszahlungDurchführenDlg;
+import g18.it1a.view.KontobewegungDlg;
 import g18.it1a.view.KontostandsübersichtAnzeigenDlg;
 import g18.it1a.view.ÜberweisungDurchführenDlg;
 
@@ -23,6 +24,7 @@ public class CtlBankView {
 	private BankHandler bankHandler;
 	private ÜberweisungDurchführenDlg überweisungDurchführenDlg;
 	private KontostandsübersichtAnzeigenDlg kontostandsübersichtAnzeigenDlg;
+	private KontobewegungDlg kontobewegungDlg;
 
 	public CtlBankView() {
 	}
@@ -61,8 +63,18 @@ public class CtlBankView {
 				einAuszahlenActionPerformed();
 			}
 		});
+		
+		bankView.getAnzeigenKontobewegung().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				kontobewegungActionPerformed();
+			}
+		});
 
 		this.bankView.setVisible(true);
+	}
+
+	private void kontobewegungActionPerformed() {
+		kontobewegungDlg = new KontobewegungDlg();
 	}
 
 	private void anzeigenKontostandActionPerformed() {
