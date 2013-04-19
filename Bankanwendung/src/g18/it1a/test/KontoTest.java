@@ -1,6 +1,7 @@
 package g18.it1a.test;
 
 import junit.framework.Assert;
+import g18.it1a.model.Girokonto;
 import g18.it1a.model.Konto;
 import g18.it1a.model.Konto.KontoTyp;
 
@@ -15,7 +16,7 @@ public class KontoTest {
 	
 	@Before
 	public void test() {
-		this.konto = new Konto(kontonummer, KontoTyp.GIROKONTO);
+		this.konto = new Girokonto(kontonummer, KontoTyp.GIROKONTO, 0);
 	}
 	
 	@Test

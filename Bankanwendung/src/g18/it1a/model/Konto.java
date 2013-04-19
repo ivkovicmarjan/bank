@@ -3,7 +3,7 @@ package g18.it1a.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Konto {
+public abstract class Konto {
 
 	private int kontoNummer;
 	private double kontostand = 0.00;
@@ -20,12 +20,7 @@ public class Konto {
 		this.kontoTyp = kontoTyp;
 	}
 
-	public void auszahlen(double betrag) {
-
-		if (this.kontostand >= betrag) {
-			this.kontostand = this.kontostand - betrag;
-		}
-	}
+	public abstract void auszahlen(double betrag);
 
 	public void einzahlen(double betrag) {
 		setBewegung(new Kontobewegung(betrag, new Date(), ""));
