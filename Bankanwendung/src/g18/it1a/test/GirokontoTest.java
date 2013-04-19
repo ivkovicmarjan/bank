@@ -2,7 +2,7 @@ package g18.it1a.test;
 
 import junit.framework.Assert;
 import g18.it1a.model.Girokonto;
-import g18.it1a.model.Konto.KontoTyp;
+import g18.it1a.model.KontoTyp;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +16,7 @@ public class GirokontoTest {
 	@Before
 	public void testInstanziierung() {
 		kontonummer = 13145657;
-		kontotyp = KontoTyp.GIROKONTO;
+		kontotyp = KontoTyp.Girokonto;
 		girokonto = new Girokonto(kontonummer, kontotyp, 0.0);
 	}
 	

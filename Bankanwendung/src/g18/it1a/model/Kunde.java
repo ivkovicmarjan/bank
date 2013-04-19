@@ -1,6 +1,6 @@
 package g18.it1a.model;
 
-import g18.it1a.model.Konto.KontoTyp;
+import g18.it1a.model.KontoTyp;
 
 import java.util.HashMap;
 
@@ -33,7 +33,7 @@ public class Kunde {
 	public Konto anlegenKonto(KontoTyp kontoTyp, double dispoZins) {
 		Konto konto = null;
 
-		if (kontoTyp == KontoTyp.GIROKONTO) {
+		if (kontoTyp == KontoTyp.Girokonto) {
 			konto = new Girokonto(generiereKontonummer(kontoTyp), kontoTyp, dispoZins);
 		} else {
 			konto = new Sparkonto(generiereKontonummer(kontoTyp), kontoTyp, dispoZins);
@@ -83,7 +83,7 @@ public class Kunde {
 		int typ = 0;
 		int index = konten.size() + 1;
 
-		if (kontoTyp == KontoTyp.GIROKONTO) {
+		if (kontoTyp == KontoTyp.Girokonto) {
 			typ = 1;
 		} else {
 			typ = 0;

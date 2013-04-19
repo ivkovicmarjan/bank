@@ -1,6 +1,7 @@
 package g18.it1a.model;
 
 import java.util.Date;
+import g18.it1a.model.KontoTyp;
 
 public class Girokonto extends Konto {
 	private double dispo;

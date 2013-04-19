@@ -1,7 +1,7 @@
 package g18.it1a.test;
 
 import g18.it1a.model.Sparkonto;
-import g18.it1a.model.Konto.KontoTyp;
+import g18.it1a.model.KontoTyp;
 import junit.framework.Assert;
 
 import org.junit.Before;
@@ -16,7 +16,7 @@ public class SparkontoTest {
 	@Before
 	public void testInstanziierung() {
 		kontonummer = 13145657;
-		kontotyp = KontoTyp.SPARKONTO;
+		kontotyp = KontoTyp.Sparkonto;
 		sparkonto = new Sparkonto(kontonummer, kontotyp, 0.0);
 	}
 	

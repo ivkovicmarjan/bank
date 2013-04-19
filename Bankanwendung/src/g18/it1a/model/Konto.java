@@ -11,10 +11,6 @@ public abstract class Konto {
 	private ArrayList<Kontobewegung> kontobewegung;
 	private Kontobewegung bewegung = null;
 
-	public enum KontoTyp {
-		GIROKONTO, SPARKONTO
-	}
-
 	public Konto(int kontoNummer, KontoTyp kontoTyp) {
 		this.kontoNummer = kontoNummer;
 		this.kontoTyp = kontoTyp;
