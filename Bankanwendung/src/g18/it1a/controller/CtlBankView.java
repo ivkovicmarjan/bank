@@ -80,12 +80,12 @@ public class CtlBankView {
 		
 		kontobewegungDlg.getAnzeigenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btKontobewegungActionPerformed();
+				btKontobewegungActionPerformed(kontobewegungDlg.getKontonummerTextField().getText());
 			}
 		});
 	}
 
-	protected void btKontobewegungActionPerformed() {
+	protected void btKontobewegungActionPerformed(String kontonummer) {
 		
 	}
 
