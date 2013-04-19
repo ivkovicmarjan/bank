@@ -98,8 +98,6 @@ public class CtlBankView {
 				btKontobersichtActionPerformed();
 			}
 		});
-
-		bankView.setVisible(true);
 	}
 
 	private void anlegenKundenActionPerformed() {
@@ -131,13 +129,20 @@ public class CtlBankView {
 
 	private void btKontobersichtActionPerformed() {
 		int kundennummer = 0;
-
+		JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model.setRowCount(0);
+		
 		try {
 			kundennummer = Integer.parseInt(kontostandsübersichtAnzeigenDlg.getKundennummerField().getText());
 
-			JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
-			DefaultTableModel model = (DefaultTableModel) table.getModel();
-			model.addRow(new Object[] { "Kontoart", kundennummer, "Kontostand" });
+			Kunde kunde = Kunden.getKunde(kundennummer);
+			if (kunde != null) {
+				for (Konto konto : kunde.getKonten().values()) {
+
+					model.addRow(new Object[] { konto.getKontoTyp(), kundennummer, konto.getKontostand() });
+				}
+			}
 		} catch (NumberFormatException e) {
 
 		}
