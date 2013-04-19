@@ -2,6 +2,7 @@ package g18.it1a.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -9,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 import g18.it1a.model.Konto;
 import g18.it1a.model.Konto.KontoTyp;
+import g18.it1a.model.Kontobewegung;
 import g18.it1a.model.Kunde;
 import g18.it1a.model.Kunden;
 import g18.it1a.view.AnlegenKontoDlg;
@@ -86,8 +88,29 @@ public class CtlBankView {
 		});
 	}
 
-	protected void btKontobewegungActionPerformed(String kontonummer) {
-		//int kontonummer = 0;
+	private void btKontobewegungActionPerformed(String kontonummer) {
+		int kontoNummer = 0;
+		try {
+			kontoNummer = Integer.parseInt(kontonummer);
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(kontobewegungDlg, "Bitte nur Zahlen eingeben!");
+		}
+		
+		int kundennummer = Integer.parseInt(kontonummer.substring(0, kontonummer.length()-5));
+		
+		Konto k = Kunden.getKunde(kundennummer).getKonto(kontoNummer);
+		
+		ArrayList<Kontobewegung> list = k.getKontobewegung();
+		
+		JTable table = kontobewegungDlg.getTable();
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		model.setRowCount(0);
+		
+			for (Kontobewegung kontobewegung : list) {
+				
+				model.addRow(new Object [] {kontobewegung.getDatum().toString(), kontobewegung.getBetrag(), kontobewegung.getBemerkung()});
+				
+			}
 		
 	}
 
@@ -247,7 +270,7 @@ public class CtlBankView {
 			btAnlegenKontoActionPerformed(kontotyp, result);
 		}
 
-		if (kontotyp.equals("Girokonto")) {
+		if (kontotyp.equals(KontoTyp.GIROKONTO)) {
 			dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
 					"Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):"));
 		} else {
