@@ -87,6 +87,7 @@ public class CtlBankView {
 	}
 
 	protected void btKontobewegungActionPerformed(String kontonummer) {
+		//int kontonummer = 0;
 		
 	}
 
