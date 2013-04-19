@@ -23,29 +23,12 @@ public class KontobewegungDlg extends JDialog {
 	private JTable table;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					KontobewegungDlg dialog = new KontobewegungDlg();
-					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-					dialog.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the dialog.
 	 */
 	public KontobewegungDlg() {
-		setBounds(100, 100, 450, 300);
+		setSize(350, 300);
 		setTitle("Kontobewegung");
-		
+		setVisible(true);
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.NORTH);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
@@ -57,12 +40,11 @@ public class KontobewegungDlg extends JDialog {
 		panel.add(kontonummerTextField);
 		kontonummerTextField.setColumns(10);
 		
-		JPanel listPanel = new JPanel();
-		getContentPane().add(listPanel, BorderLayout.SOUTH);
+		JButton anzeigenButton = new JButton("Kontobewegung anzeigen");
+		getContentPane().add(anzeigenButton, BorderLayout.SOUTH);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setViewportBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		listPanel.add(scrollPane);
+		getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
@@ -73,20 +55,23 @@ public class KontobewegungDlg extends JDialog {
 			}
 		) {
 			Class[] columnTypes = new Class[] {
-				Object.class, Double.class, String.class
+				String.class, Double.class, String.class
 			};
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
+			}
+			boolean[] columnEditables = new boolean[] {
+				false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
 			}
 		});
 		table.getColumnModel().getColumn(0).setResizable(false);
 		table.getColumnModel().getColumn(1).setResizable(false);
 		table.getColumnModel().getColumn(2).setResizable(false);
-		table.setRowSelectionAllowed(false);
+		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		scrollPane.setViewportView(table);
-		
-		JButton anzeigenButton = new JButton("Kontobewegung anzeigen");
-		getContentPane().add(anzeigenButton, BorderLayout.CENTER);
 
 	}
 
