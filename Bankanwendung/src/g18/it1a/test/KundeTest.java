@@ -58,12 +58,12 @@ public class KundeTest {
 		kunde.auszahlenBetrag(girokonto, 100);
 		Assert.assertEquals(0.0, girokonto.getKontostand());
 
-		Konto sparkonto = kunde.anlegenKonto(KontoTyp.Sparkonto);
-		sparkonto.einzahlen(200);
-		kunde.auszahlenBetrag(sparkonto, 75);
-		Assert.assertEquals(125.0, sparkonto.getKontostand());
-		kunde.auszahlenBetrag(sparkonto, 475);
-		Assert.assertEquals(125.0, sparkonto.getKontostand());
+		Konto Sparkonto = kunde.anlegenKonto(KontoTyp.Sparkonto);
+		Sparkonto.einzahlen(200);
+		kunde.auszahlenBetrag(Sparkonto, 75);
+		Assert.assertEquals(125.0, Sparkonto.getKontostand());
+		kunde.auszahlenBetrag(Sparkonto, 475);
+		Assert.assertEquals(125.0, Sparkonto.getKontostand());
 
 	}
 
@@ -73,9 +73,9 @@ public class KundeTest {
 		kunde.einzahlenBetrag(girokonto, 100.0);
 		Assert.assertEquals(100.0, girokonto.getKontostand());
 
-		Konto sparkonto = kunde.anlegenKonto(KontoTyp.Sparkonto);
-		kunde.einzahlenBetrag(sparkonto, 100.0);
-		Assert.assertEquals(100.0, sparkonto.getKontostand());
+		Konto Sparkonto = kunde.anlegenKonto(KontoTyp.Sparkonto);
+		kunde.einzahlenBetrag(Sparkonto, 100.0);
+		Assert.assertEquals(100.0, Sparkonto.getKontostand());
 	}
 
 }

@@ -11,21 +11,21 @@ public class SparkontoTest {
 
 	private int kontonummer;
 	private KontoTyp kontotyp;
-	private Sparkonto sparkonto;
+	private Sparkonto Sparkonto;
 	
 	@Before
 	public void testInstanziierung() {
 		kontonummer = 13145657;
 		kontotyp = KontoTyp.Sparkonto;
-		sparkonto = new Sparkonto(kontonummer, kontotyp, 0.0);
+		Sparkonto = new Sparkonto(kontonummer, kontotyp, 0.0);
 	}
 	
 	@Test
 	public void testAuszahlen() {
-		sparkonto.setKontostand(100.0);
-		sparkonto.auszahlen(110.0);
-		Assert.assertEquals(100.0, sparkonto.getKontostand());
-		sparkonto.auszahlen(90.0);
-		Assert.assertEquals(10.0, sparkonto.getKontostand());
+		Sparkonto.setKontostand(100.0);
+		Sparkonto.auszahlen(110.0);
+		Assert.assertEquals(100.0, Sparkonto.getKontostand());
+		Sparkonto.auszahlen(90.0);
+		Assert.assertEquals(10.0, Sparkonto.getKontostand());
 	}
 }
