@@ -120,13 +120,25 @@ public class CtlBankView {
 
 	private void btKontobersichtActionPerformed() {
 		int kundennummer = 0;
+		JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
 
+		for(int i=0 ; i < model.getRowCount() ; i++)
+		{
+			model.removeRow(i);
+		}
+		
 		try {
 			kundennummer = Integer.parseInt(kontostandsübersichtAnzeigenDlg.getKundennummerField().getText());
-
-			JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
-			DefaultTableModel model = (DefaultTableModel) table.getModel();
-			model.addRow(new Object[] { "Kontoart", kundennummer, "Kontostand" });
+		
+			Kunde kunde = Kunden.getKunde(kundennummer);
+			if(kunde != null)
+			{
+				for(Konto konto : kunde.getKonten())
+				{
+					model.addRow(new Object[] { "Kontoart", kundennummer, konto.getKontostand() });	
+				}	
+			}
 		} catch (NumberFormatException e) {
 
 		}

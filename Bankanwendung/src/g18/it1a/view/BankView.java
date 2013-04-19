@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BankView extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -45,7 +48,16 @@ public class BankView extends JFrame {
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
-			jContentPane.setLayout(new BorderLayout());
+			jContentPane.setLayout(null);
+			
+			JButton btnFillData = new JButton("Fill Data");
+			btnFillData.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					//fill models
+				}
+			});
+			btnFillData.setBounds(23, 41, 191, 34);
+			jContentPane.add(btnFillData);
 		}
 		return jContentPane;
 	}
