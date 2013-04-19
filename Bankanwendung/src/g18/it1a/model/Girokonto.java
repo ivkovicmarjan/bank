@@ -5,8 +5,9 @@ import java.util.Date;
 public class Girokonto extends Konto {
 	private double dispo;
 
-	public Girokonto(int kontonummer, KontoTyp kontoTyp) {
+	public Girokonto(int kontonummer, KontoTyp kontoTyp, double dispo) {
 		super(kontonummer, kontoTyp);
+		setDispo(dispo);
 	}
 
 	/**

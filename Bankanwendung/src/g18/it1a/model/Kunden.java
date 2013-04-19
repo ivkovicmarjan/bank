@@ -22,18 +22,14 @@ public class Kunden {
 		return kunden.get(kundenNummer);
 	}
 	
-	public Konto anlegenKonto(int kundennummer, String kontotyp, double kontoZahl) throws NullPointerException {
+	public Konto anlegenKonto(int kundennummer, KontoTyp kontotyp, double dispoZins) throws NullPointerException {
 		Konto konto;
 		
 		if (!kunden.containsKey(kundennummer)) {
 			throw new NullPointerException();
 		}
 		
-		if (kontotyp.equals("Girokonto")) {
-			konto = kunden.get(kundennummer).anlegenKonto(KontoTyp.GIROKONTO);
-		} else {
-			konto = kunden.get(kundennummer).anlegenKonto(KontoTyp.SPARKONTO);
-		}
+		konto = kunden.get(kundennummer).anlegenKonto(kontotyp, dispoZins);
 		
 		return konto;
 	}

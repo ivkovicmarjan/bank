@@ -1,6 +1,7 @@
 package g18.it1a.controller;
 
 import g18.it1a.model.Konto;
+import g18.it1a.model.Konto.KontoTyp;
 import g18.it1a.model.Kunde;
 import g18.it1a.model.Kunden;
 
@@ -15,7 +16,7 @@ public class BankHandler {
 		return kunden.anlegenKunde(kundenName, kundenNummer);
 	}
 	
-	public Konto anlegenKonto(int kundennummer, String kontotyp, double kontoZahl) throws NullPointerException {
-		return kunden.anlegenKonto(kundennummer, kontotyp, kontoZahl);
+	public Konto anlegenKonto(int kundennummer, KontoTyp kontotyp, double dispoZins) throws NullPointerException {
+		return kunden.anlegenKonto(kundennummer, kontotyp, dispoZins);
 	}
 }

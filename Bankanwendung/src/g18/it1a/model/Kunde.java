@@ -30,13 +30,13 @@ public class Kunde {
 		return ausgabe;
 	}
 
-	public Konto anlegenKonto(KontoTyp kontoTyp) {
+	public Konto anlegenKonto(KontoTyp kontoTyp, double dispoZins) {
 		Konto konto = null;
 
 		if (kontoTyp == KontoTyp.GIROKONTO) {
-			konto = new Girokonto(generiereKontonummer(kontoTyp), kontoTyp);
+			konto = new Girokonto(generiereKontonummer(kontoTyp), kontoTyp, dispoZins);
 		} else {
-			konto = new Sparkonto(generiereKontonummer(kontoTyp), kontoTyp);
+			konto = new Sparkonto(generiereKontonummer(kontoTyp), kontoTyp, dispoZins);
 		}
 
 		konten.put(konto.getKontoNummer(), konto);
@@ -89,5 +89,9 @@ public class Kunde {
 			typ = 0;
 		}
 		return (getKundenNummer() * 100 + typ) * 1000 + index;
+	}
+
+	public Konto anlegenKonto(KontoTyp kontoTyp) {
+		return anlegenKonto(kontoTyp, 0.0);
 	}
 }

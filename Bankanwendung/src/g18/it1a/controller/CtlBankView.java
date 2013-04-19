@@ -8,6 +8,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import g18.it1a.model.Konto;
+import g18.it1a.model.Konto.KontoTyp;
 import g18.it1a.model.Kunde;
 import g18.it1a.model.Kunden;
 import g18.it1a.view.AnlegenKontoDlg;
@@ -72,12 +73,12 @@ public class CtlBankView {
 			}
 		});
 
-		this.bankView.setVisible(true);
+		bankView.setVisible(true);
 	}
 
 	private void kontobewegungActionPerformed() {
 		kontobewegungDlg = new KontobewegungDlg();
-		
+
 		kontobewegungDlg.getAnzeigenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btKontobewegungActionPerformed(kontobewegungDlg.getKontonummerTextField().getText());
@@ -149,8 +150,8 @@ public class CtlBankView {
 			public void actionPerformed(ActionEvent evt) {
 				try {
 
-					btAnlegenKontoActionPerformed("" + anlegenKontoDlg.getButtonGroup().getSelection().getActionCommand(), anlegenKontoDlg
-							.getKundenNummerFeld().getText());
+					btAnlegenKontoActionPerformed(KontoTyp.valueOf(anlegenKontoDlg.getButtonGroup().getSelection().getActionCommand().toUpperCase()),
+							anlegenKontoDlg.getKundenNummerFeld().getText());
 				} catch (NullPointerException e) {
 					JOptionPane.showMessageDialog(anlegenKontoDlg, "bitte wählen Sie einen Kontotyp aus!");
 				}
@@ -211,13 +212,12 @@ public class CtlBankView {
 	private boolean checkKonto(int kundenNummer, int kontoNummer, double betrag) {
 		boolean accountFound = false;
 		Kunde kunde = Kunden.getKunde(kundenNummer);
-		for (Konto konto : kunde.getKonten()) {
-			if (konto.getKontoNummer() == kontoNummer) {
-				if (konto.getKontostand() >= betrag) {
-					accountFound = true;
-				}
-			}
+		Konto konto = kunde.getKonto(kontoNummer);
+
+		if (konto != null) {
+			accountFound = true;
 		}
+
 		return accountFound;
 	}
 
@@ -229,8 +229,8 @@ public class CtlBankView {
 		return kundenNummer;
 	}
 
-	protected void btAnlegenKontoActionPerformed(String kontotyp, String kundennummer) {
-		double zahl = 0;
+	protected void btAnlegenKontoActionPerformed(KontoTyp kontotyp, String kundennummer) {
+		double dispoZins = 0;
 		int kundenNummer = 0;
 		try {
 
@@ -242,16 +242,16 @@ public class CtlBankView {
 		}
 
 		if (kontotyp.equals("Girokonto")) {
-			zahl = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
+			dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
 					"Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):"));
 		} else {
-			zahl = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
+			dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
 					"Bitte geben sie den gewünschten Zinssatz ein(Als kommazahl Bsp.: 15.0)"));
 		}
 
 		try {
 
-			Konto konto = bankHandler.anlegenKonto(kundenNummer, kontotyp, zahl);
+			Konto konto = bankHandler.anlegenKonto(kundenNummer, kontotyp, dispoZins);
 			JOptionPane.showMessageDialog(anlegenKontoDlg, "Ihr Konto wurde angelegt!\n Ihre Kontonummer lautet: " + konto.getKontoNummer());
 			anlegenKontoDlg.dispose();
 

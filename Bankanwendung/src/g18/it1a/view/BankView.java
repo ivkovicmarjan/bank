@@ -1,5 +1,9 @@
 package g18.it1a.view;
 
+import g18.it1a.model.Konto.KontoTyp;
+import g18.it1a.model.Kunde;
+import g18.it1a.model.Kunden;
+
 import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
@@ -53,7 +57,12 @@ public class BankView extends JFrame {
 			JButton btnFillData = new JButton("Fill Data");
 			btnFillData.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					//fill models
+					
+					Kunden kunden = new Kunden();
+					
+					kunden.anlegenKunde("hans", 1);
+					//kunden.anlegenKonto(1, KontoTyp.SPARKONTO);
+					
 				}
 			});
 			btnFillData.setBounds(23, 41, 191, 34);
