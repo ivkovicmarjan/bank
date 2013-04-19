@@ -14,6 +14,9 @@ public class ÜberweisungDurchführenDlg extends JDialog {
 	private static final long serialVersionUID = -4868982222389995803L;
 	private JButton überweisenButton;
 	private JButton datumButton;
+	private JTextField vonKontoField;
+	private JTextField nachKontoField;
+	private JTextField betragField;
 	private Container contentPane;
 	private JDateChooser dateChooser;
 	
@@ -28,14 +31,14 @@ public class ÜberweisungDurchführenDlg extends JDialog {
 		JLabel vonKontoLabel = new JLabel("Von Konto");
 		vonKontoLabel.setBounds(10, 15, 60, 20);
 		contentPane.add(vonKontoLabel);
-		JTextField vonKontoField = new JTextField();
+		vonKontoField = new JTextField();
 		vonKontoField.setBounds(90, 15, 120, 20);
 		contentPane.add(vonKontoField);
 		
 		JLabel nachKontoLabel = new JLabel("Nach Konto");
 		nachKontoLabel.setBounds(10, 46, 70, 20);
 		contentPane.add(nachKontoLabel);
-		JTextField nachKontoField = new JTextField();
+		nachKontoField = new JTextField();
 		nachKontoField.setBounds(90, 46, 120, 20);
 		contentPane.add(nachKontoField);		
 		
@@ -50,7 +53,7 @@ public class ÜberweisungDurchführenDlg extends JDialog {
 		JLabel betragLabel = new JLabel("Betrag");
 		betragLabel.setBounds(10, 110, 60, 20);
 		contentPane.add(betragLabel);
-		JTextField betragField = new JTextField();
+		betragField = new JTextField();
 		betragField.setBounds(90, 108, 120, 20);
 		contentPane.add(betragField);
 		
@@ -74,6 +77,10 @@ public class ÜberweisungDurchführenDlg extends JDialog {
 
 	public void setDatumButton(JButton datumButton) {
 		this.datumButton = datumButton;
+	}
+
+	public JTextField getVonKontoField() {
+		return vonKontoField;
 	}
 
 	public JDateChooser getDateChooser() {

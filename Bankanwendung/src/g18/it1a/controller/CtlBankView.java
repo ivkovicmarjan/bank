@@ -180,6 +180,7 @@ public class CtlBankView {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				überweisungDurchführenDlg.getVonKontoField();
 			}
 		});
 	}
