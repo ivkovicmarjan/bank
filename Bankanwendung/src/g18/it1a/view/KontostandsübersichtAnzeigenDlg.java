@@ -6,6 +6,11 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import javax.swing.JScrollPane;
+import javax.swing.JPanel;
 
 public class KontostandsübersichtAnzeigenDlg extends JDialog {
 
@@ -29,33 +34,33 @@ public class KontostandsübersichtAnzeigenDlg extends JDialog {
 		btnKontobersicht = new JButton("Konto\u00FCbersicht");
 		btnKontobersicht.setBounds(252, 7, 126, 23);
 		getContentPane().add(btnKontobersicht);
-
-		kontostandTable = new JTable();
-		kontostandTable.setModel(new DefaultTableModel(new Object[][] {	},	
-								 new String[] { "Kontoart", "Kontonummer", "Kontostand"})
-								 {
-									private static final long serialVersionUID = 1L;
-									boolean[] columnEditables = new boolean[]
-									{
-										false,
-										false, 
-										false
-									};
-									public boolean isCellEditable(int row, int column)
-									{
-										return columnEditables[column];
-									}
-								 });
-		
-		kontostandTable.getColumnModel().getColumn(0).setPreferredWidth(71);
-		kontostandTable.getColumnModel().getColumn(1).setPreferredWidth(89);
-		kontostandTable.setBounds(10, 41, 368, 173);
-		getContentPane().add(kontostandTable);
 	
 		kundennummerField = new JTextField();
 		kundennummerField.setBounds(109, 8, 133, 20);
 		getContentPane().add(kundennummerField);
 		kundennummerField.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 44, 368, 168);
+		getContentPane().add(scrollPane);
+		
+		kontostandTable = new JTable(new String[][]{{"", "", ""}}, new String[]{"Kontoart", "Kontonummer", "Kontostand"});
+		kontostandTable.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"", "", ""},
+			},
+			new String[] {
+				"Kontoart", "Kontonummer", "Kontostand"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		scrollPane.setViewportView(kontostandTable);
 	}
 	
 	public JTable getKontoubersicht() {
