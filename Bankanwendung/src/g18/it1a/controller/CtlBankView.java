@@ -142,7 +142,8 @@ public class CtlBankView {
 			{
 				for(Konto konto : kunde.getKonten())
 				{
-					model.addRow(new Object[] { "Kontoart", kundennummer, konto.getKontostand() });	
+					
+					model.addRow(new Object[] { konto.getKontoTyp(), kundennummer, konto.getKontostand() });	
 				}	
 			}
 		} catch (NumberFormatException e) {
