@@ -7,7 +7,7 @@ import java.util.HashMap;
 import junit.framework.Assert;
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kunde;
-import g18.it1a.model.Konto.KontoTyp;
+import g18.it1a.model.KontoTyp;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,11 +33,11 @@ public class KundeTest {
 	public void testAnzeigenKontostandsUebersicht() {
 		assertEquals("keine Konten vorhanden",
 				kunde.anzeigenKontostandsUebersicht());
-		kunde.anlegenKonto(KontoTyp.GIROKONTO);
-		kunde.anlegenKonto(KontoTyp.SPARKONTO);
+		kunde.anlegenKonto(KontoTyp.Girokonto);
+		kunde.anlegenKonto(KontoTyp.Sparkonto);
 		String ausgabe = "Übersicht der Konten von Max Mustermann:\n"
-				+ "Kontonummer: 100002, Kontostand: 0.0, Kontotyp: SPARKONTO\n\n"
-				+ "Kontonummer: 101001, Kontostand: 0.0, Kontotyp: GIROKONTO\n\n";
+				+ "Kontonummer: 100002, Kontostand: 0.0, Kontotyp: Sparkonto\n\n"
+				+ "Kontonummer: 101001, Kontostand: 0.0, Kontotyp: Girokonto\n\n";
 				
 
 		assertEquals(ausgabe, kunde.anzeigenKontostandsUebersicht());
@@ -50,7 +50,7 @@ public class KundeTest {
 
 	@Test
 	public void testAuszahlenBetrag() {
-		Konto girokonto = kunde.anlegenKonto(KontoTyp.GIROKONTO);
+		Konto girokonto = kunde.anlegenKonto(KontoTyp.Girokonto);
 		girokonto.einzahlen(100);
 		kunde.auszahlenBetrag(girokonto, 100);
 		Assert.assertEquals(0.0, girokonto.getKontostand());
@@ -58,7 +58,7 @@ public class KundeTest {
 		kunde.auszahlenBetrag(girokonto, 100);
 		Assert.assertEquals(0.0, girokonto.getKontostand());
 
-		Konto sparkonto = kunde.anlegenKonto(KontoTyp.SPARKONTO);
+		Konto sparkonto = kunde.anlegenKonto(KontoTyp.Sparkonto);
 		sparkonto.einzahlen(200);
 		kunde.auszahlenBetrag(sparkonto, 75);
 		Assert.assertEquals(125.0, sparkonto.getKontostand());
@@ -69,11 +69,11 @@ public class KundeTest {
 
 	@Test
 	public void testEinzahlenBetrag() {
-		Konto girokonto = kunde.anlegenKonto(KontoTyp.GIROKONTO);
+		Konto girokonto = kunde.anlegenKonto(KontoTyp.Girokonto);
 		kunde.einzahlenBetrag(girokonto, 100.0);
 		Assert.assertEquals(100.0, girokonto.getKontostand());
 
-		Konto sparkonto = kunde.anlegenKonto(KontoTyp.SPARKONTO);
+		Konto sparkonto = kunde.anlegenKonto(KontoTyp.Sparkonto);
 		kunde.einzahlenBetrag(sparkonto, 100.0);
 		Assert.assertEquals(100.0, sparkonto.getKontostand());
 	}

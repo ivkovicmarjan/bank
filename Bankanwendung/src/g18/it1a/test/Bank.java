@@ -1,6 +1,7 @@
 package g18.it1a.test;
 
 import g18.it1a.model.Konto;
+import g18.it1a.model.KontoTyp;
 import g18.it1a.model.Kunde;
 import g18.it1a.model.Überweisung;
 import java.util.Date;
@@ -18,8 +19,8 @@ public class Bank {
 			sc.next();
 			Kunde kunde1 = new Kunde(kundenName, kundenNummer);
 
-			Konto konto1 = kunde1.anlegenKonto(Konto.KontoTyp.GIROKONTO);
-			Konto konto2 = kunde1.anlegenKonto(Konto.KontoTyp.SPARKONTO);
+			Konto konto1 = kunde1.anlegenKonto(KontoTyp.Girokonto);
+			Konto konto2 = kunde1.anlegenKonto(KontoTyp.Sparkonto);
 			System.out.println("(1) " + kunde1.anzeigenKontostandsUebersicht());
 			konto1.einzahlen(1000);
 			System.out.println("(2) " + kunde1.anzeigenKontostandsUebersicht());

@@ -1,19 +1,17 @@
 package g18.it1a.view;
 
-import g18.it1a.model.Konto.KontoTyp;
-import g18.it1a.model.Kunde;
+import g18.it1a.model.KontoTyp;
 import g18.it1a.model.Kunden;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 
 public class BankView extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -61,29 +59,29 @@ public class BankView extends JFrame {
 					Kunden kunden = new Kunden();
 					
 					kunden.anlegenKunde("hans", 1);
-					kunden.anlegenKonto(1, KontoTyp.SPARKONTO, 0);
-					kunden.anlegenKonto(1, KontoTyp.GIROKONTO, 0);
+					kunden.anlegenKonto(1, KontoTyp.Sparkonto, 0);
+					kunden.anlegenKonto(1, KontoTyp.Girokonto, 0);
 					
 					kunden.anlegenKunde("peter", 2);
-					kunden.anlegenKonto(2, KontoTyp.SPARKONTO, 0);
-					kunden.anlegenKonto(2, KontoTyp.SPARKONTO, 0);
+					kunden.anlegenKonto(2, KontoTyp.Sparkonto, 0);
+					kunden.anlegenKonto(2, KontoTyp.Sparkonto, 0);
 					
 					kunden.anlegenKunde("keks", 3);
-					kunden.anlegenKonto(3, KontoTyp.GIROKONTO, 0);
-					kunden.anlegenKonto(3, KontoTyp.GIROKONTO, 0);
+					kunden.anlegenKonto(3, KontoTyp.Girokonto, 0);
+					kunden.anlegenKonto(3, KontoTyp.Girokonto, 0);
 					
 					kunden.anlegenKunde("klaus", 4);
-					kunden.anlegenKonto(4, KontoTyp.GIROKONTO, 0);
+					kunden.anlegenKonto(4, KontoTyp.Girokonto, 0);
 					
 					kunden.anlegenKunde("wurst", 5);
-					kunden.anlegenKonto(5, KontoTyp.SPARKONTO, 0);
+					kunden.anlegenKonto(5, KontoTyp.Sparkonto, 0);
 					
 					kunden.anlegenKunde("mustermann", 6);
 					
 					kunden.anlegenKunde("asdg", 7);
-					kunden.anlegenKonto(7, KontoTyp.SPARKONTO, 0);
-					kunden.anlegenKonto(7, KontoTyp.GIROKONTO, 0);
-					kunden.anlegenKonto(7, KontoTyp.SPARKONTO, 0);
+					kunden.anlegenKonto(7, KontoTyp.Sparkonto, 0);
+					kunden.anlegenKonto(7, KontoTyp.Girokonto, 0);
+					kunden.anlegenKonto(7, KontoTyp.Sparkonto, 0);
 				}
 			});
 			btnFillData.setBounds(23, 41, 191, 34);

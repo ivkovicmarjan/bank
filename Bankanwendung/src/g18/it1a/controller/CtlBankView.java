@@ -8,7 +8,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import g18.it1a.model.Konto;
-import g18.it1a.model.Konto.KontoTyp;
+import g18.it1a.model.KontoTyp;
 import g18.it1a.model.Kunde;
 import g18.it1a.model.Kunden;
 import g18.it1a.view.AnlegenKontoDlg;
