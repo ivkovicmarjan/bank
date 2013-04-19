@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kunde;
 import g18.it1a.view.AnlegenKontoDlg;
@@ -70,7 +72,7 @@ public class CtlBankView {
 			}
 		});
 
-		bankView.setVisible(true);
+		this.bankView.setVisible(true);
 	}
 
 	private void kontobewegungActionPerformed() {
@@ -85,6 +87,8 @@ public class CtlBankView {
 				btKontobersichtActionPerformed();
 			}
 		});
+
+		bankView.setVisible(true);
 	}
 
 	private void anlegenKundenActionPerformed() {
