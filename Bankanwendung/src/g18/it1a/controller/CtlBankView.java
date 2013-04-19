@@ -43,13 +43,13 @@ public class CtlBankView {
 			}
 		});
 		
-		this.bankView.getAnzeigenKontostand().addActionListener(new ActionListener() {
+		bankView.getAnzeigenKontostand().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				anzeigenKontostandActionPerformed();
 			}
 		});
 		
-		this.bankView.getDurchführenUeberweisungen().addActionListener(new ActionListener() {
+		bankView.getDurchführenUeberweisungen().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				überweisungDurchführenActionPerformed();
 			}
@@ -62,7 +62,7 @@ public class CtlBankView {
 			}
 		});
 
-		this.bankView.setVisible(true);
+		bankView.setVisible(true);
 	}
 
 	private void anzeigenKontostandActionPerformed() {
@@ -102,7 +102,7 @@ public class CtlBankView {
 		catch (NumberFormatException e) 
 		{
 			String result = JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte Zahl als Kundennummer eingeben.");
-			this.btAnlegenKundeActionPerformed(result);
+			btAnlegenKundeActionPerformed(result);
 		}
 	}
 
@@ -135,9 +135,9 @@ public class CtlBankView {
 	}
 
 	private void einAuszahlenActionPerformed() {
-		this.einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg(bankView, true);
+		einAuszahlungDurchführenDlg = new EinAuszahlungDurchführenDlg();
 		
-		this.einAuszahlungDurchführenDlg.getEinzahlenButton().addActionListener(new ActionListener() 
+		einAuszahlungDurchführenDlg.getEinzahlenButton().addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent evt)
 			{
@@ -145,7 +145,7 @@ public class CtlBankView {
 			}
 		});
 		
-		this.einAuszahlungDurchführenDlg.getAuszahlenButton().addActionListener(new ActionListener() 
+		einAuszahlungDurchführenDlg.getAuszahlenButton().addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent evt)
 			{
@@ -165,7 +165,7 @@ public class CtlBankView {
 		catch (NumberFormatException e)
 		{
 			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenDlg, "Bitte Zahl als Betrag eingeben.");
-			this.btEinzahlenActionPerformed(result);
+			btEinzahlenActionPerformed(result);
 		}
 	}
 
@@ -175,14 +175,19 @@ public class CtlBankView {
 	
 	private void überweisungDurchführenActionPerformed() {
 		überweisungDurchführenDlg = new ÜberweisungDurchführenDlg();
+
+		überweisungDurchführenDlg.getÜberweisenButton().addActionListener(
+				new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						überweisungDurchführenDlg.getVonKontoField();
+					}
+				});
+	}
+	
+	private void btÜberweisenActionPerformed() {
 		
-		überweisungDurchführenDlg.getÜberweisenButton().addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				überweisungDurchführenDlg.getVonKontoField();
-			}
-		});
 	}
 
 	protected void btAnlegenKontoActionPerformed(String kontotyp, String kundennummer) {
@@ -197,7 +202,7 @@ public class CtlBankView {
 		catch (NumberFormatException e)
 		{
 			String result = JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte Zahl als Kundennummer eingeben:");
-			this.btAnlegenKontoActionPerformed(kontotyp, result);
+			btAnlegenKontoActionPerformed(kontotyp, result);
 		}
 		
 		if (kontotyp.equals("Girokonto")) {
