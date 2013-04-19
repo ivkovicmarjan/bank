@@ -51,7 +51,7 @@ public class EinAuszahlungDurchführenDlg extends JDialog {
 		this.getContentPane().add(this.alterKontostandField);
 		this.alterKontostandField.setColumns(10);
 
-		JLabel lblNewLabel = new JLabel("Kundennummer:");
+		JLabel lblNewLabel = new JLabel("Kontonummer:");
 		lblNewLabel.setBounds(10, 14, 104, 14);
 		this.getContentPane().add(lblNewLabel);
 
