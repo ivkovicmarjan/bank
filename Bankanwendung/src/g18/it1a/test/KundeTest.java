@@ -2,7 +2,7 @@ package g18.it1a.test;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import junit.framework.Assert;
 import g18.it1a.model.Konto;
@@ -26,7 +26,7 @@ public class KundeTest {
 		Kunde kunde2 = new Kunde("John Doe", 2);
 		assertEquals("John Doe", kunde2.getName());
 		assertEquals(2, kunde2.getKundenNummer());
-		assertEquals(new ArrayList<Konto>(), kunde2.getKonten());
+		assertEquals(new HashMap<Integer, Konto>(), kunde2.getKonten());
 	}
 
 	@Test
@@ -36,8 +36,9 @@ public class KundeTest {
 		kunde.anlegenKonto(KontoTyp.GIROKONTO);
 		kunde.anlegenKonto(KontoTyp.SPARKONTO);
 		String ausgabe = "Übersicht der Konten von Max Mustermann:\n"
-				+ "Kontonummer: 101001, Kontostand: 0.0, Kontotyp: GIROKONTO\n\n"
-				+ "Kontonummer: 100002, Kontostand: 0.0, Kontotyp: SPARKONTO\n\n";
+				+ "Kontonummer: 100002, Kontostand: 0.0, Kontotyp: SPARKONTO\n\n"
+				+ "Kontonummer: 101001, Kontostand: 0.0, Kontotyp: GIROKONTO\n\n";
+				
 
 		assertEquals(ausgabe, kunde.anzeigenKontostandsUebersicht());
 	}
