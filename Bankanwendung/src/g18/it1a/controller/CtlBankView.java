@@ -203,9 +203,9 @@ public class CtlBankView {
 		Kunde kunde = Kunden.getKunde(kundenNummer);
 		for (Konto konto : kunde.getKonten()) {
 			if (konto.getKontoNummer() == kontoNummer) {
-				if (konto.getKontostand() >= betrag)
-					;
-				accountFound = true;
+				if (konto.getKontostand() >= betrag) {
+					accountFound = true;
+				}
 			}
 		}
 		return accountFound;

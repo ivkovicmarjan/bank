@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Sparkonto extends Konto {
 	private double zinssatz;
+	private Kontobewegung kontobewegung;
 
 	public Sparkonto(int kontonummer, KontoTyp kontoTyp) {
 		super(kontonummer, kontoTyp);
@@ -21,8 +22,8 @@ public class Sparkonto extends Konto {
 	public void auszahlen(double betrag) {
 		double ergebnis = getKontostand() - betrag;
 		if (ergebnis >= 0.0) {
-			Kontobewegung kontobewegung = new Kontobewegung(-betrag, new Date(), "");
-			getKontobewegung().add(kontobewegung);
+			setBewegung(new Kontobewegung(betrag, new Date(), ""));
+			getKontobewegung().add(getBewegung());
 			setKontostand(ergebnis);
 		}
 	}
