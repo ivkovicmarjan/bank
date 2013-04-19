@@ -93,8 +93,6 @@ public class CtlBankView {
 				btKontobersichtActionPerformed();
 			}
 		});
-
-		bankView.setVisible(true);
 	}
 
 	private void anlegenKundenActionPerformed() {
