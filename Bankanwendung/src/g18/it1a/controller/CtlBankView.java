@@ -77,10 +77,10 @@ public class CtlBankView {
 
 	private void kontobewegungActionPerformed() {
 		kontobewegungDlg = new KontobewegungDlg();
-		
+
 		kontobewegungDlg.getAnzeigenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+
 			}
 		});
 	}
@@ -127,22 +127,19 @@ public class CtlBankView {
 		JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 
-		for(int i=0 ; i < model.getRowCount() ; i++)
-		{
+		for (int i = 0; i < model.getRowCount(); i++) {
 			model.removeRow(i);
 		}
-		
+
 		try {
 			kundennummer = Integer.parseInt(kontostandsübersichtAnzeigenDlg.getKundennummerField().getText());
-		
+
 			Kunde kunde = Kunden.getKunde(kundennummer);
-			if(kunde != null)
-			{
-				for(Konto konto : kunde.getKonten())
-				{
-					
-					model.addRow(new Object[] { konto.getKontoTyp(), kundennummer, konto.getKontostand() });	
-				}	
+			if (kunde != null) {
+				for (Konto konto : kunde.getKonten().values()) {
+
+					model.addRow(new Object[] { konto.getKontoTyp(), kundennummer, konto.getKontostand() });
+				}
 			}
 		} catch (NumberFormatException e) {
 
@@ -218,12 +215,9 @@ public class CtlBankView {
 	private boolean checkKonto(int kundenNummer, int kontoNummer, double betrag) {
 		boolean accountFound = false;
 		Kunde kunde = Kunden.getKunde(kundenNummer);
-		for (Konto konto : kunde.getKonten()) {
-			if (konto.getKontoNummer() == kontoNummer) {
-				if (konto.getKontostand() >= betrag) {
-					accountFound = true;
-				}
-			}
+		Konto konto = kunde.getKonto(kontoNummer);
+		if (konto != null) {
+			accountFound = true;
 		}
 		return accountFound;
 	}

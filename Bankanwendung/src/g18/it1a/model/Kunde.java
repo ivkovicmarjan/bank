@@ -2,19 +2,19 @@ package g18.it1a.model;
 
 import g18.it1a.model.Konto.KontoTyp;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class Kunde {
 
 	private String name;
 	private int kundenNummer;
-	private List<Konto> konten = null;
+	private HashMap<Integer, Konto> konten = null;
 
 	public Kunde(String kundenName, int kundenNummer) {
 		setName(kundenName);
 		this.setKundenNummer(kundenNummer);
-		konten = new ArrayList<Konto>();
+		konten = new HashMap<Integer, Konto>();
+
 	}
 
 	public String anzeigenKontostandsUebersicht() {
@@ -23,7 +23,7 @@ public class Kunde {
 		}
 
 		String ausgabe = "Übersicht der Konten von " + getName() + ":\n";
-		for (Konto konto : konten) {
+		for (Konto konto : konten.values()) {
 			ausgabe = ausgabe + konto.toString() + "\n\n";
 		}
 
@@ -39,7 +39,7 @@ public class Kunde {
 			konto = new Sparkonto(generiereKontonummer(kontoTyp), kontoTyp);
 		}
 
-		konten.add(konto);
+		konten.put(konto.getKontoNummer(), konto);
 		return konto;
 	}
 
@@ -67,11 +67,15 @@ public class Kunde {
 		this.kundenNummer = kundenNummer;
 	}
 
-	public List<Konto> getKonten() {
+	public Konto getKonto(int kontoNummer) {
+		return konten.get(kontoNummer);
+	}
+
+	public HashMap<Integer, Konto> getKonten() {
 		return konten;
 	}
 
-	public void setKonten(List<Konto> konten) {
+	public void setKonten(HashMap<Integer, Konto> konten) {
 		this.konten = konten;
 	}
 
