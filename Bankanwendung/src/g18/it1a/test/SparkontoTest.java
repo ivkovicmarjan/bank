@@ -17,7 +17,7 @@ public class SparkontoTest {
 	public void testInstanziierung() {
 		kontonummer = 13145657;
 		kontotyp = KontoTyp.SPARKONTO;
-		sparkonto = new Sparkonto(kontonummer, kontotyp);
+		sparkonto = new Sparkonto(kontonummer, kontotyp, 0.0);
 	}
 	
 	@Test

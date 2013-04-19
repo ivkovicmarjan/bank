@@ -17,7 +17,7 @@ public class GirokontoTest {
 	public void testInstanziierung() {
 		kontonummer = 13145657;
 		kontotyp = KontoTyp.GIROKONTO;
-		girokonto = new Girokonto(kontonummer, kontotyp);
+		girokonto = new Girokonto(kontonummer, kontotyp, 0.0);
 	}
 	
 	@Test
