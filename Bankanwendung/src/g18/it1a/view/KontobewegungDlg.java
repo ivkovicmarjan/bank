@@ -1,6 +1,5 @@
 package g18.it1a.view;
 
-import java.awt.EventQueue;
 
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -33,37 +32,31 @@ public class KontobewegungDlg extends JDialog {
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.NORTH);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		JLabel kontonummerLabel = new JLabel("Kontonummer:");
 		panel.add(kontonummerLabel);
-		
+
 		kontonummerTextField = new JTextField();
 		panel.add(kontonummerTextField);
 		kontonummerTextField.setColumns(10);
-		
+
 		anzeigenButton = new JButton("Kontobewegung anzeigen");
 		getContentPane().add(anzeigenButton, BorderLayout.SOUTH);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		getContentPane().add(scrollPane, BorderLayout.CENTER);
-		
+
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Datum", "Betrag", "Bemerkung"
-			}
-		) {
-			Class[] columnTypes = new Class[] {
-				String.class, Double.class, String.class
-			};
-			public Class getColumnClass(int columnIndex) {
+		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Datum", "Betrag", "Bemerkung" }) {
+			private static final long serialVersionUID = -3406099133037067063L;
+			Class<?>[] columnTypes = new Class[] { String.class, Double.class, String.class };
+
+			public Class<?> getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
-			boolean[] columnEditables = new boolean[] {
-				false, false, false
-			};
+
+			boolean[] columnEditables = new boolean[] { false, false, false };
+
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}

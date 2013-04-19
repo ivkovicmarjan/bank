@@ -10,14 +10,14 @@ import g18.it1a.view.AnlegenKontoDlg;
 import javax.swing.JOptionPane;
 
 public class AnlegenKontoController {
-	
+
 	private AnlegenKontoDlg anlegenKontoDlg;
 	private BankHandler bankHandler;
-	
-	public AnlegenKontoController(BankHandler bankHandler) {
+
+	public AnlegenKontoController(final BankHandler bankHandler) {
 		this.bankHandler = bankHandler;
 	}
-	
+
 	public void anlegenKontoActionPerformed() {
 		anlegenKontoDlg = new AnlegenKontoDlg();
 
