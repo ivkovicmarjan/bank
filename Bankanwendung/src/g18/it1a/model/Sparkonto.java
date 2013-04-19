@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Sparkonto extends Konto {
 	private double zinssatz;
-	private Kontobewegung kontobewegung;
 
 	public Sparkonto(int kontonummer, KontoTyp kontoTyp, double zinssatz) {
 		super(kontonummer, kontoTyp);
