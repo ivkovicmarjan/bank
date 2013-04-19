@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Konto {
 
-	private int kontonummer;
+	private int kontoNummer;
 	private double kontostand = 0.00;
 	private KontoTyp kontoTyp;
 	private ArrayList<Kontobewegung> kontobewegung;
@@ -14,8 +14,8 @@ public class Konto {
 		GIROKONTO, SPARKONTO
 	}
 
-	public Konto(int kontonummer, KontoTyp kontoTyp) {
-		this.kontonummer = kontonummer;
+	public Konto(int kontoNummer, KontoTyp kontoTyp) {
+		this.kontoNummer = kontoNummer;
 		this.kontoTyp = kontoTyp;
 	}
 
@@ -32,8 +32,8 @@ public class Konto {
 		this.kontostand = this.kontostand + betrag;
 	}
 
-	public int getKontonummer() {
-		return kontonummer;
+	public int getKontoNummer() {
+		return kontoNummer;
 	}
 
 	public double getKontostand() {
@@ -54,6 +54,6 @@ public class Konto {
 	}
 
 	public String toString() {
-		return String.format("Kontonummer: %s, Kontostand: %s, Kontotyp: %s", this.kontonummer, this.kontostand, this.kontoTyp.name());
+		return String.format("Kontonummer: %s, Kontostand: %s, Kontotyp: %s", this.kontoNummer, this.kontostand, this.kontoTyp.name());
 	}
 }
