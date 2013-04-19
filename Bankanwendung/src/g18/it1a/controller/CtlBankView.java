@@ -141,6 +141,7 @@ public class CtlBankView {
 		anlegenKontoDlg.getAnlegenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				try {
+					
 					btAnlegenKontoActionPerformed("" + anlegenKontoDlg.getButtonGroup().getSelection().getActionCommand(), anlegenKontoDlg
 							.getKundenNummerFeld().getText());
 				} catch (NullPointerException e) {
