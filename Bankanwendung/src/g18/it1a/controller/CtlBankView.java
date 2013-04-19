@@ -229,7 +229,7 @@ public class CtlBankView {
 				//TODO Try/Catch, Exceptions und Fehlerbehandlung
 				double betrag = Double.valueOf(überweisungDurchführenDlg.getBetragField().getText());
 				int vonKontoNummer = Integer.valueOf(überweisungDurchführenDlg.getVonKontoField().getText());
-				Date datum = null;
+				Date datum = überweisungDurchführenDlg.getDateChooser().getDate();
 				Konto quelle = getKonto(vonKontoNummer);
 				
 				int nachKontoNummer = Integer.valueOf(überweisungDurchführenDlg.getNachKontoField().getText());
@@ -246,8 +246,6 @@ public class CtlBankView {
 		Kunde kunde = Kunden.getKunde(kundenNummer);
 		return kunde.getKonto(kontoNummer);
 	}
-
-	
 
 	private int getKundenNummer(int vonKonto) {
 		String kontoNummer = Integer.toString(vonKonto);
