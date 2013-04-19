@@ -83,6 +83,10 @@ public class ÜberweisungDurchführenDlg extends JDialog {
 		return vonKontoField;
 	}
 
+	public JTextField getNachKontoField() {
+		return nachKontoField;
+	}
+	
 	public JDateChooser getDateChooser() {
 		return dateChooser;
 	}
