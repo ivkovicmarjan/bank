@@ -78,7 +78,7 @@ public class CtlBankView {
 
 	private void kontobewegungActionPerformed() {
 		kontobewegungDlg = new KontobewegungDlg();
-		
+
 		kontobewegungDlg.getAnzeigenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btKontobewegungActionPerformed();
@@ -87,7 +87,7 @@ public class CtlBankView {
 	}
 
 	protected void btKontobewegungActionPerformed() {
-		
+
 	}
 
 	private void anzeigenKontostandActionPerformed() {
@@ -212,13 +212,12 @@ public class CtlBankView {
 	private boolean checkKonto(int kundenNummer, int kontoNummer, double betrag) {
 		boolean accountFound = false;
 		Kunde kunde = Kunden.getKunde(kundenNummer);
-		for (Konto konto : kunde.getKonten()) {
-			if (konto.getKontoNummer() == kontoNummer) {
-				if (konto.getKontostand() >= betrag) {
-					accountFound = true;
-				}
-			}
+		Konto konto = kunde.getKonto(kontoNummer);
+
+		if (konto != null) {
+			accountFound = true;
 		}
+
 		return accountFound;
 	}
 
