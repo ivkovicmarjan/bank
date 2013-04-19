@@ -1,5 +1,7 @@
 package g18.it1a.model;
 
+import java.util.Date;
+
 public class Sparkonto extends Konto {
 	private double zinssatz;
 
@@ -15,9 +17,12 @@ public class Sparkonto extends Konto {
 		this.zinssatz = zinssatz;
 	}
 
-	public void ausszahlen(double betrag) {
+	@Override
+	public void auszahlen(double betrag) {
 		double ergebnis = getKontostand() - betrag;
 		if (ergebnis >= 0.0) {
+			Kontobewegung kontobewegung = new Kontobewegung(-betrag, new Date(), "");
+			getKontobewegung().add(kontobewegung);
 			setKontostand(ergebnis);
 		}
 	}
