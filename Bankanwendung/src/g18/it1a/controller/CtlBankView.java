@@ -140,7 +140,7 @@ public class CtlBankView {
 			if (kunde != null) {
 				for (Konto konto : kunde.getKonten().values()) {
 
-					model.addRow(new Object[] { konto.getKontoTyp(), kundennummer, konto.getKontostand() });
+					model.addRow(new Object[] { konto.getKontoTyp(), konto.getKontoNummer(), konto.getKontostand() });
 				}
 			}
 		} catch (NumberFormatException e) {
