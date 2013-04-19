@@ -21,6 +21,7 @@ public class KontobewegungDlg extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JTextField kontonummerTextField;
 	private JTable table;
+	private JButton anzeigenButton;
 
 	/**
 	 * Create the dialog.
@@ -40,7 +41,7 @@ public class KontobewegungDlg extends JDialog {
 		panel.add(kontonummerTextField);
 		kontonummerTextField.setColumns(10);
 		
-		JButton anzeigenButton = new JButton("Kontobewegung anzeigen");
+		anzeigenButton = new JButton("Kontobewegung anzeigen");
 		getContentPane().add(anzeigenButton, BorderLayout.SOUTH);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -73,6 +74,22 @@ public class KontobewegungDlg extends JDialog {
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		scrollPane.setViewportView(table);
 
+	}
+
+	public JButton getAnzeigenButton() {
+		return anzeigenButton;
+	}
+
+	public JTextField getKontonummerTextField() {
+		return kontonummerTextField;
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setAnzeigenButton(JButton anzeigenButton) {
+		this.anzeigenButton = anzeigenButton;
 	}
 
 }

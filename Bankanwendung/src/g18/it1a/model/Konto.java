@@ -65,6 +65,10 @@ public class Konto {
 		this.bewegung = bewegung;
 	}
 
+	public KontoTyp getKontoTyp() {
+		return kontoTyp;
+	}
+
 	public String toString() {
 		return String.format("Kontonummer: %s, Kontostand: %s, Kontotyp: %s", this.kontonummer, this.kontostand, this.kontoTyp.name());
 	}
