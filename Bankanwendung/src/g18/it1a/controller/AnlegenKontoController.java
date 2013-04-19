@@ -25,7 +25,7 @@ public class AnlegenKontoController {
 			public void actionPerformed(ActionEvent evt) {
 				try {
 
-					btAnlegenKontoActionPerformed(KontoTyp.valueOf(anlegenKontoDlg.getButtonGroup().getSelection().getActionCommand().toUpperCase()),
+					btAnlegenKontoActionPerformed(KontoTyp.valueOf(anlegenKontoDlg.getButtonGroup().getSelection().getActionCommand()),
 							anlegenKontoDlg.getKundenNummerFeld().getText());
 				} catch (NullPointerException e) {
 					JOptionPane.showMessageDialog(anlegenKontoDlg, "bitte wählen Sie einen Kontotyp aus!");
