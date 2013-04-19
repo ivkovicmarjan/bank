@@ -80,7 +80,7 @@ public class CtlBankView {
 		
 		kontobewegungDlg.getAnzeigenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+			
 			}
 		});
 	}
