@@ -2,7 +2,6 @@ package g18.it1a.view;
 
 import g18.it1a.model.KontoTyp;
 import g18.it1a.model.Kunden;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
