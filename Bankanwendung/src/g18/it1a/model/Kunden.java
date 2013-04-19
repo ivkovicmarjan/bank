@@ -6,7 +6,7 @@ import g18.it1a.model.Konto.KontoTyp;
 import java.util.HashMap;
 
 public class Kunden {
-	private HashMap<Integer, Kunde> kunden;
+	private static HashMap<Integer, Kunde> kunden;
 
 	public Kunden() {
 		kunden = new HashMap<Integer, Kunde>();
@@ -16,6 +16,10 @@ public class Kunden {
 		Kunde kunde = new Kunde(kundenName, kundenNummer);
 		kunden.put(new Integer(kundenNummer), kunde);
 		return kunde;
+	}
+	
+	public static Kunde getKunde(int kundenNummer) {
+		return kunden.get(kundenNummer);
 	}
 	
 	public Konto anlegenKonto(int kundennummer, String kontotyp, double kontoZahl) throws NullPointerException {

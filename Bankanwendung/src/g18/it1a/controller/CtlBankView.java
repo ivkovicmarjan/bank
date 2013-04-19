@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kunde;
+import g18.it1a.model.Kunden;
 import g18.it1a.view.AnlegenKontoDlg;
 import g18.it1a.view.AnlegenKundeDlg;
 import g18.it1a.view.BankView;
@@ -65,7 +65,7 @@ public class CtlBankView {
 				einAuszahlenActionPerformed();
 			}
 		});
-		
+
 		bankView.getAnzeigenKontobewegung().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				kontobewegungActionPerformed();
@@ -126,18 +126,15 @@ public class CtlBankView {
 
 	private void btKontobersichtActionPerformed() {
 		int kundennummer = 0;
-		
-		try
-		{
+
+		try {
 			kundennummer = Integer.parseInt(kontostandsübersichtAnzeigenDlg.getKundennummerField().getText());
-			
+
 			JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
 			DefaultTableModel model = (DefaultTableModel) table.getModel();
-			model.addRow(new Object[]{"Kontoart", kundennummer, "Kontostand"});
-		}
-		catch(NumberFormatException e)
-		{
-			
+			model.addRow(new Object[] { "Kontoart", kundennummer, "Kontostand" });
+		} catch (NumberFormatException e) {
+
 		}
 	}
 
@@ -147,7 +144,7 @@ public class CtlBankView {
 		anlegenKontoDlg.getAnlegenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				try {
-					
+
 					btAnlegenKontoActionPerformed("" + anlegenKontoDlg.getButtonGroup().getSelection().getActionCommand(), anlegenKontoDlg
 							.getKundenNummerFeld().getText());
 				} catch (NullPointerException e) {
@@ -203,8 +200,21 @@ public class CtlBankView {
 		});
 	}
 
-	private void checkKonto(int kundennummer, int kontonummer) {
+	private boolean checkKonto(int kundenNummer, int kontoNummer) {
+		return checkKonto(kundenNummer, kontoNummer, 0);
+	}
 
+	private boolean checkKonto(int kundenNummer, int kontoNummer, double betrag) {
+		boolean accountFound = false;
+		Kunde kunde = Kunden.getKunde(kundenNummer);
+		for (Konto konto : kunde.getKonten()) {
+			if (konto.getKontoNummer() == kontoNummer) {
+				if (konto.getKontostand() >= betrag) {
+					accountFound = true;
+				}
+			}
+		}
+		return accountFound;
 	}
 
 	private int getKundenNummer(int vonKonto) {
@@ -238,7 +248,7 @@ public class CtlBankView {
 		try {
 
 			Konto konto = bankHandler.anlegenKonto(kundenNummer, kontotyp, zahl);
-			JOptionPane.showMessageDialog(anlegenKontoDlg, "Ihr Konto wurde angelegt!\n Ihre Kontonummer lautet: " + konto.getKontonummer());
+			JOptionPane.showMessageDialog(anlegenKontoDlg, "Ihr Konto wurde angelegt!\n Ihre Kontonummer lautet: " + konto.getKontoNummer());
 			anlegenKontoDlg.dispose();
 
 		} catch (NullPointerException e) {
