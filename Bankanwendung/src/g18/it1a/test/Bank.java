@@ -32,7 +32,7 @@ public class Bank {
 			System.out.println("(5) " + kunde1.anzeigenKontostandsUebersicht());
 
 			Überweisung ueb = new Überweisung(konto1, konto2, 25, new Date());
-			ueb.durchfuehrenUeberweisung();
+			ueb.durchführenÜberweisung();
 			System.out.println("(6) " + kunde1.anzeigenKontostandsUebersicht());
 		} catch (Exception e) {
 			e.printStackTrace();
