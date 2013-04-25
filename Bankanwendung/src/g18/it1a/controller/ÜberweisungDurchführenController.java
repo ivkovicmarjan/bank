@@ -38,6 +38,8 @@ public class ÜberweisungDurchführenController {
 					quelle = ControllerUtils.getKonto(kontoNummerQuelle);
 				} catch (AccountNotFoundException e1) {
 					überweisungDurchführenDlg.getVonKontoField().setBackground(Color.RED);
+					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Konto mit der Nummer: " + kontoNummerQuelle + " nicht gefunden.",
+							"Konto nicht gefunden", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
@@ -45,24 +47,38 @@ public class ÜberweisungDurchführenController {
 				try {
 					kontoNummerZiel = Integer.valueOf(überweisungDurchführenDlg.getNachKontoField().getText());
 				} catch (NumberFormatException e) {
-					e.printStackTrace();
+					überweisungDurchführenDlg.getNachKontoField().setBackground(Color.RED);
+					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Bitte gültige Kontonummer eingeben.", "Ungültige Kontonummer",
+							JOptionPane.ERROR_MESSAGE);
+					return;
 				}
 				Konto ziel = null;
 				try {
 					ziel = ControllerUtils.getKonto(kontoNummerZiel);
 				} catch (AccountNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Konto mit der Nummer: " + kontoNummerZiel + " nicht gefunden.",
+							"Konto nicht gefunden", JOptionPane.ERROR_MESSAGE);
+					return;
 				}
 
 				Date datum = überweisungDurchführenDlg.getDateChooser().getDate();
 
-				double betrag = Double.valueOf(überweisungDurchführenDlg.getBetragField().getText());
+				double betrag = 0.0;
+				try {
+					betrag = Double.valueOf(überweisungDurchführenDlg.getBetragField().getText());
+
+				} catch (NumberFormatException e) {
+					überweisungDurchführenDlg.getBetragField().setBackground(Color.RED);
+					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Bitte gültigen Betrag eingeben.", "Ungültiger Betrag",
+							JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 
 				try {
 					new Überweisung(quelle, ziel, betrag, datum).durchführenÜberweisung();
 				} catch (LiquidityException e) {
-					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Nicht genügend Geld auf Konto: " + kontoNummerQuelle + " vorhanden.",
+							"Ungültiger Betrag", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
