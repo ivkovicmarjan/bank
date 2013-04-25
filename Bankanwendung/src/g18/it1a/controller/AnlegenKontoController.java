@@ -59,11 +59,17 @@ public class AnlegenKontoController {
 
 		try {
 			if (kontotyp.equals(KontoTyp.Girokonto)) {
-				dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
-						"Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):"));
+				String dispoResult = JOptionPane.showInputDialog(anlegenKontoDlg,
+						"Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):");
+				if (dispoResult == null)
+					return;
+				dispoZins = Double.parseDouble(dispoResult);
 			} else {
-				dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
-						"Bitte geben sie den gewünschten Zinssatz ein(Als kommazahl Bsp.: 15.0)"));
+				String zinsResult = JOptionPane.showInputDialog(anlegenKontoDlg,
+						"Bitte geben sie den gewünschten Zinssatz ein(Als kommazahl Bsp.: 15.0)");
+				if (zinsResult == null)
+					return;
+				dispoZins = Double.parseDouble(zinsResult);
 			}
 		} catch (NumberFormatException e) {
 			dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
