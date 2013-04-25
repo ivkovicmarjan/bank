@@ -63,8 +63,6 @@ public class EinAuszahlungDurchführenController {
 		einAuszahlungDurchführenDlg.getKundennummerField().setText(kontoNummer);
 		einAuszahlungDurchführenDlg.getBetragField().setText(value);
 
-		
-		
 		try {
 			einAuszahlungDurchführenDlg.getAlterKontostandField().setText(""+ControllerUtils.getKonto(kontonummer).getKontostand());
 			Kunden.auszahlen(betrag, kontonummer);
@@ -108,7 +106,6 @@ public class EinAuszahlungDurchführenController {
 			{				
 				btEinzahlenActionPerformed(result, kontoNummer);
 			}
-			
 			return;
 		}
 		
@@ -125,8 +122,7 @@ public class EinAuszahlungDurchführenController {
 			JOptionPane.showMessageDialog(einAuszahlungDurchführenDlg, "Konto ist nicht vorhanden!");
 			return;
 		}
-		
+	
 		JOptionPane.showMessageDialog(einAuszahlungDurchführenDlg, "Einzahlung wurde durchgeführt!");
-		
 	}
 }
