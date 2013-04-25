@@ -35,7 +35,7 @@ public class Überweisung {
 	}
 
 	public void durchführenÜberweisung() throws LiquidityException {
-		quelle.auszahlen(this.betrag);
-		ziel.einzahlen(this.betrag);
+		quelle.auszahlen(this.betrag, "Überweisung");
+		ziel.einzahlen(this.betrag, "Überweisung");
 	}
 }

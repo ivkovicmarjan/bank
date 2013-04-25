@@ -44,9 +44,6 @@ public class KontobewegungController {
 
 		int kundennummer = 0;
 		
-			
-		
-
 		try {
 			kundennummer = ControllerUtils.getKundenNummer(kontoNummer);
 			konto = Kunden.getKunde(kundennummer).getKonto(kontoNummer);
@@ -69,6 +66,5 @@ public class KontobewegungController {
 			JOptionPane.showMessageDialog(kontobewegungDlg, "Konto ist nicht vorhanden!");
 			return;
 		}
-
 	}
 }

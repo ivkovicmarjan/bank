@@ -46,11 +46,11 @@ public class Kunde {
 	}
 
 	public void auszahlenBetrag(Konto konto, double betrag) throws LiquidityException {
-		konto.auszahlen(betrag);
+		konto.auszahlen(betrag, "Auszahlung");
 	}
 
 	public void einzahlenBetrag(Konto konto, double betrag) {
-		konto.einzahlen(betrag);
+		konto.einzahlen(betrag, "Einzahlung");
 	}
 
 	public String getName() {

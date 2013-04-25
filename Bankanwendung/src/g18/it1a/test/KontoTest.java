@@ -28,22 +28,22 @@ public class KontoTest {
 
 	@Test
 	public void testEinzahlen() {
-		this.konto.einzahlen(this.betrag);
+		this.konto.einzahlen(this.betrag, "Einzahlung");
 		Assert.assertEquals(this.betrag, this.konto.getKontostand());
 	}
 
 	@Test
 	public void testAuszahlen() {
-		konto.einzahlen(150.00);
+		konto.einzahlen(150.00, "Einzahlung");
 		try {
-			konto.auszahlen(100.00);
+			konto.auszahlen(100.00, "Auszahlung");
 		} catch (LiquidityException e) {
 			fail("LiquidityException");
 		}
 		Assert.assertEquals(50.00, this.konto.getKontostand());
 
 		try {
-			konto.auszahlen(100.00);
+			konto.auszahlen(100.00, "Auszahlung");
 			exception.expect(LiquidityException.class);
 		} catch (LiquidityException e) {
 		}

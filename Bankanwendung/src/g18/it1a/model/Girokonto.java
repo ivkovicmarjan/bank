@@ -23,9 +23,9 @@ public class Girokonto extends Konto {
 	 * 
 	 */
 	@Override
-	public void auszahlen(double betrag) throws LiquidityException {
+	public void auszahlen(double betrag, String bemerkung) throws LiquidityException {
 		checkLiquidity(betrag);
-		setBewegung(new Kontobewegung(betrag, new Date(), ""));
+		setBewegung(new Kontobewegung(-betrag, new Date(), bemerkung));
 		getKontobewegung().add(getBewegung());
 		setKontostand(getKontostand() - betrag);
 
