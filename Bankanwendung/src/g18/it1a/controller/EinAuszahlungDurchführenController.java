@@ -38,7 +38,12 @@ public class EinAuszahlungDurchführenController {
 			kontonummer = Long.valueOf(kontoNummer);
 		} catch (NumberFormatException e) {
 			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenDlg, "Bitte Zahl als Kontonummer eingeben.");
-			btAuszahlenActionPerformed(value, result);
+			
+			if(result != null)
+			{				
+				btAuszahlenActionPerformed(value, result);
+			}
+	
 			return;
 		}
 		
@@ -46,7 +51,12 @@ public class EinAuszahlungDurchführenController {
 			betrag = Double.valueOf(value);
 		} catch (NumberFormatException e) {
 			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenDlg, "Bitte Zahl als Betrag eingeben.");
-			btAuszahlenActionPerformed(result, kontoNummer);
+			
+			if(result != null)
+			{				
+				btAuszahlenActionPerformed(result, kontoNummer);
+			}
+
 			return;
 		}
 		
@@ -80,7 +90,12 @@ public class EinAuszahlungDurchführenController {
 			kontonummer = Long.valueOf(kontoNummer);
 		} catch (NumberFormatException e) {
 			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenDlg, "Bitte Zahl als Kontonummer eingeben.");
-			btEinzahlenActionPerformed(value, result);
+			
+			if(result != null)
+			{				
+				btEinzahlenActionPerformed(value, result);
+			}
+		
 			return;
 		}
 		
@@ -88,7 +103,12 @@ public class EinAuszahlungDurchführenController {
 			betrag = Double.valueOf(value);
 		} catch (NumberFormatException e) {
 			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenDlg, "Bitte Zahl als Betrag eingeben.");
-			btEinzahlenActionPerformed(result, kontoNummer);
+			
+			if(result != null)
+			{				
+				btEinzahlenActionPerformed(result, kontoNummer);
+			}
+			
 			return;
 		}
 		

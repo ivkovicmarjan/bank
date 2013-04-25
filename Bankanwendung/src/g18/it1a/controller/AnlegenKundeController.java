@@ -34,7 +34,7 @@ public class AnlegenKundeController {
 			JOptionPane.showMessageDialog(anlegenKundeDlg, "Kunde: " + neuerKunde.getName() + " angelegt.");
 			clearDlgAnlegenKunde();
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte Zahl als Kundennummer eingeben.");
+			String result = JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte Zahl als Kundennummer eingeben.", "Fehler!", JOptionPane.ERROR_MESSAGE);
 			
 			if(result != null)
 			{				
