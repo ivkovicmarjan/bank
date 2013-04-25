@@ -49,15 +49,9 @@ public class AnlegenKontoController {
 		if (kontotyp.equals(KontoTyp.Girokonto)) {
 			dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
 					"Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):"));
-			if(JOptionPane.CANCEL_OPTION == 1){
-				return;
-			}
 		} else {
 			dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
 					"Bitte geben sie den gewünschten Zinssatz ein(Als kommazahl Bsp.: 15.0)"));
-			if(JOptionPane.CANCEL_OPTION == 1){
-				return;
-			}
 		}
 
 		try {
@@ -69,9 +63,6 @@ public class AnlegenKontoController {
 		} catch (NullPointerException e) {
 			JOptionPane.showMessageDialog(anlegenKontoDlg, "Dieser Kunde existiert nicht!");
 			anlegenKontoDlg.getKundenNummerFeld().setText("");
-			if(JOptionPane.CANCEL_OPTION == 1){
-				return;
-			}
 		}
 	}
 }
