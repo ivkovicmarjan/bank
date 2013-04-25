@@ -1,5 +1,6 @@
 package g18.it1a.controller;
 
+import g18.it1a.model.Kunden;
 import g18.it1a.view.EinAuszahlungDurchführenDlg;
 
 import java.awt.event.ActionEvent;
@@ -53,5 +54,9 @@ public class EinAuszahlungDurchführenController {
 		
 		einAuszahlungDurchführenDlg.getKundennummerField().setText(kontoNummer);
 		einAuszahlungDurchführenDlg.getBetragField().setText(value);
+		
+		Kunden.einzahlen(betrag, kontonummer);
+		
+		JOptionPane.showMessageDialog(einAuszahlungDurchführenDlg, "Einzahlung wurde durchgeführt!");
 	}
 }
