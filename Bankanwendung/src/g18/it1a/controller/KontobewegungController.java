@@ -15,9 +15,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class KontobewegungController {
-	
+
 	private KontobewegungDlg kontobewegungDlg;
-	
+
 	public void kontobewegungActionPerformed() {
 		kontobewegungDlg = new KontobewegungDlg();
 
@@ -46,24 +46,22 @@ public class KontobewegungController {
 		}
 
 		try {
-		konto = Kunden.getKunde(kundennummer).getKonto(kontoNummer);
-		kontoBewegungen = konto.getKontobewegung();
-		
-		JTable table = kontobewegungDlg.getTable();
-		DefaultTableModel model = (DefaultTableModel) table.getModel();
-		model.setRowCount(0);
+			konto = Kunden.getKunde(kundennummer).getKonto(kontoNummer);
+			kontoBewegungen = konto.getKontobewegung();
 
-		for (Kontobewegung kontobewegung : kontoBewegungen) {
+			JTable table = kontobewegungDlg.getTable();
+			DefaultTableModel model = (DefaultTableModel) table.getModel();
+			model.setRowCount(0);
 
-			model.addRow(new Object[] { kontobewegung.getDatum().toString(), kontobewegung.getBetrag(), kontobewegung.getBemerkung() });
+			for (Kontobewegung kontobewegung : kontoBewegungen) {
+
+				model.addRow(new Object[] { kontobewegung.getDatum().toString(), kontobewegung.getBetrag(), kontobewegung.getBemerkung() });
+
+			}
+		} catch (NullPointerException e) {
+			// TODO ??????????????
 
 		}
-		} catch(NullPointerException e) {
-			
-		}
-
-		
-		
 
 	}
 }

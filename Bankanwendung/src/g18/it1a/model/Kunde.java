@@ -1,5 +1,6 @@
 package g18.it1a.model;
 
+import g18.it1a.exceptions.AccountNotFoundException;
 import g18.it1a.exceptions.LiquidityException;
 import g18.it1a.model.KontoTyp;
 
@@ -68,8 +69,12 @@ public class Kunde {
 		this.kundenNummer = kundenNummer;
 	}
 
-	public Konto getKonto(long kontoNummer) {
-		return konten.get(kontoNummer);
+	public Konto getKonto(long kontoNummer) throws AccountNotFoundException {
+		Konto konto = konten.get(kontoNummer);
+		if (konto == null) {
+			throw new AccountNotFoundException();
+		}
+		return konto;
 	}
 
 	public HashMap<Long, Konto> getKonten() {
