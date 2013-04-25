@@ -9,6 +9,7 @@ import g18.it1a.view.ÜberweisungDurchführenDlg;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
@@ -62,6 +63,26 @@ public class ÜberweisungDurchführenController {
 				}
 
 				Date datum = überweisungDurchführenDlg.getDateChooser().getDate();
+				if (datum == null) {
+					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Bitte ein gültiges Datum eingeben", "Ungültiges Datum",
+							JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+
+				// Die Uhrzeit auf 00:00:00 setzen, damit überprüft werden kann,
+				// ob das Datum in der Vergangenheit liegt.
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(datum);
+				cal.set(Calendar.HOUR, 0);
+				cal.set(Calendar.MINUTE, 0);
+				cal.set(Calendar.SECOND, 0);
+				// Falls das Datum in der Vergangenheit ist, wird die
+				// Überweisung nicht ausgeführt.
+				if (cal.before(Calendar.getInstance().getTime())) {
+					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Das Datum darf nicht in der Vergangenheit liegen.", "Ungültiges Datum",
+							JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 
 				double betrag = 0.0;
 				try {
@@ -76,6 +97,9 @@ public class ÜberweisungDurchführenController {
 
 				try {
 					new Überweisung(quelle, ziel, betrag, datum).durchführenÜberweisung();
+					JOptionPane.showMessageDialog(überweisungDurchführenDlg, " Die Überweisung erfolgreich am " + datum + " durchgeführt.",
+							"Überweisung erfolgreich durchgeführt.", JOptionPane.INFORMATION_MESSAGE);
+
 				} catch (LiquidityException e) {
 					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Nicht genügend Geld auf Konto: " + kontoNummerQuelle + " vorhanden.",
 							"Ungültiger Betrag", JOptionPane.ERROR_MESSAGE);
