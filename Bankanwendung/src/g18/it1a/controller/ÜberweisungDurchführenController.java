@@ -5,9 +5,12 @@ import g18.it1a.model.Konto;
 import g18.it1a.model.Überweisung;
 import g18.it1a.view.ÜberweisungDurchführenDlg;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
+
+import javax.security.auth.login.AccountNotFoundException;
 
 public class ÜberweisungDurchführenController {
 
@@ -26,9 +29,17 @@ public class ÜberweisungDurchführenController {
 				try {
 					kontoNummerQuelle = Integer.valueOf(überweisungDurchführenDlg.getVonKontoField().getText());
 				} catch (NumberFormatException e) {
+					überweisungDurchführenDlg.getVonKontoField().setBackground(Color.RED);
 					error = true;
+					return;
 				}
-				Konto quelle = ControllerUtils.getKonto(kontoNummerQuelle);
+				Konto quelle = null;
+				try {
+					quelle = ControllerUtils.getKonto(kontoNummerQuelle);
+				} catch (AccountNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 				int kontoNummerZiel = 0;
 				try {
@@ -36,7 +47,13 @@ public class ÜberweisungDurchführenController {
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 				}
-				Konto ziel = ControllerUtils.getKonto(kontoNummerZiel);
+				Konto ziel = null;
+				try {
+					ziel = ControllerUtils.getKonto(kontoNummerZiel);
+				} catch (AccountNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 
 				Date datum = überweisungDurchführenDlg.getDateChooser().getDate();
 

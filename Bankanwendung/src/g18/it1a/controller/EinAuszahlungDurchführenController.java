@@ -6,6 +6,7 @@ import g18.it1a.view.EinAuszahlungDurchführenDlg;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.security.auth.login.AccountNotFoundException;
 import javax.swing.JOptionPane;
 
 public class EinAuszahlungDurchführenController {
@@ -55,7 +56,12 @@ public class EinAuszahlungDurchführenController {
 		einAuszahlungDurchführenDlg.getKundennummerField().setText(kontoNummer);
 		einAuszahlungDurchführenDlg.getBetragField().setText(value);
 		
-		Kunden.einzahlen(betrag, kontonummer);
+		try {
+			Kunden.einzahlen(betrag, kontonummer);
+		} catch (AccountNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		JOptionPane.showMessageDialog(einAuszahlungDurchführenDlg, "Einzahlung wurde durchgeführt!");
 	}

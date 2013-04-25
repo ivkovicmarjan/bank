@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.security.auth.login.AccountNotFoundException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -35,7 +36,13 @@ public class KontobewegungController {
 			JOptionPane.showMessageDialog(kontobewegungDlg, "Bitte nur Zahlen eingeben!");
 		}
 
-		int kundennummer = ControllerUtils.getKundenNummer(kontoNummer);
+		int kundennummer = 0;
+		try {
+			kundennummer = ControllerUtils.getKundenNummer(kontoNummer);
+		} catch (AccountNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		Konto konto = Kunden.getKunde(kundennummer).getKonto(kontoNummer);
 
