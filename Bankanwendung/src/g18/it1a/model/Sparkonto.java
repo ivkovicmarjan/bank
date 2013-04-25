@@ -22,7 +22,7 @@ public class Sparkonto extends Konto {
 
 	@Override
 	public void checkLiquidity(double betrag) throws LiquidityException {
-		if ((getKontostand() - betrag) <= 0.0) {
+		if ((getKontostand() - betrag) < 0.0) {
 			throw new LiquidityException();
 		}
 	}
