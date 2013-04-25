@@ -30,7 +30,6 @@ public class ÜberweisungDurchführenController {
 
 				new Überweisung(quelle, ziel, betrag, datum).durchfuehrenUeberweisung();
 			}
-
 		});
 	}
 }

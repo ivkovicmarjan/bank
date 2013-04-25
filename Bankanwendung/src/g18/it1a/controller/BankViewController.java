@@ -4,11 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import g18.it1a.view.BankView;
 
-public class CtlBankView {
+public class BankViewController {
 
 	private BankView bankView;
 
-	public CtlBankView(final BankHandler bankHandler) {
+	public BankViewController(final BankHandler bankHandler) {
 		bankView = new BankView();
 
 		bankView.getAnlegenKunde().addActionListener(new ActionListener() {
