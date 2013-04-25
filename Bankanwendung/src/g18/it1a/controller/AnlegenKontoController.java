@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import g18.it1a.model.Konto;
 import g18.it1a.model.KontoTyp;
+import g18.it1a.model.Kunden;
 import g18.it1a.view.AnlegenKontoDlg;
 
 import javax.swing.JOptionPane;
@@ -43,7 +44,17 @@ public class AnlegenKontoController {
 
 		} catch (NumberFormatException e) {
 			anlegenKontoDlg.getKundenNummerFeld().setText("");
-			kundennummer = JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte Zahl als Kundennummer eingeben:");
+			String result = JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte Zahl als Kundennummer eingeben:", "Ungültiger Wert", JOptionPane.WARNING_MESSAGE);
+			if (result == null) {
+				return;
+			}
+			btAnlegenKontoActionPerformed(kontotyp, result);
+			return;
+		}
+		
+		if (Kunden.getKunde(kundenNummer) == null) {
+			JOptionPane.showMessageDialog(anlegenKontoDlg, "Dieser Kunde existiert nicht!", "Fehler", JOptionPane.ERROR_MESSAGE);
+			return;
 		}
 
 		if (kontotyp.equals(KontoTyp.Girokonto)) {
@@ -54,15 +65,9 @@ public class AnlegenKontoController {
 					"Bitte geben sie den gewünschten Zinssatz ein(Als kommazahl Bsp.: 15.0)"));
 		}
 
-		try {
-
 			Konto konto = bankHandler.anlegenKonto(kundenNummer, kontotyp, dispoZins);
 			JOptionPane.showMessageDialog(anlegenKontoDlg, "Ihr Konto wurde angelegt!\n Ihre Kontonummer lautet: " + konto.getKontoNummer());
 			anlegenKontoDlg.dispose();
 
-		} catch (NullPointerException e) {
-			JOptionPane.showMessageDialog(anlegenKontoDlg, "Dieser Kunde existiert nicht!");
-			anlegenKontoDlg.getKundenNummerFeld().setText("");
-		}
 	}
 }
