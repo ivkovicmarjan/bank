@@ -36,8 +36,8 @@ public class KundeTest {
 		kunde.anlegenKonto(KontoTyp.Girokonto);
 		kunde.anlegenKonto(KontoTyp.Sparkonto);
 		String ausgabe = "Übersicht der Konten von Max Mustermann:\n"
-				+ "Kontonummer: 100002, Kontostand: 0.0, Kontotyp: Sparkonto\n\n"
-				+ "Kontonummer: 101001, Kontostand: 0.0, Kontotyp: Girokonto\n\n";
+				+ "Kontonummer: 100002, Kontostand: 0.0, Kontotyp: Sparkonto\n"
+				+ "Kontonummer: 101001, Kontostand: 0.0, Kontotyp: Girokonto\n";
 				
 
 		assertEquals(ausgabe, kunde.anzeigenKontostandsUebersicht());

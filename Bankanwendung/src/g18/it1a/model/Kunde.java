@@ -24,7 +24,7 @@ public class Kunde {
 
 		String ausgabe = "Übersicht der Konten von " + getName() + ":\n";
 		for (Konto konto : konten.values()) {
-			ausgabe = ausgabe + konto.toString() + "\n\n";
+			ausgabe = ausgabe + konto.toString() + "\n";
 		}
 
 		return ausgabe;
