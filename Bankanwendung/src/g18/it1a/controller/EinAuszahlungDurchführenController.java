@@ -35,10 +35,10 @@ public class EinAuszahlungDurchführenController {
 
 	private void btEinzahlenActionPerformed(String value, String kontoNummer) {
 		double betrag;
-		int kontonummer;
+		long kontonummer;
 
 		try {
-			kontonummer = Integer.valueOf(kontoNummer);
+			kontonummer = Long.valueOf(kontoNummer);
 		} catch (NumberFormatException e) {
 			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenDlg, "Bitte Zahl als Kontonummer eingeben.");
 			btEinzahlenActionPerformed(value, result);
@@ -55,14 +55,18 @@ public class EinAuszahlungDurchführenController {
 		
 		einAuszahlungDurchführenDlg.getKundennummerField().setText(kontoNummer);
 		einAuszahlungDurchführenDlg.getBetragField().setText(value);
+
+		
 		
 		try {
+			einAuszahlungDurchführenDlg.getAlterKontostandField().setText(""+ControllerUtils.getKonto(kontonummer).getKontostand());
 			Kunden.einzahlen(betrag, kontonummer);
+			einAuszahlungDurchführenDlg.getNeuerKontostandField().setText(""+ControllerUtils.getKonto(kontonummer).getKontostand());
 		} catch (AccountNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(einAuszahlungDurchführenDlg, e);
 		}
 		
 		JOptionPane.showMessageDialog(einAuszahlungDurchführenDlg, "Einzahlung wurde durchgeführt!");
+		
 	}
 }

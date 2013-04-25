@@ -9,12 +9,12 @@ public class Kunde {
 
 	private String name;
 	private int kundenNummer;
-	private HashMap<Integer, Konto> konten = null;
+	private HashMap<Long, Konto> konten = null;
 
 	public Kunde(String kundenName, int kundenNummer) {
 		setName(kundenName);
 		this.setKundenNummer(kundenNummer);
-		konten = new HashMap<Integer, Konto>();
+		konten = new HashMap<Long, Konto>();
 
 	}
 
@@ -68,19 +68,19 @@ public class Kunde {
 		this.kundenNummer = kundenNummer;
 	}
 
-	public Konto getKonto(int kontoNummer) {
+	public Konto getKonto(long kontoNummer) {
 		return konten.get(kontoNummer);
 	}
 
-	public HashMap<Integer, Konto> getKonten() {
+	public HashMap<Long, Konto> getKonten() {
 		return konten;
 	}
 
-	public void setKonten(HashMap<Integer, Konto> konten) {
+	public void setKonten(HashMap<Long, Konto> konten) {
 		this.konten = konten;
 	}
 
-	private int generiereKontonummer(KontoTyp kontoTyp) {
+	private long generiereKontonummer(KontoTyp kontoTyp) {
 		int typ = 0;
 		int index = konten.size() + 1;
 

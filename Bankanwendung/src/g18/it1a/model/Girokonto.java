@@ -8,7 +8,7 @@ import g18.it1a.model.KontoTyp;
 public class Girokonto extends Konto {
 	private double dispo;
 
-	public Girokonto(int kontonummer, KontoTyp kontoTyp, double dispo) {
+	public Girokonto(long kontonummer, KontoTyp kontoTyp, double dispo) {
 		super(kontonummer, kontoTyp);
 		setDispo(dispo);
 	}

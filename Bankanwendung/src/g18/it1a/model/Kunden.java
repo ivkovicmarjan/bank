@@ -36,12 +36,12 @@ public class Kunden {
 		return konto;
 	}
 	
-	public static void einzahlen(double betrag, int kontonummer) throws AccountNotFoundException {
+	public static void einzahlen(double betrag, long kontonummer) throws AccountNotFoundException {
 		int kundennummer = ControllerUtils.getKundenNummer(kontonummer);
 		getKunde(kundennummer).einzahlenBetrag(getKunde(kundennummer).getKonto(kontonummer), betrag);
 	}
 	
-	public static void auszahlen(double betrag, int kontonummer) throws LiquidityException, AccountNotFoundException {
+	public static void auszahlen(double betrag, long kontonummer) throws LiquidityException, AccountNotFoundException {
 		int kundennummer = ControllerUtils.getKundenNummer(kontonummer);
 		getKunde(kundennummer).auszahlenBetrag(getKunde(kundennummer).getKonto(kontonummer), betrag);
 	}
