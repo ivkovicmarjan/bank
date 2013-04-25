@@ -1,11 +1,9 @@
 package g18.it1a.model;
 
-
 import java.util.HashMap;
 
-import javax.security.auth.login.AccountNotFoundException;
-
 import g18.it1a.controller.ControllerUtils;
+import g18.it1a.exceptions.AccountNotFoundException;
 import g18.it1a.exceptions.LiquidityException;
 import g18.it1a.model.KontoTyp;
 
