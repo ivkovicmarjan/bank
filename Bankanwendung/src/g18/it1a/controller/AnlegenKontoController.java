@@ -57,14 +57,18 @@ public class AnlegenKontoController {
 			return;
 		}
 
-		if (kontotyp.equals(KontoTyp.Girokonto)) {
+		try {
+			if (kontotyp.equals(KontoTyp.Girokonto)) {
+				dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
+						"Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):"));
+			} else {
+				dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
+						"Bitte geben sie den gewünschten Zinssatz ein(Als kommazahl Bsp.: 15.0)"));
+			}
+		} catch (NumberFormatException e) {
 			dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
-					"Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):"));
-		} else {
-			dispoZins = Double.parseDouble(JOptionPane.showInputDialog(anlegenKontoDlg,
-					"Bitte geben sie den gewünschten Zinssatz ein(Als kommazahl Bsp.: 15.0)"));
+					"Bitte nur Zahlenwerte eingeben:", "", JOptionPane.ERROR_MESSAGE));
 		}
-
 			Konto konto = bankHandler.anlegenKonto(kundenNummer, kontotyp, dispoZins);
 			JOptionPane.showMessageDialog(anlegenKontoDlg, "Ihr Konto wurde angelegt!\n Ihre Kontonummer lautet: " + konto.getKontoNummer());
 			anlegenKontoDlg.dispose();
