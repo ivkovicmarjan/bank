@@ -40,13 +40,13 @@ public class AnlegenKontoDlg extends JDialog {
 		
 		giroButton = new JRadioButton();
 		giroButton.setText("Girokonto");
-		giroButton.setBounds(105, 10, 100, 15);
+		giroButton.setBounds(105, 10, 110, 20);
 		giroButton.setActionCommand("Girokonto");
 		buttonGroup.add(giroButton);
 		
 		sparButton = new JRadioButton();
 		sparButton.setText("Sparkonto");
-		sparButton.setBounds(105, 25, 100, 15);
+		sparButton.setBounds(105, 35, 110, 20);
 		sparButton.setActionCommand("Sparkonto");
 		buttonGroup.add(sparButton);
 		
@@ -55,11 +55,11 @@ public class AnlegenKontoDlg extends JDialog {
 		
 		
 		JLabel lblNewLabel = new JLabel("Kundennummer:");
-		lblNewLabel.setBounds(10, 62, 97, 14);
+		lblNewLabel.setBounds(10, 70, 97, 20);
 		contentPanel.add(lblNewLabel);
 		
 		kundenNummerFeld = new JTextField();
-		kundenNummerFeld.setBounds(109, 59, 115, 20);
+		kundenNummerFeld.setBounds(109, 70, 115, 20);
 		contentPanel.add(kundenNummerFeld);
 		kundenNummerFeld.setColumns(1);
 
