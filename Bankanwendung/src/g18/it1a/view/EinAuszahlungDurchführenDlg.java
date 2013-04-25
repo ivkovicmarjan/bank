@@ -70,8 +70,12 @@ public class EinAuszahlungDurchführenDlg extends JDialog {
 		this.getContentPane().add(lblNeuerKontostand);
 	}
 
-	public JTextField getBetragsField() {
+	public JTextField getBetragField() {
 		return this.betragField;
+	}
+	
+	public JTextField getKundennummerField() {
+		return this.kundennummerField;
 	}
 
 	public JButton getEinzahlenButton() {

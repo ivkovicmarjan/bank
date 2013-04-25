@@ -42,8 +42,8 @@ public class AnlegenKontoController {
 			kundenNummer = Integer.parseInt(kundennummer);
 
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte Zahl als Kundennummer eingeben:");
-			btAnlegenKontoActionPerformed(kontotyp, result);
+			anlegenKontoDlg.getKundenNummerFeld().setText("");
+			kundennummer = JOptionPane.showInputDialog(anlegenKontoDlg, "Bitte Zahl als Kundennummer eingeben:");
 		}
 
 		if (kontotyp.equals(KontoTyp.Girokonto)) {

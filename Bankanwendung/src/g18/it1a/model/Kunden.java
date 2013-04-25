@@ -2,6 +2,8 @@ package g18.it1a.model;
 
 
 import java.util.HashMap;
+
+import g18.it1a.controller.ControllerUtils;
 import g18.it1a.model.KontoTyp;
 
 public class Kunden {
@@ -31,5 +33,15 @@ public class Kunden {
 		konto = kunden.get(kundennummer).anlegenKonto(kontotyp, dispoZins);
 		
 		return konto;
+	}
+	
+	public static void einzahlen(double betrag, int kontonummer) {
+		int kundennummer = ControllerUtils.getKundenNummer(kontonummer);
+		getKunde(kundennummer).einzahlenBetrag(getKunde(kundennummer).getKonto(kontonummer), betrag);
+	}
+	
+	public static void auszahlen(double betrag, int kontonummer) {
+		int kundennummer = ControllerUtils.getKundenNummer(kontonummer);
+		getKunde(kundennummer).auszahlenBetrag(getKunde(kundennummer).getKonto(kontonummer), betrag);
 	}
 }
