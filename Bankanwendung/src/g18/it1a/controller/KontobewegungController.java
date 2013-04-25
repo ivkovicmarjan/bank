@@ -36,10 +36,11 @@ public class KontobewegungController {
 			kontoNummer = Integer.parseInt(kontoNummerString);
 		} catch (NumberFormatException e) {
 			String result = JOptionPane.showInputDialog(kontobewegungDlg, "Bitte Zahl als Kontonummer eingeben!");
-			if(result != null) {
-				btKontobewegungActionPerformed(result);
+			if(result == null) {
 				return;
-			} else return;
+			}
+			btKontobewegungActionPerformed(result);
+			return;
 			
 		}
 
