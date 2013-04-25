@@ -31,14 +31,14 @@ public class SparkontoTest {
 	public void testAuszahlen() {
 		Sparkonto.setKontostand(100.0);
 		try {
-			Sparkonto.auszahlen(110.0);
+			Sparkonto.auszahlen(110.0, "Auszahlung");
 			exception.expect(LiquidityException.class);
 		} catch (LiquidityException e) {
 		}
 		Assert.assertEquals(100.0, Sparkonto.getKontostand());
 		
 		try {
-			Sparkonto.auszahlen(90.0);
+			Sparkonto.auszahlen(90.0, "Auszahlung");
 		} catch (LiquidityException e) {
 			fail("LiquidityException");
 		}

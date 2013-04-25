@@ -31,14 +31,14 @@ public class GirokontoTest {
 	public void testAuszahlen() {
 		girokonto.setDispo(0);
 		try {
-			girokonto.auszahlen(120.00);
+			girokonto.auszahlen(120.00, "Auszahlung");
 			exception.expect(LiquidityException.class);
 		} catch (LiquidityException e) {
 		}
 		Assert.assertEquals(0.0, girokonto.getKontostand());
 		girokonto.setDispo(100);
 		try {
-			girokonto.auszahlen(90);
+			girokonto.auszahlen(90, "Auszahlung");
 		} catch (LiquidityException e) {
 			fail("LiquidityException");
 		}

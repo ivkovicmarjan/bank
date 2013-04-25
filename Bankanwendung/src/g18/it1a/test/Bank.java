@@ -22,13 +22,13 @@ public class Bank {
 			Konto konto1 = kunde1.anlegenKonto(KontoTyp.Girokonto);
 			Konto konto2 = kunde1.anlegenKonto(KontoTyp.Sparkonto);
 			System.out.println("(1) " + kunde1.anzeigenKontostandsUebersicht());
-			konto1.einzahlen(1000);
+			konto1.einzahlen(1000, "Einzahlung");
 			System.out.println("(2) " + kunde1.anzeigenKontostandsUebersicht());
-			konto2.einzahlen(100);
+			konto2.einzahlen(100, "Einzahlung");
 			System.out.println("(3) " + kunde1.anzeigenKontostandsUebersicht());
-			konto1.auszahlen(400);
+			konto1.auszahlen(400, "Auszahlung");
 			System.out.println("(4) " + kunde1.anzeigenKontostandsUebersicht());
-			konto2.auszahlen(100);
+			konto2.auszahlen(100, "Auszahlung");
 			System.out.println("(5) " + kunde1.anzeigenKontostandsUebersicht());
 
 			Überweisung ueb = new Überweisung(konto1, konto2, 25, new Date());

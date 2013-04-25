@@ -49,14 +49,14 @@ public class KundeTest {
 	@Test
 	public void testAnlegenKonto() {
 		Konto konto = kunde.anlegenKonto(KontoTyp.Sparkonto);
-		konto.einzahlen(42);
+		konto.einzahlen(42, "Einzahlung");
 		Assert.assertEquals(42.0, konto.getKontostand());
 	}
 
 	@Test
 	public void testAuszahlenBetrag() {
 		Konto girokonto = kunde.anlegenKonto(KontoTyp.Girokonto);
-		girokonto.einzahlen(100);
+		girokonto.einzahlen(100, "Einzahlung");
 		try {
 			kunde.auszahlenBetrag(girokonto, 100);
 		} catch (LiquidityException e) {
@@ -72,7 +72,7 @@ public class KundeTest {
 		Assert.assertEquals(0.0, girokonto.getKontostand());
 
 		Konto Sparkonto = kunde.anlegenKonto(KontoTyp.Sparkonto);
-		Sparkonto.einzahlen(200);
+		Sparkonto.einzahlen(200, "Einzahlung");
 		try {
 			kunde.auszahlenBetrag(Sparkonto, 75);
 		} catch (LiquidityException e) {

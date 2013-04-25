@@ -21,7 +21,7 @@ public class ÜberweisungTest {
 	public void testÜberweiung() {
 		Konto quelle = new Girokonto(1, KontoTyp.Girokonto, 0.0);
 		Konto ziel = new Girokonto(1, KontoTyp.Girokonto, 0.0);
-		quelle.einzahlen(100);
+		quelle.einzahlen(100, "Einzahlung");
 		Überweisung überweisung = new Überweisung(quelle, ziel, 50, null);
 		try {
 			überweisung.durchführenÜberweisung();
