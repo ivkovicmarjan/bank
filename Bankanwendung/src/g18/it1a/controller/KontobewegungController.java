@@ -35,17 +35,20 @@ public class KontobewegungController {
 		try {
 			kontoNummer = Integer.parseInt(kontoNummerString);
 		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(kontobewegungDlg, "Bitte nur Zahlen eingeben!");
+			String result = JOptionPane.showInputDialog(kontobewegungDlg, "Bitte Zahl als Kontonummer eingeben!");
+			if(result != null) {
+				btKontobewegungActionPerformed(result);
+			}
+			
 		}
 
 		int kundennummer = 0;
-		try {
-			kundennummer = ControllerUtils.getKundenNummer(kontoNummer);
-		} catch (AccountNotFoundException e) {
-			JOptionPane.showMessageDialog(kontobewegungDlg, "Konto ist nicht vorhanden!");
-		}
+		
+			
+		
 
 		try {
+			kundennummer = ControllerUtils.getKundenNummer(kontoNummer);
 			konto = Kunden.getKunde(kundennummer).getKonto(kontoNummer);
 			kontoBewegungen = konto.getKontobewegung();
 
@@ -59,8 +62,12 @@ public class KontobewegungController {
 
 			}
 		} catch (NullPointerException e) {
-			// TODO ??????????????
+			JOptionPane.showMessageDialog(kontobewegungDlg, "Konto ist nicht vorhanden!");
+			return;
 
+		} catch (AccountNotFoundException e) {
+			JOptionPane.showMessageDialog(kontobewegungDlg, "Konto ist nicht vorhanden!");
+			return;
 		}
 
 	}

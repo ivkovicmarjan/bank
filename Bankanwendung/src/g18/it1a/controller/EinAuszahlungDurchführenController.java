@@ -63,7 +63,8 @@ public class EinAuszahlungDurchführenController {
 			Kunden.einzahlen(betrag, kontonummer);
 			einAuszahlungDurchführenDlg.getNeuerKontostandField().setText(""+ControllerUtils.getKonto(kontonummer).getKontostand());
 		} catch (AccountNotFoundException e) {
-			JOptionPane.showMessageDialog(einAuszahlungDurchführenDlg, e);
+			JOptionPane.showMessageDialog(einAuszahlungDurchführenDlg, "Konto ist nicht vorhanden!");
+			return;
 		}
 		
 		JOptionPane.showMessageDialog(einAuszahlungDurchführenDlg, "Einzahlung wurde durchgeführt!");
