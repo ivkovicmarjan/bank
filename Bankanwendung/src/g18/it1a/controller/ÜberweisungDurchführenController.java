@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 public class ÜberweisungDurchführenController {
 
 	private ÜberweisungDurchführenDlg überweisungDurchführenDlg;
@@ -22,22 +24,21 @@ public class ÜberweisungDurchführenController {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Try/Catch, Exceptions und Fehlerbehandlung
 				int kontoNummerQuelle = 0;
-				boolean error = false;
 				try {
 					kontoNummerQuelle = Integer.valueOf(überweisungDurchführenDlg.getVonKontoField().getText());
 				} catch (NumberFormatException e) {
 					überweisungDurchführenDlg.getVonKontoField().setBackground(Color.RED);
-					error = true;
+					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Bitte gültige Kontonummer eingeben.", "Ungültige Kontonummer",
+							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 				Konto quelle = null;
 				try {
 					quelle = ControllerUtils.getKonto(kontoNummerQuelle);
 				} catch (AccountNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					überweisungDurchführenDlg.getVonKontoField().setBackground(Color.RED);
+					return;
 				}
 
 				int kontoNummerZiel = 0;
@@ -58,12 +59,10 @@ public class ÜberweisungDurchführenController {
 
 				double betrag = Double.valueOf(überweisungDurchführenDlg.getBetragField().getText());
 
-				if (!error) {
-						try {
-							new Überweisung(quelle, ziel, betrag, datum).durchführenÜberweisung();
-						} catch (LiquidityException e) {
-							// TODO Auto-generated catch block
-						}
+				try {
+					new Überweisung(quelle, ziel, betrag, datum).durchführenÜberweisung();
+				} catch (LiquidityException e) {
+					// TODO Auto-generated catch block
 				}
 			}
 		});
