@@ -7,7 +7,7 @@ import java.util.Date;
 public class Sparkonto extends Konto {
 	private double zinssatz;
 
-	public Sparkonto(int kontonummer, KontoTyp kontoTyp, double zinssatz) {
+	public Sparkonto(long kontonummer, KontoTyp kontoTyp, double zinssatz) {
 		super(kontonummer, kontoTyp);
 		setZinssatz(zinssatz);
 	}

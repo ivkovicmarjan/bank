@@ -7,13 +7,13 @@ import java.util.Date;
 
 public abstract class Konto {
 
-	private int kontoNummer;
+	private long kontoNummer;
 	private double kontostand = 0.00;
 	private KontoTyp kontoTyp;
 	private ArrayList<Kontobewegung> kontobewegung;
 	private Kontobewegung bewegung = null;
 
-	public Konto(int kontoNummer, KontoTyp kontoTyp) {
+	public Konto(long kontoNummer, KontoTyp kontoTyp) {
 		this.kontoNummer = kontoNummer;
 		this.kontoTyp = kontoTyp;
 	}
@@ -28,7 +28,7 @@ public abstract class Konto {
 		this.kontostand = this.kontostand + betrag;
 	}
 
-	public int getKontoNummer() {
+	public long getKontoNummer() {
 		return kontoNummer;
 	}
 

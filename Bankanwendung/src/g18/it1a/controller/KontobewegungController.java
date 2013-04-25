@@ -29,6 +29,8 @@ public class KontobewegungController {
 	}
 
 	private void btKontobewegungActionPerformed(String kontoNummerString) {
+		Konto konto = null;
+		ArrayList<Kontobewegung> kontoBewegungen = null;
 		int kontoNummer = 0;
 		try {
 			kontoNummer = Integer.parseInt(kontoNummerString);
@@ -40,14 +42,13 @@ public class KontobewegungController {
 		try {
 			kundennummer = ControllerUtils.getKundenNummer(kontoNummer);
 		} catch (AccountNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(kontobewegungDlg, "Konto ist nicht vorhanden!");
 		}
 
-		Konto konto = Kunden.getKunde(kundennummer).getKonto(kontoNummer);
-
-		ArrayList<Kontobewegung> kontoBewegungen = konto.getKontobewegung();
-
+		try {
+		konto = Kunden.getKunde(kundennummer).getKonto(kontoNummer);
+		kontoBewegungen = konto.getKontobewegung();
+		
 		JTable table = kontobewegungDlg.getTable();
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0);
@@ -57,6 +58,12 @@ public class KontobewegungController {
 			model.addRow(new Object[] { kontobewegung.getDatum().toString(), kontobewegung.getBetrag(), kontobewegung.getBemerkung() });
 
 		}
+		} catch(NullPointerException e) {
+			
+		}
+
+		
+		
 
 	}
 }
