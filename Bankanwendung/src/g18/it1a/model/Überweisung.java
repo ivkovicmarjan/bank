@@ -1,6 +1,7 @@
 package g18.it1a.model;
 
-import g18.it1a.exceptions.ÜberweisungException;
+
+import g18.it1a.exceptions.LiquidityException;
 
 import java.util.Date;
 
@@ -33,12 +34,8 @@ public class Überweisung {
 		return ziel;
 	}
 
-	public void durchführenÜberweisung() throws ÜberweisungException {
-		if (quelle.checkLiquidity(betrag)) {
-			quelle.auszahlen(this.betrag);
-			ziel.einzahlen(this.betrag);
-		} else {
-			throw new ÜberweisungException("Nicht genügend Geld vorhanden");
-		}
+	public void durchführenÜberweisung() throws LiquidityException {
+		quelle.auszahlen(this.betrag);
+		ziel.einzahlen(this.betrag);
 	}
 }

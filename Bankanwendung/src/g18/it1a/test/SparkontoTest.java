@@ -1,18 +1,22 @@
 package g18.it1a.test;
 
+import static org.junit.Assert.fail;
+import g18.it1a.exceptions.LiquidityException;
 import g18.it1a.model.Sparkonto;
 import g18.it1a.model.KontoTyp;
 import junit.framework.Assert;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class SparkontoTest {
 
 	private int kontonummer;
 	private KontoTyp kontotyp;
 	private Sparkonto Sparkonto;
-	
+
 	@Before
 	public void testInstanziierung() {
 		kontonummer = 13145657;
@@ -20,12 +24,24 @@ public class SparkontoTest {
 		Sparkonto = new Sparkonto(kontonummer, kontotyp, 0.0);
 	}
 	
+	@Rule
+	public ExpectedException exception = ExpectedException.none();
+
 	@Test
 	public void testAuszahlen() {
 		Sparkonto.setKontostand(100.0);
-		Sparkonto.auszahlen(110.0);
+		try {
+			Sparkonto.auszahlen(110.0);
+			exception.expect(LiquidityException.class);
+		} catch (LiquidityException e) {
+		}
 		Assert.assertEquals(100.0, Sparkonto.getKontostand());
-		Sparkonto.auszahlen(90.0);
+		
+		try {
+			Sparkonto.auszahlen(90.0);
+		} catch (LiquidityException e) {
+			fail("LiquidityException");
+		}
 		Assert.assertEquals(10.0, Sparkonto.getKontostand());
 	}
 }

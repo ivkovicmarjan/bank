@@ -1,5 +1,6 @@
 package g18.it1a.model;
 
+import g18.it1a.exceptions.LiquidityException;
 import g18.it1a.model.KontoTyp;
 
 import java.util.HashMap;
@@ -43,7 +44,7 @@ public class Kunde {
 		return konto;
 	}
 
-	public void auszahlenBetrag(Konto konto, double betrag) {
+	public void auszahlenBetrag(Konto konto, double betrag) throws LiquidityException {
 		konto.auszahlen(betrag);
 	}
 

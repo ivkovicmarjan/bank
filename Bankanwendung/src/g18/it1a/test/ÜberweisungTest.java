@@ -2,7 +2,7 @@ package g18.it1a.test;
 
 import static org.junit.Assert.fail;
 import junit.framework.Assert;
-import g18.it1a.exceptions.ÜberweisungException;
+import g18.it1a.exceptions.LiquidityException;
 import g18.it1a.model.Girokonto;
 import g18.it1a.model.Konto;
 import g18.it1a.model.Überweisung;
@@ -25,7 +25,7 @@ public class ÜberweisungTest {
 		Überweisung überweisung = new Überweisung(quelle, ziel, 50, null);
 		try {
 			überweisung.durchführenÜberweisung();
-		} catch (ÜberweisungException e) {
+		} catch (LiquidityException e) {
 			fail("Nicht genügend Geld Exception!");
 		}
 		int actual = (int) ziel.getKontostand();
@@ -37,8 +37,8 @@ public class ÜberweisungTest {
 
 		try {
 			überweisungFehler.durchführenÜberweisung();
-			exception.expect(ÜberweisungException.class);
-		} catch (ÜberweisungException e) {
+			exception.expect(LiquidityException.class);
+		} catch (LiquidityException e) {
 		}
 
 	}

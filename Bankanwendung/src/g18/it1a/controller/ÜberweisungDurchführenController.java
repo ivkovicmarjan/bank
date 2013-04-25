@@ -1,6 +1,6 @@
 package g18.it1a.controller;
 
-import g18.it1a.exceptions.ÜberweisungException;
+import g18.it1a.exceptions.LiquidityException;
 import g18.it1a.model.Konto;
 import g18.it1a.model.Überweisung;
 import g18.it1a.view.ÜberweisungDurchführenDlg;
@@ -43,12 +43,11 @@ public class ÜberweisungDurchführenController {
 				double betrag = Double.valueOf(überweisungDurchführenDlg.getBetragField().getText());
 
 				if (!error) {
-					try {
-						new Überweisung(quelle, ziel, betrag, datum).durchführenÜberweisung();
-					} catch (ÜberweisungException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+						try {
+							new Überweisung(quelle, ziel, betrag, datum).durchführenÜberweisung();
+						} catch (LiquidityException e) {
+							// TODO Auto-generated catch block
+						}
 				}
 			}
 		});

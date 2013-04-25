@@ -1,5 +1,7 @@
 package g18.it1a.model;
 
+import g18.it1a.exceptions.LiquidityException;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -16,9 +18,9 @@ public abstract class Konto {
 		this.kontoTyp = kontoTyp;
 	}
 
-	public abstract void auszahlen(double betrag);
+	public abstract void auszahlen(double betrag) throws LiquidityException;
 	
-	public abstract boolean checkLiquidity(double betrag);
+	protected abstract void checkLiquidity(double betrag) throws LiquidityException;
 
 	public void einzahlen(double betrag) {
 		setBewegung(new Kontobewegung(betrag, new Date(), ""));

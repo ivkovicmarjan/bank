@@ -1,6 +1,8 @@
 package g18.it1a.model;
 
 import java.util.Date;
+
+import g18.it1a.exceptions.LiquidityException;
 import g18.it1a.model.KontoTyp;
 
 public class Girokonto extends Konto {
@@ -15,24 +17,25 @@ public class Girokonto extends Konto {
 	 * Zahlt den gewünschten Betrag aus und berechnet den neuen Kontostand,
 	 * sofern das Dispolimit nicht überschritten wird.
 	 * 
-	 * @param betrag Der Betrag der abgehoben werden soll
+	 * @param betrag
+	 *            Der Betrag der abgehoben werden soll
+	 * @throws LiquidityException
 	 * 
 	 */
 	@Override
-	public void auszahlen(double betrag) {
-		if (checkLiquidity(betrag)) {
-			setBewegung(new Kontobewegung(betrag, new Date(), ""));
-			getKontobewegung().add(getBewegung());
-			setKontostand(getKontostand() - betrag);
-		}
+	public void auszahlen(double betrag) throws LiquidityException {
+		checkLiquidity(betrag);
+		setBewegung(new Kontobewegung(betrag, new Date(), ""));
+		getKontobewegung().add(getBewegung());
+		setKontostand(getKontostand() - betrag);
+
 	}
 
-	public boolean checkLiquidity(double betrag) {
+	public void checkLiquidity(double betrag) throws LiquidityException {
 		double ergebnis = getKontostand() - betrag;
 		if (ergebnis < -dispo) {
-			return false;
+			throw new LiquidityException();
 		}
-		return true;
 	}
 
 	public double getDispo() {
