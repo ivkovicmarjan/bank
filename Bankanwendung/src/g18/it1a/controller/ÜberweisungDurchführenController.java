@@ -80,16 +80,12 @@ public class ÜberweisungDurchführenController {
 					return;
 				}
 
-				// Die Uhrzeit auf 00:00:00 setzen, damit überprüft werden kann,
-				// ob das Datum in der Vergangenheit liegt.
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(datum);
-				cal.set(Calendar.HOUR, 0);
-				cal.set(Calendar.MINUTE, 0);
-				cal.set(Calendar.SECOND, 0);
-				// Falls das Datum in der Vergangenheit ist, wird die
-				// Überweisung nicht ausgeführt.
-				if (cal.before(Calendar.getInstance().getTime())) {
+				cal.set(Calendar.HOUR, 24);
+				cal.set(Calendar.MINUTE, 60);
+				cal.set(Calendar.SECOND, 60);
+				if (Calendar.getInstance().after(cal)) {
 					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Das Datum darf nicht in der Vergangenheit liegen.", "Ungültiges Datum",
 							JOptionPane.ERROR_MESSAGE);
 					return;
