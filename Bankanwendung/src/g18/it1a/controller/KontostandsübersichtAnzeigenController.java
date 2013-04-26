@@ -47,6 +47,8 @@ public class KontostandsübersichtAnzeigenController {
 			}
 		} catch (NumberFormatException e) {
 			String result = JOptionPane.showInputDialog(kontostandsübersichtAnzeigenDlg, "Bitte nur Zahlen eingeben:", "", JOptionPane.WARNING_MESSAGE);
+			if (result == null)
+				return;
 			btKontobersichtActionPerformed(result);
 			return;
 			
