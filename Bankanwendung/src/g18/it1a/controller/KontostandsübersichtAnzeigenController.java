@@ -8,6 +8,7 @@ import g18.it1a.model.Kunde;
 import g18.it1a.model.Kunden;
 import g18.it1a.view.KontostandsübersichtAnzeigenDlg;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,19 +21,19 @@ public class KontostandsübersichtAnzeigenController {
 
 		kontostandsübersichtAnzeigenDlg.getbtnKontoubersicht().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				btKontobersichtActionPerformed();
+				btKontobersichtActionPerformed(kontostandsübersichtAnzeigenDlg.getKundennummerField().getText());
 			}
 		});
 	}
 
-	private void btKontobersichtActionPerformed() {
+	private void btKontobersichtActionPerformed(String nummer) {
 		int kundennummer = 0;
 		JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0);
 
 		try {
-			kundennummer = Integer.parseInt(kontostandsübersichtAnzeigenDlg.getKundennummerField().getText());
+			kundennummer = Integer.parseInt(nummer);
 
 			Kunde kunde = Kunden.getKunde(kundennummer);
 			if (kunde != null) {
@@ -40,9 +41,15 @@ public class KontostandsübersichtAnzeigenController {
 
 					model.addRow(new Object[] { konto.getKontoTyp(), konto.getKontoNummer(), konto.getKontostand() });
 				}
+			} else {
+				JOptionPane.showMessageDialog(kontostandsübersichtAnzeigenDlg, "Dieser Kunde exisitert nicht!", "", JOptionPane.ERROR_MESSAGE);
+				return;
 			}
 		} catch (NumberFormatException e) {
-
+			String result = JOptionPane.showInputDialog(kontostandsübersichtAnzeigenDlg, "Bitte nur Zahlen eingeben:", "", JOptionPane.WARNING_MESSAGE);
+			btKontobersichtActionPerformed(result);
+			return;
+			
 		}
 	}
 }
