@@ -32,10 +32,9 @@ public class AnlegenKundeDlg extends JDialog {
 		lblKundenname.setBounds(10, 48, 89, 14);
 		this.getContentPane().add(lblKundenname);
 		
-		this.kundenNummerField = new JTextField();
+		this.kundenNummerField = new JTextFieldWithLimit(5);
 		this.kundenNummerField.setBounds(111, 12, 89, 20);
 		this.getContentPane().add(this.kundenNummerField);
-		this.kundenNummerField.setColumns(10);
 		
 		this.kundenNameField = new JTextField();
 		this.kundenNameField.setBounds(111, 45, 89, 20);
