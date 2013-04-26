@@ -3,7 +3,7 @@ package g18.it1a.controller;
 import g18.it1a.exceptions.AccountNotFoundException;
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kontobewegung;
-import g18.it1a.model.Kunden;
+import g18.it1a.model.Kunde;
 import g18.it1a.view.KontobewegungDlg;
 
 import java.awt.event.ActionEvent;
@@ -44,11 +44,11 @@ public class KontobewegungController {
 			
 		}
 
-		int kundennummer = 0;
+		Kunde kunde = null;
 		
 		try {
-			kundennummer = ControllerUtils.getKundenNummer(kontoNummer);
-			konto = Kunden.getKunde(kundennummer).getKonto(kontoNummer);
+			kunde = ControllerUtils.getKundeVonKonto(kontoNummer);
+			konto = kunde.getKonto(kontoNummer);
 			kontoBewegungen = konto.getKontobewegung();
 
 			JTable table = kontobewegungDlg.getTable();

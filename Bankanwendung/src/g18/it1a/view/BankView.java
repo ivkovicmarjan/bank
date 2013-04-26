@@ -33,7 +33,7 @@ public class BankView extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(587, 456);
+		this.setSize(500, 400);
 		this.setJMenuBar(getBankMenuBar());
 		this.setContentPane(getJContentPane());
 		this.setTitle("Bank Anwendung");

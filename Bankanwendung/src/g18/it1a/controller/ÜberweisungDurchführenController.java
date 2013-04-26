@@ -3,8 +3,10 @@ package g18.it1a.controller;
 import g18.it1a.exceptions.AccountNotFoundException;
 import g18.it1a.exceptions.LiquidityException;
 import g18.it1a.model.Konto;
+import g18.it1a.model.Kunde;
 import g18.it1a.model.Überweisung;
-import g18.it1a.view.ÜberweisungDurchführenDlg;
+import g18.it1a.view.BankView;
+import g18.it1a.view.ÜberweisungDurchführenPanel;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -18,64 +20,73 @@ import javax.swing.border.MatteBorder;
 
 public class ÜberweisungDurchführenController {
 
-	private ÜberweisungDurchführenDlg überweisungDurchführenDlg;
-	final Border defaultBorder;
-	final Border redBorder;
+	private ÜberweisungDurchführenPanel überweisungDurchführenPanel;
+	private final Border defaultBorder;
+	private final Border redBorder;
 
-	public ÜberweisungDurchführenController() {
-		überweisungDurchführenDlg = new ÜberweisungDurchführenDlg();
-		defaultBorder = überweisungDurchführenDlg.getVonKontoField().getBorder();
+	public ÜberweisungDurchführenController(BankView bankView) {
+		überweisungDurchführenPanel = new ÜberweisungDurchführenPanel();
+		bankView.setContentPane(überweisungDurchführenPanel);
+		bankView.setVisible(true);
+		defaultBorder = überweisungDurchführenPanel.getSourceField().getBorder();
 		redBorder = new MatteBorder(2, 2, 2, 2, Color.RED);
 	}
 
 	public void überweisungDurchführenActionPerformed() {
 
-		überweisungDurchführenDlg.getÜberweisenButton().addActionListener(new ActionListener() {
+		überweisungDurchführenPanel.getÜberweisenButton().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				überweisungDurchführenDlg.getVonKontoField().setBorder(defaultBorder);
-				überweisungDurchführenDlg.getNachKontoField().setBorder(defaultBorder);
-				überweisungDurchführenDlg.getBetragField().setBorder(defaultBorder);
+				überweisungDurchführenPanel.getSourceField().setBorder(defaultBorder);
+				überweisungDurchführenPanel.getDestinationField().setBorder(defaultBorder);
+				überweisungDurchführenPanel.getBetragField().setBorder(defaultBorder);
 
-				int kontoNummerQuelle = 0;
+				long kontoNummerQuelle = 0;
 				Konto quelle = null;
 				try {
-					kontoNummerQuelle = Integer.valueOf(überweisungDurchführenDlg.getVonKontoField().getText());
-					quelle = ControllerUtils.getKonto(kontoNummerQuelle);
+					kontoNummerQuelle = Long.valueOf(überweisungDurchführenPanel.getSourceField().getText());
+					Kunde kunde = ControllerUtils.getKundeVonKonto(kontoNummerQuelle);
+					quelle = kunde.getKonto(kontoNummerQuelle);
+					überweisungDurchführenPanel.getSourceNameField().setText(kunde.getName());
+
 				} catch (NumberFormatException e) {
-					überweisungDurchführenDlg.getVonKontoField().setBorder(redBorder);
-					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Bitte gültige Kontonummer eingeben.", "Ungültige Kontonummer",
+					überweisungDurchführenPanel.getSourceNameField().setText("");
+					überweisungDurchführenPanel.getSourceField().setBorder(redBorder);
+					JOptionPane.showMessageDialog(überweisungDurchführenPanel, "Bitte gültige Kontonummer eingeben.", "Ungültige Kontonummer",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				} catch (AccountNotFoundException e1) {
-					überweisungDurchführenDlg.getVonKontoField().setBorder(redBorder);
-					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Konto mit der Nummer: " + kontoNummerQuelle + " nicht gefunden.",
+					überweisungDurchführenPanel.getSourceNameField().setText("");
+					überweisungDurchführenPanel.getSourceField().setBorder(redBorder);
+					JOptionPane.showMessageDialog(überweisungDurchführenPanel, "Konto mit der Nummer: " + kontoNummerQuelle + " nicht gefunden.",
 							"Konto nicht gefunden", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
-				int kontoNummerZiel = 0;
+				long kontoNummerZiel = 0;
 				Konto ziel = null;
 				try {
-					kontoNummerZiel = Integer.valueOf(überweisungDurchführenDlg.getNachKontoField().getText());
-					ziel = ControllerUtils.getKonto(kontoNummerZiel);
+					kontoNummerZiel = Long.valueOf(überweisungDurchführenPanel.getDestinationField().getText());
+					Kunde kunde = ControllerUtils.getKundeVonKonto(kontoNummerZiel);
+					ziel = kunde.getKonto(kontoNummerZiel);
+					überweisungDurchführenPanel.getDestinationNameField().setText(kunde.getName());
 				} catch (NumberFormatException e) {
-					überweisungDurchführenDlg.getNachKontoField().setBorder(redBorder);
-					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Bitte gültige Kontonummer eingeben.", "Ungültige Kontonummer",
+					überweisungDurchführenPanel.getDestinationField().setBorder(redBorder);
+					JOptionPane.showMessageDialog(überweisungDurchführenPanel, "Bitte gültige Kontonummer eingeben.", "Ungültige Kontonummer",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				} catch (AccountNotFoundException e1) {
-					überweisungDurchführenDlg.getNachKontoField().setBorder(redBorder);
-					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Konto mit der Nummer: " + kontoNummerZiel + " nicht gefunden.",
+					überweisungDurchführenPanel.getDestinationField().setBorder(redBorder);
+					JOptionPane.showMessageDialog(überweisungDurchführenPanel, "Konto mit der Nummer: " + kontoNummerZiel + " nicht gefunden.",
 							"Konto nicht gefunden", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
-				Date datum = überweisungDurchführenDlg.getDateChooser().getDate();
+				Date datum = überweisungDurchführenPanel.getDateChooser().getDate();
 				if (datum == null) {
-					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Bitte ein gültiges Datum eingeben", "Ungültiges Datum",
+					JOptionPane.showMessageDialog(überweisungDurchführenPanel, "Bitte ein gültiges Datum eingeben", "Ungültiges Datum",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -86,30 +97,30 @@ public class ÜberweisungDurchführenController {
 				cal.set(Calendar.MINUTE, 60);
 				cal.set(Calendar.SECOND, 60);
 				if (Calendar.getInstance().after(cal)) {
-					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Das Datum darf nicht in der Vergangenheit liegen.", "Ungültiges Datum",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(überweisungDurchführenPanel, "Das Datum darf nicht in der Vergangenheit liegen.",
+							"Ungültiges Datum", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
 				double betrag = 0.0;
 				try {
-					betrag = Double.valueOf(überweisungDurchführenDlg.getBetragField().getText());
+					betrag = Double.valueOf(überweisungDurchführenPanel.getBetragField().getText());
 					if (betrag <= 0.0)
 						throw new Exception();
 				} catch (Exception e) {
-					überweisungDurchführenDlg.getBetragField().setBorder(redBorder);
-					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Bitte gültigen Betrag eingeben.", "Ungültiger Betrag",
+					überweisungDurchführenPanel.getBetragField().setBorder(redBorder);
+					JOptionPane.showMessageDialog(überweisungDurchführenPanel, "Bitte gültigen Betrag eingeben.", "Ungültiger Betrag",
 							JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
 				try {
 					new Überweisung(quelle, ziel, betrag, datum).durchführenÜberweisung();
-					JOptionPane.showMessageDialog(überweisungDurchführenDlg, " Die Überweisung erfolgreich am " + datum + " durchgeführt.",
+					JOptionPane.showMessageDialog(überweisungDurchführenPanel, " Die Überweisung erfolgreich am " + datum + " durchgeführt.",
 							"Überweisung erfolgreich durchgeführt.", JOptionPane.INFORMATION_MESSAGE);
 
 				} catch (LiquidityException e) {
-					JOptionPane.showMessageDialog(überweisungDurchführenDlg, "Nicht genügend Geld auf Konto: " + quelle.getKontoNummer()
+					JOptionPane.showMessageDialog(überweisungDurchführenPanel, "Nicht genügend Geld auf Konto: " + quelle.getKontoNummer()
 							+ " vorhanden.", "Ungültiger Betrag", JOptionPane.ERROR_MESSAGE);
 				}
 			}

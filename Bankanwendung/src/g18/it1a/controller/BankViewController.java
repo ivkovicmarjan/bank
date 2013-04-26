@@ -34,7 +34,7 @@ public class BankViewController {
 
 		bankView.getDurchführenUeberweisungen().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final ÜberweisungDurchführenController überweisungDurchführenController = new ÜberweisungDurchführenController();
+				final ÜberweisungDurchführenController überweisungDurchführenController = new ÜberweisungDurchführenController(bankView);
 				überweisungDurchführenController.überweisungDurchführenActionPerformed();
 			}
 		});

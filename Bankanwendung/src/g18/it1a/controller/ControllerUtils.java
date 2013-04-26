@@ -8,12 +8,10 @@ import g18.it1a.model.Kunden;
 public class ControllerUtils {
 
 	public static Konto getKonto(long kontoNummer) throws AccountNotFoundException {
-		int kundenNummer = getKundenNummer(kontoNummer);
-		Kunde kunde = Kunden.getKunde(kundenNummer);
-		return kunde.getKonto(kontoNummer);
+		return getKundeVonKonto(kontoNummer).getKonto(kontoNummer);
 	}
-	
-	public static int getKundenNummer(long vonKonto) throws AccountNotFoundException {
+
+	public static Kunde getKundeVonKonto(long vonKonto) throws AccountNotFoundException {
 		String kontoNummer = Long.toString(vonKonto);
 		int kontoNummerLength = kontoNummer.length();
 		if (kontoNummerLength < 6) {
@@ -21,6 +19,6 @@ public class ControllerUtils {
 		}
 		String kundenNummerStr = kontoNummer.substring(0, kontoNummerLength - 5);
 		int kundenNummer = Integer.valueOf(kundenNummerStr);
-		return kundenNummer;
+		return Kunden.getKunde(kundenNummer);
 	}
 }
