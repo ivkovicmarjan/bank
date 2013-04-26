@@ -58,29 +58,29 @@ public class BankView extends JFrame {
 					Kunden kunden = new Kunden();
 					
 					kunden.anlegenKunde("hans", 1);
-					kunden.anlegenKonto(1, KontoTyp.Sparkonto, 0).einzahlen(200, "test");
-					kunden.anlegenKonto(1, KontoTyp.Girokonto, 0);
+					kunden.anlegenKonto(1, KontoTyp.Sparkonto, 0).einzahlen(1243, "Anfangsguthaben");
+					kunden.anlegenKonto(1, KontoTyp.Girokonto, 0).einzahlen(5345, "Anfangsguthaben");
 					
 					kunden.anlegenKunde("peter", 2);
-					kunden.anlegenKonto(2, KontoTyp.Sparkonto, 0);
-					kunden.anlegenKonto(2, KontoTyp.Sparkonto, 0);
+					kunden.anlegenKonto(2, KontoTyp.Sparkonto, 0).einzahlen(1235, "Anfangsguthaben");
+					kunden.anlegenKonto(2, KontoTyp.Sparkonto, 0).einzahlen(5, "Anfangsguthaben");
 					
 					kunden.anlegenKunde("keks", 3);
-					kunden.anlegenKonto(3, KontoTyp.Girokonto, 0);
-					kunden.anlegenKonto(3, KontoTyp.Girokonto, 0);
+					kunden.anlegenKonto(3, KontoTyp.Girokonto, 0).einzahlen(123, "Anfangsguthaben");
+					kunden.anlegenKonto(3, KontoTyp.Girokonto, 0).einzahlen(23423, "Anfangsguthaben");
 					
 					kunden.anlegenKunde("klaus", 4);
-					kunden.anlegenKonto(4, KontoTyp.Girokonto, 0);
+					kunden.anlegenKonto(4, KontoTyp.Girokonto, 0).einzahlen(5553, "Anfangsguthaben");
 					
 					kunden.anlegenKunde("wurst", 5);
-					kunden.anlegenKonto(5, KontoTyp.Sparkonto, 0);
+					kunden.anlegenKonto(5, KontoTyp.Sparkonto, 0).einzahlen(1233, "Anfangsguthaben");
 					
 					kunden.anlegenKunde("mustermann", 6);
 					
 					kunden.anlegenKunde("asdg", 7);
-					kunden.anlegenKonto(7, KontoTyp.Sparkonto, 0);
-					kunden.anlegenKonto(7, KontoTyp.Girokonto, 0);
-					kunden.anlegenKonto(7, KontoTyp.Sparkonto, 0);
+					kunden.anlegenKonto(7, KontoTyp.Sparkonto, 0).einzahlen(1337, "Anfangsguthaben");
+					kunden.anlegenKonto(7, KontoTyp.Girokonto, 0).einzahlen(534, "Anfangsguthaben");
+					kunden.anlegenKonto(7, KontoTyp.Sparkonto, 0).einzahlen(343451, "Anfangsguthaben");
 		
 				}
 			});
