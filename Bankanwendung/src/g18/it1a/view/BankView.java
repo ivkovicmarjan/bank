@@ -11,6 +11,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 
 public class BankView extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -24,6 +25,7 @@ public class BankView extends JFrame {
 	private JMenuItem anzeigenKontostand = null;
 	private JMenuItem anzeigenKontobewegung = null;
 	private JMenuItem ende = null;
+	private JLabel lblTest;
 
 	public BankView() {
 		super();
@@ -86,6 +88,7 @@ public class BankView extends JFrame {
 			});
 			btnFillData.setBounds(476, 363, 85, 23);
 			jContentPane.add(btnFillData);
+			jContentPane.add(getLblTest());
 		}
 		return jContentPane;
 	}
@@ -161,5 +164,12 @@ public class BankView extends JFrame {
 		}
 
 		return ende;
+	}
+	private JLabel getLblTest() {
+		if (lblTest == null) {
+			lblTest = new JLabel("Erstellt von: Mike Kudla, Kai-Oliver Nieﬂen, Alissa Rauhe und Leonard Thoma");
+			lblTest.setBounds(77, 159, 456, 33);
+		}
+		return lblTest;
 	}
 }
