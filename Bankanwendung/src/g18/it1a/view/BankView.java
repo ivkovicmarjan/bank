@@ -58,7 +58,7 @@ public class BankView extends JFrame {
 					Kunden kunden = new Kunden();
 					
 					kunden.anlegenKunde("hans", 1);
-					kunden.anlegenKonto(1, KontoTyp.Sparkonto, 0);
+					kunden.anlegenKonto(1, KontoTyp.Sparkonto, 0).einzahlen(200, "test");
 					kunden.anlegenKonto(1, KontoTyp.Girokonto, 0);
 					
 					kunden.anlegenKunde("peter", 2);
@@ -81,9 +81,10 @@ public class BankView extends JFrame {
 					kunden.anlegenKonto(7, KontoTyp.Sparkonto, 0);
 					kunden.anlegenKonto(7, KontoTyp.Girokonto, 0);
 					kunden.anlegenKonto(7, KontoTyp.Sparkonto, 0);
+		
 				}
 			});
-			btnFillData.setBounds(23, 41, 191, 34);
+			btnFillData.setBounds(476, 363, 85, 23);
 			jContentPane.add(btnFillData);
 		}
 		return jContentPane;

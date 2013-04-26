@@ -33,18 +33,16 @@ public class AnlegenKundeController {
 			if(kundenName.length()<1)
 			{
 				String result = JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte einen richtigen Namen eingeben.", "Fehler!", JOptionPane.ERROR_MESSAGE);
-				anlegenKundeDlg.getKundenNameField().setText(result);
 				btAnlegenKundeActionPerformed(anlegenKundeDlg.getKundenNummerField().getText(), result);
 			}
 			else
 			{
-				if(kundenNummer >= 1)
+				if(kundenNummer == 0)
 				{
 					String result = JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte eine Zahl die nicht 0 ist als Kundennummer eingeben.", "Fehler!", JOptionPane.ERROR_MESSAGE);
 					
 					if(result != null)
 					{				
-						anlegenKundeDlg.getKundenNummerField().setText(result);
 						btAnlegenKundeActionPerformed(result, anlegenKundeDlg.getKundenNameField().getText());	
 					}
 				}
@@ -59,7 +57,6 @@ public class AnlegenKundeController {
 			
 			if(result != null)
 			{				
-				anlegenKundeDlg.getKundenNummerField().setText(result);
 				btAnlegenKundeActionPerformed(result, anlegenKundeDlg.getKundenNameField().getText());	
 			}
 		}
