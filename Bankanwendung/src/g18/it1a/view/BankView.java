@@ -33,11 +33,11 @@ public class BankView extends JFrame {
 	}
 
 	private void initialize() {
-		this.setSize(500, 400);
-		this.setJMenuBar(getBankMenuBar());
-		this.setContentPane(getJContentPane());
-		this.setTitle("Bank Anwendung");
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setSize(500, 400);
+		setJMenuBar(getBankMenuBar());
+		setContentPane(getJContentPane());
+		setTitle("Bank Anwendung");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 
 	private JMenuBar getBankMenuBar() {
@@ -52,41 +52,41 @@ public class BankView extends JFrame {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
 			jContentPane.setLayout(null);
-			
-			JButton btnFillData = new JButton("Fill Data");
+
+			JButton btnFillData = new JButton("load testdata");
 			btnFillData.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+
 					Kunden kunden = new Kunden();
-					
+
 					kunden.anlegenKunde("hans", 1);
 					kunden.anlegenKonto(1, KontoTyp.Sparkonto, 0).einzahlen(1243, "Anfangsguthaben");
 					kunden.anlegenKonto(1, KontoTyp.Girokonto, 0).einzahlen(5345, "Anfangsguthaben");
-					
+
 					kunden.anlegenKunde("peter", 2);
 					kunden.anlegenKonto(2, KontoTyp.Sparkonto, 0).einzahlen(1235, "Anfangsguthaben");
 					kunden.anlegenKonto(2, KontoTyp.Sparkonto, 0).einzahlen(5, "Anfangsguthaben");
-					
+
 					kunden.anlegenKunde("keks", 3);
 					kunden.anlegenKonto(3, KontoTyp.Girokonto, 0).einzahlen(123, "Anfangsguthaben");
 					kunden.anlegenKonto(3, KontoTyp.Girokonto, 0).einzahlen(23423, "Anfangsguthaben");
-					
+
 					kunden.anlegenKunde("klaus", 4);
 					kunden.anlegenKonto(4, KontoTyp.Girokonto, 0).einzahlen(5553, "Anfangsguthaben");
-					
+
 					kunden.anlegenKunde("wurst", 5);
 					kunden.anlegenKonto(5, KontoTyp.Sparkonto, 0).einzahlen(1233, "Anfangsguthaben");
-					
+
 					kunden.anlegenKunde("mustermann", 6);
-					
+
 					kunden.anlegenKunde("asdg", 7);
 					kunden.anlegenKonto(7, KontoTyp.Sparkonto, 0).einzahlen(1337, "Anfangsguthaben");
 					kunden.anlegenKonto(7, KontoTyp.Girokonto, 0).einzahlen(534, "Anfangsguthaben");
 					kunden.anlegenKonto(7, KontoTyp.Sparkonto, 0).einzahlen(343451, "Anfangsguthaben");
-		
+
 				}
 			});
-			btnFillData.setBounds(476, 363, 85, 23);
+			btnFillData.setBounds(210, 269, 119, 23);
 			jContentPane.add(btnFillData);
 			jContentPane.add(getLblTest());
 		}
@@ -165,10 +165,11 @@ public class BankView extends JFrame {
 
 		return ende;
 	}
+
 	private JLabel getLblTest() {
 		if (lblTest == null) {
 			lblTest = new JLabel("Erstellt von: Mike Kudla, Kai-Oliver Nieﬂen, Alissa Rauhe und Leonard Thoma");
-			lblTest.setBounds(77, 159, 456, 33);
+			lblTest.setBounds(10, 128, 464, 14);
 		}
 		return lblTest;
 	}
