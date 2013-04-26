@@ -16,7 +16,8 @@ public class Bank {
 			System.out.print("Bitte Kundenname eingeben: ");
 			String kundenName = sc.next();
 			System.out.print("Bitte Kundenvorname eingeben: ");
-			sc.next();
+			kundenName = sc.next() + " " + kundenName;
+			sc.close();
 			Kunde kunde1 = new Kunde(kundenName, kundenNummer);
 
 			Konto konto1 = kunde1.anlegenKonto(KontoTyp.Girokonto);
