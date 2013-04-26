@@ -13,7 +13,6 @@ public class ControllerUtils {
 		return kunde.getKonto(kontoNummer);
 	}
 	
-	// TODO Try/Catch, Exceptions und Fehlerbehandlung
 	public static int getKundenNummer(long vonKonto) throws AccountNotFoundException {
 		String kontoNummer = Long.toString(vonKonto);
 		int kontoNummerLength = kontoNummer.length();
