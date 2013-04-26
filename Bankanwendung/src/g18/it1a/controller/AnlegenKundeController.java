@@ -21,30 +21,47 @@ public class AnlegenKundeController {
 		anlegenKundeDlg = new AnlegenKundeDlg();
 		anlegenKundeDlg.getAnlegenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				btAnlegenKundeActionPerformed(anlegenKundeDlg.getKundenNummerField().getText());
+				btAnlegenKundeActionPerformed(anlegenKundeDlg.getKundenNummerField().getText(), anlegenKundeDlg.getKundenNameField().getText());
 			}
 		});
 	}
 
-	private void btAnlegenKundeActionPerformed(String value) {
+	private void btAnlegenKundeActionPerformed(String kundeNummer, String kundenName) {
 		try {
-			String kundenName = anlegenKundeDlg.getKundenNameField().getText();
-			int kundenNummer = Integer.parseInt(value);
-			Kunde neuerKunde = bankHandler.anlegenKunde(kundenName, kundenNummer);
-			JOptionPane.showMessageDialog(anlegenKundeDlg, "Kunde: " + neuerKunde.getName() + " angelegt.");
-			clearDlgAnlegenKunde();
+			int kundenNummer = Integer.parseInt(kundeNummer);
+			
+			if(kundenName.length()<1)
+			{
+				String result = JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte einen richtigen Namen eingeben.", "Fehler!", JOptionPane.ERROR_MESSAGE);
+				anlegenKundeDlg.getKundenNameField().setText(result);
+				btAnlegenKundeActionPerformed(anlegenKundeDlg.getKundenNummerField().getText(), result);
+			}
+			else
+			{
+				if(kundenNummer >= 1)
+				{
+					String result = JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte eine Zahl die nicht 0 ist als Kundennummer eingeben.", "Fehler!", JOptionPane.ERROR_MESSAGE);
+					
+					if(result != null)
+					{				
+						anlegenKundeDlg.getKundenNummerField().setText(result);
+						btAnlegenKundeActionPerformed(result, anlegenKundeDlg.getKundenNameField().getText());	
+					}
+				}
+				else
+				{
+					Kunde neuerKunde = bankHandler.anlegenKunde(kundenName, kundenNummer);
+					JOptionPane.showMessageDialog(anlegenKundeDlg, "Kunde: " + neuerKunde.getName() + " angelegt.");
+				}
+			}			
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte Zahl als Kundennummer eingeben.", "Fehler!", JOptionPane.ERROR_MESSAGE);
+			String result = JOptionPane.showInputDialog(anlegenKundeDlg, "Bitte eine Zahl die nicht 0 ist als Kundennummer eingeben.", "Fehler!", JOptionPane.ERROR_MESSAGE);
 			
 			if(result != null)
 			{				
-				btAnlegenKundeActionPerformed(result);	
+				anlegenKundeDlg.getKundenNummerField().setText(result);
+				btAnlegenKundeActionPerformed(result, anlegenKundeDlg.getKundenNameField().getText());	
 			}
 		}
-	}
-
-	private void clearDlgAnlegenKunde() {
-		anlegenKundeDlg.getKundenNameField().setText("");
-		anlegenKundeDlg.getKundenNummerField().setText("");
 	}
 }
