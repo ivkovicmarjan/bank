@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 public class KontostandsübersichtAnzeigenController {
 
 	private KontostandsübersichtAnzeigenPanel kontostandsübersichtAnzeigenPanel;
-	
+
 	public KontostandsübersichtAnzeigenController(BankView bankView) {
 		kontostandsübersichtAnzeigenPanel = new KontostandsübersichtAnzeigenPanel();
 		bankView.setContentPane(kontostandsübersichtAnzeigenPanel);
@@ -53,12 +53,13 @@ public class KontostandsübersichtAnzeigenController {
 				return;
 			}
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(kontostandsübersichtAnzeigenPanel, "Bitte nur Zahlen eingeben:", "", JOptionPane.WARNING_MESSAGE);
+			String result = JOptionPane.showInputDialog(kontostandsübersichtAnzeigenPanel, "Bitte nur Zahlen eingeben:", "",
+					JOptionPane.WARNING_MESSAGE);
 			if (result == null)
 				return;
 			btKontobersichtActionPerformed(result);
 			return;
-			
+
 		}
 	}
 }

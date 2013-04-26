@@ -15,7 +15,7 @@ public class BankHandler {
 	public Kunde anlegenKunde(String kundenName, int kundenNummer) {
 		return kunden.anlegenKunde(kundenName, kundenNummer);
 	}
-	
+
 	public Konto anlegenKonto(int kundennummer, KontoTyp kontotyp, double dispoZins) throws NullPointerException {
 		return kunden.anlegenKonto(kundennummer, kontotyp, dispoZins);
 	}

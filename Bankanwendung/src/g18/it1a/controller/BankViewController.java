@@ -52,7 +52,7 @@ public class BankViewController {
 				kontobewegungController.kontobewegungActionPerformed();
 			}
 		});
-		
+
 		bankView.getEnde().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
