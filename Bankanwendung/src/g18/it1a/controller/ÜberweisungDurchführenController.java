@@ -27,6 +27,7 @@ public class ÜberweisungDurchführenController {
 	public ÜberweisungDurchführenController(BankView bankView) {
 		überweisungDurchführenPanel = new ÜberweisungDurchführenPanel();
 		bankView.setContentPane(überweisungDurchführenPanel);
+		bankView.setTitle("Bank Anwendung - Überweisung durchführen");
 		bankView.setVisible(true);
 		defaultBorder = überweisungDurchführenPanel.getSourceField().getBorder();
 		redBorder = new MatteBorder(2, 2, 2, 2, Color.RED);

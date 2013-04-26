@@ -1,7 +1,5 @@
 package g18.it1a.view;
 
-
-import javax.swing.JDialog;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -13,10 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.border.BevelBorder;
 
-public class KontobewegungDlg extends JDialog {
-	/**
-	 * 
-	 */
+public class KontobewegungPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTextField kontonummerTextField;
 	private JTable table;
@@ -25,12 +20,9 @@ public class KontobewegungDlg extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public KontobewegungDlg() {
-		setSize(350, 300);
-		setTitle("Kontobewegung");
-		setVisible(true);
+	public KontobewegungPanel() {
 		JPanel panel = new JPanel();
-		getContentPane().add(panel, BorderLayout.NORTH);
+		add(panel, BorderLayout.NORTH);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 
 		JLabel kontonummerLabel = new JLabel("Kontonummer:");
@@ -41,10 +33,10 @@ public class KontobewegungDlg extends JDialog {
 		kontonummerTextField.setColumns(10);
 
 		anzeigenButton = new JButton("Kontobewegung anzeigen");
-		getContentPane().add(anzeigenButton, BorderLayout.SOUTH);
+		add(anzeigenButton, BorderLayout.SOUTH);
 
 		JScrollPane scrollPane = new JScrollPane();
-		getContentPane().add(scrollPane, BorderLayout.CENTER);
+		add(scrollPane, BorderLayout.CENTER);
 
 		table = new JTable();
 		table.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Datum", "Betrag", "Bemerkung" }) {

@@ -4,7 +4,8 @@ import g18.it1a.exceptions.AccountNotFoundException;
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kontobewegung;
 import g18.it1a.model.Kunde;
-import g18.it1a.view.KontobewegungDlg;
+import g18.it1a.view.BankView;
+import g18.it1a.view.KontobewegungPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,14 +17,20 @@ import javax.swing.table.DefaultTableModel;
 
 public class KontobewegungController {
 
-	private KontobewegungDlg kontobewegungDlg;
+	private KontobewegungPanel kontobewegungPanel;
+
+	public KontobewegungController(BankView bankView) {
+		kontobewegungPanel = new KontobewegungPanel();
+		bankView.setContentPane(kontobewegungPanel);
+		bankView.setTitle("Bank Anwendung - Kontobewegung anzeigen");
+		bankView.setVisible(true);
+	}
 
 	public void kontobewegungActionPerformed() {
-		kontobewegungDlg = new KontobewegungDlg();
 
-		kontobewegungDlg.getAnzeigenButton().addActionListener(new ActionListener() {
+		kontobewegungPanel.getAnzeigenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btKontobewegungActionPerformed(kontobewegungDlg.getKontonummerTextField().getText());
+				btKontobewegungActionPerformed(kontobewegungPanel.getKontonummerTextField().getText());
 			}
 		});
 	}
@@ -35,23 +42,23 @@ public class KontobewegungController {
 		try {
 			kontoNummer = Integer.parseInt(kontoNummerString);
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(kontobewegungDlg, "Bitte Zahl als Kontonummer eingeben!");
-			if(result == null) {
+			String result = JOptionPane.showInputDialog(kontobewegungPanel, "Bitte Zahl als Kontonummer eingeben!");
+			if (result == null) {
 				return;
 			}
 			btKontobewegungActionPerformed(result);
 			return;
-			
+
 		}
 
 		Kunde kunde = null;
-		
+
 		try {
 			kunde = ControllerUtils.getKundeVonKonto(kontoNummer);
 			konto = kunde.getKonto(kontoNummer);
 			kontoBewegungen = konto.getKontobewegung();
 
-			JTable table = kontobewegungDlg.getTable();
+			JTable table = kontobewegungPanel.getTable();
 			DefaultTableModel model = (DefaultTableModel) table.getModel();
 			model.setRowCount(0);
 
@@ -61,7 +68,7 @@ public class KontobewegungController {
 
 			}
 		} catch (AccountNotFoundException e) {
-			JOptionPane.showMessageDialog(kontobewegungDlg, "Konto ist nicht vorhanden!", "", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(kontobewegungPanel, "Konto ist nicht vorhanden!", "", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 	}

@@ -13,21 +13,21 @@ public class BankViewController {
 
 		bankView.getAnlegenKunde().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				final AnlegenKundeController anlegenKundeController = new AnlegenKundeController(bankHandler);
+				final KundeAnlegenController anlegenKundeController = new KundeAnlegenController(bankHandler, bankView);
 				anlegenKundeController.anlegenKundenActionPerformed();
 			}
 		});
 
 		bankView.getAnlegenKonto().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final AnlegenKontoController anlegenKontoController = new AnlegenKontoController(bankHandler);
+				final KontoAnlegenController anlegenKontoController = new KontoAnlegenController(bankHandler, bankView);
 				anlegenKontoController.anlegenKontoActionPerformed();
 			}
 		});
 
 		bankView.getAnzeigenKontostand().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final KontostandsübersichtAnzeigenController kontostandsübersichtController = new KontostandsübersichtAnzeigenController();
+				final KontostandsübersichtAnzeigenController kontostandsübersichtController = new KontostandsübersichtAnzeigenController(bankView);
 				kontostandsübersichtController.anzeigenKontostandActionPerformed();
 			}
 		});
@@ -41,14 +41,14 @@ public class BankViewController {
 
 		bankView.getDurchfuehrenZahlungen().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final EinAuszahlungDurchführenController einAuszahlungDurchführenController = new EinAuszahlungDurchführenController();
+				final EinAuszahlungDurchführenController einAuszahlungDurchführenController = new EinAuszahlungDurchführenController(bankView);
 				einAuszahlungDurchführenController.einAuszahlenActionPerformed();
 			}
 		});
 
 		bankView.getAnzeigenKontobewegung().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final KontobewegungController kontobewegungController = new KontobewegungController();
+				final KontobewegungController kontobewegungController = new KontobewegungController(bankView);
 				kontobewegungController.kontobewegungActionPerformed();
 			}
 		});

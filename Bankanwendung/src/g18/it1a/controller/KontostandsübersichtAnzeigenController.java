@@ -6,7 +6,8 @@ import java.awt.event.ActionListener;
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kunde;
 import g18.it1a.model.Kunden;
-import g18.it1a.view.KontostandsübersichtAnzeigenDlg;
+import g18.it1a.view.BankView;
+import g18.it1a.view.KontostandsübersichtAnzeigenPanel;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -14,21 +15,27 @@ import javax.swing.table.DefaultTableModel;
 
 public class KontostandsübersichtAnzeigenController {
 
-	private KontostandsübersichtAnzeigenDlg kontostandsübersichtAnzeigenDlg;
+	private KontostandsübersichtAnzeigenPanel kontostandsübersichtAnzeigenPanel;
+	
+	public KontostandsübersichtAnzeigenController(BankView bankView) {
+		kontostandsübersichtAnzeigenPanel = new KontostandsübersichtAnzeigenPanel();
+		bankView.setContentPane(kontostandsübersichtAnzeigenPanel);
+		bankView.setTitle("Bank Anwendung - Kontostandsübersicht anzeigen");
+		bankView.setVisible(true);
+	}
 
 	public void anzeigenKontostandActionPerformed() {
-		kontostandsübersichtAnzeigenDlg = new KontostandsübersichtAnzeigenDlg();
 
-		kontostandsübersichtAnzeigenDlg.getbtnKontoubersicht().addActionListener(new ActionListener() {
+		kontostandsübersichtAnzeigenPanel.getbtnKontoubersicht().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				btKontobersichtActionPerformed(kontostandsübersichtAnzeigenDlg.getKundennummerField().getText());
+				btKontobersichtActionPerformed(kontostandsübersichtAnzeigenPanel.getKundennummerField().getText());
 			}
 		});
 	}
 
 	private void btKontobersichtActionPerformed(String nummer) {
 		int kundennummer = 0;
-		JTable table = kontostandsübersichtAnzeigenDlg.getKontoubersicht();
+		JTable table = kontostandsübersichtAnzeigenPanel.getKontoubersicht();
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		model.setRowCount(0);
 
@@ -42,11 +49,11 @@ public class KontostandsübersichtAnzeigenController {
 					model.addRow(new Object[] { konto.getKontoTyp(), konto.getKontoNummer(), konto.getKontostand() });
 				}
 			} else {
-				JOptionPane.showMessageDialog(kontostandsübersichtAnzeigenDlg, "Dieser Kunde exisitert nicht!", "", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(kontostandsübersichtAnzeigenPanel, "Dieser Kunde exisitert nicht!", "", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(kontostandsübersichtAnzeigenDlg, "Bitte nur Zahlen eingeben:", "", JOptionPane.WARNING_MESSAGE);
+			String result = JOptionPane.showInputDialog(kontostandsübersichtAnzeigenPanel, "Bitte nur Zahlen eingeben:", "", JOptionPane.WARNING_MESSAGE);
 			if (result == null)
 				return;
 			btKontobersichtActionPerformed(result);

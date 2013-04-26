@@ -1,43 +1,39 @@
 package g18.it1a.view;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 
-public class KontostandsübersichtAnzeigenDlg extends JDialog {
+public class KontostandsübersichtAnzeigenPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTable kontostandTable;
 	private JTextField kundennummerField;
 	private JButton btnKontobersicht;
 
-	public KontostandsübersichtAnzeigenDlg() {
-		this.setTitle("Kontostandübersicht Anzeigen");
-		this.setSize(408, 261);
-		this.setVisible(true);
-
-		getContentPane().setLayout(null);
+	public KontostandsübersichtAnzeigenPanel() {
+		setLayout(null);
 
 		JLabel lblKundennummer = new JLabel("Kundennummer:");
 		lblKundennummer.setBounds(10, 11, 133, 14);
-		getContentPane().add(lblKundennummer);
+		add(lblKundennummer);
 
 		btnKontobersicht = new JButton("Konto\u00FCbersicht");
 		btnKontobersicht.setBounds(252, 7, 126, 23);
-		getContentPane().add(btnKontobersicht);
+		add(btnKontobersicht);
 
 		kundennummerField = new JTextField();
 		kundennummerField.setBounds(109, 8, 133, 20);
-		getContentPane().add(kundennummerField);
+		add(kundennummerField);
 		kundennummerField.setColumns(10);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 44, 368, 168);
-		getContentPane().add(scrollPane);
+		add(scrollPane);
 
 		kontostandTable = new JTable(new String[][] { { "", "", "" } }, new String[] { "Kontoart", "Kontonummer", "Kontostand" });
 		kontostandTable.setModel(new DefaultTableModel(new Object[][] {}, new String[] { "Kontoart", "Kontonummer", "Kontostand" }) {
