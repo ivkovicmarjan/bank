@@ -14,7 +14,7 @@ public class BankViewController {
 		bankView.getAnlegenKunde().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				final KundeAnlegenController anlegenKundeController = new KundeAnlegenController(bankHandler, bankView);
-				anlegenKundeController.anlegenKundenActionPerformed();
+				anlegenKundeController.kundeAnlegenActionPerformed();
 			}
 		});
 

@@ -1,5 +1,6 @@
 package g18.it1a.controller;
 
+import g18.it1a.exceptions.CustomerAlreadyExistsException;
 import g18.it1a.model.Konto;
 import g18.it1a.model.KontoTyp;
 import g18.it1a.model.Kunde;
@@ -12,7 +13,7 @@ public class BankHandler {
 		kunden = new Kunden();
 	}
 
-	public Kunde anlegenKunde(String kundenName, int kundenNummer) {
+	public Kunde anlegenKunde(String kundenName, int kundenNummer) throws CustomerAlreadyExistsException {
 		return kunden.anlegenKunde(kundenName, kundenNummer);
 	}
 

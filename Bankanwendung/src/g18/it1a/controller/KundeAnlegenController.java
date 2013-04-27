@@ -1,5 +1,6 @@
 package g18.it1a.controller;
 
+import g18.it1a.exceptions.CustomerAlreadyExistsException;
 import g18.it1a.model.Kunde;
 import g18.it1a.view.BankView;
 import g18.it1a.view.KundeAnlegenPanel;
@@ -22,42 +23,38 @@ public class KundeAnlegenController {
 		bankView.setVisible(true);
 	}
 
-	public void anlegenKundenActionPerformed() {
+	public void kundeAnlegenActionPerformed() {
 		kundeAnlegenPanel.getAnlegenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				btAnlegenKundeActionPerformed(kundeAnlegenPanel.getKundenNummerField().getText(), kundeAnlegenPanel.getKundenNameField().getText());
+				btKundeAnlegenActionPerformed(kundeAnlegenPanel.getKundenNummerField().getText(), kundeAnlegenPanel
+						.getKundenNameField().getText());
 			}
 		});
 	}
 
-	private void btAnlegenKundeActionPerformed(String kundeNummer, String kundenName) {
+	private void btKundeAnlegenActionPerformed(String kundeNummer, String kundenName) {
 		try {
 			int kundenNummer = Integer.parseInt(kundeNummer);
-
 			if (kundenName.length() < 1) {
-				String result = JOptionPane.showInputDialog(kundeAnlegenPanel, "Bitte einen richtigen Namen eingeben.", "Fehler!",
+				JOptionPane.showMessageDialog(kundeAnlegenPanel, "Bitte einen richtigen Namen eingeben.", "Fehler!",
 						JOptionPane.ERROR_MESSAGE);
-				btAnlegenKundeActionPerformed(kundeAnlegenPanel.getKundenNummerField().getText(), result);
 			} else {
 				if (kundenNummer == 0) {
-					String result = JOptionPane.showInputDialog(kundeAnlegenPanel, "Bitte eine Zahl die nicht 0 ist als Kundennummer eingeben.",
-							"Fehler!", JOptionPane.ERROR_MESSAGE);
-
-					if (result != null) {
-						btAnlegenKundeActionPerformed(result, kundeAnlegenPanel.getKundenNameField().getText());
-					}
+					JOptionPane.showMessageDialog(kundeAnlegenPanel,
+							"Bitte eine Zahl die nicht 0 ist als Kundennummer eingeben.", "Fehler!",
+							JOptionPane.ERROR_MESSAGE);
 				} else {
 					Kunde neuerKunde = bankHandler.anlegenKunde(kundenName, kundenNummer);
 					JOptionPane.showMessageDialog(kundeAnlegenPanel, "Kunde: " + neuerKunde.getName() + " angelegt.");
 				}
 			}
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(kundeAnlegenPanel, "Bitte eine Zahl die nicht 0 ist als Kundennummer eingeben.", "Fehler!",
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(kundeAnlegenPanel,
+					"Bitte eine Zahl die nicht 0 ist als Kundennummer eingeben.", "Fehler!", JOptionPane.ERROR_MESSAGE);
 
-			if (result != null) {
-				btAnlegenKundeActionPerformed(result, kundeAnlegenPanel.getKundenNameField().getText());
-			}
+		} catch (CustomerAlreadyExistsException e) {
+			JOptionPane.showMessageDialog(kundeAnlegenPanel, "Ein Kunde mit dieser Nummer existiert bereits",
+					"Fehler!", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }
