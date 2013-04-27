@@ -3,6 +3,7 @@ package g18.it1a.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import g18.it1a.exceptions.CustomerNotFoundException;
 import g18.it1a.model.Konto;
 import g18.it1a.model.Kunde;
 import g18.it1a.model.Kunden;
@@ -43,23 +44,23 @@ public class KontostandsübersichtAnzeigenController {
 			kundennummer = Integer.parseInt(nummer);
 
 			Kunde kunde = Kunden.getKunde(kundennummer);
-			if (kunde != null) {
-				for (Konto konto : kunde.getKonten().values()) {
 
-					model.addRow(new Object[] { konto.getKontoTyp(), konto.getKontoNummer(), konto.getKontostand() });
-				}
-			} else {
-				JOptionPane.showMessageDialog(kontostandsübersichtAnzeigenPanel, "Dieser Kunde exisitert nicht!", "", JOptionPane.ERROR_MESSAGE);
-				return;
+			for (Konto konto : kunde.getKonten().values()) {
+
+				model.addRow(new Object[] { konto.getKontoTyp(), konto.getKontoNummer(), konto.getKontostand() });
 			}
+
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(kontostandsübersichtAnzeigenPanel, "Bitte nur Zahlen eingeben:", "",
-					JOptionPane.WARNING_MESSAGE);
+			String result = JOptionPane.showInputDialog(kontostandsübersichtAnzeigenPanel,
+					"Bitte nur Zahlen eingeben:", "", JOptionPane.WARNING_MESSAGE);
 			if (result == null)
 				return;
 			btKontobersichtActionPerformed(result);
 			return;
-
+		} catch (CustomerNotFoundException e) {
+			JOptionPane.showMessageDialog(kontostandsübersichtAnzeigenPanel, "Dieser Kunde exisitert nicht!", "",
+					JOptionPane.ERROR_MESSAGE);
+			return;
 		}
 	}
 }

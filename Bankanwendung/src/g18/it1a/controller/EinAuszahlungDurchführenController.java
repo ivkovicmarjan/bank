@@ -26,15 +26,15 @@ public class EinAuszahlungDurchführenController {
 
 		einAuszahlungDurchführenPanel.getEinzahlenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				btEinzahlenActionPerformed(einAuszahlungDurchführenPanel.getBetragField().getText(), einAuszahlungDurchführenPanel
-						.getKundennummerField().getText());
+				btEinzahlenActionPerformed(einAuszahlungDurchführenPanel.getBetragField().getText(),
+						einAuszahlungDurchführenPanel.getKundennummerField().getText());
 			}
 		});
 
 		einAuszahlungDurchführenPanel.getAuszahlenButton().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				btAuszahlenActionPerformed(einAuszahlungDurchführenPanel.getBetragField().getText(), einAuszahlungDurchführenPanel
-						.getKundennummerField().getText());
+				btAuszahlenActionPerformed(einAuszahlungDurchführenPanel.getBetragField().getText(),
+						einAuszahlungDurchführenPanel.getKundennummerField().getText());
 			}
 		});
 	}
@@ -46,7 +46,8 @@ public class EinAuszahlungDurchführenController {
 		try {
 			kontonummer = Long.valueOf(kontoNummer);
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenPanel, "Bitte Zahl als Kontonummer eingeben.");
+			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenPanel,
+					"Bitte Zahl als Kontonummer eingeben.");
 
 			if (result != null) {
 				btAuszahlenActionPerformed(value, result);
@@ -58,7 +59,8 @@ public class EinAuszahlungDurchführenController {
 		try {
 			betrag = Double.valueOf(value);
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenPanel, "Bitte Zahl als Betrag eingeben.");
+			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenPanel,
+					"Bitte Zahl als Betrag eingeben.");
 
 			if (result != null) {
 				btAuszahlenActionPerformed(result, kontoNummer);
@@ -71,9 +73,11 @@ public class EinAuszahlungDurchführenController {
 		einAuszahlungDurchführenPanel.getBetragField().setText(value);
 
 		try {
-			einAuszahlungDurchführenPanel.getAlterKontostandField().setText("" + ControllerUtils.getKonto(kontonummer).getKontostand());
+			einAuszahlungDurchführenPanel.getAlterKontostandField().setText(
+					"" + ControllerUtils.getKonto(kontonummer).getKontostand());
 			Kunden.auszahlen(betrag, kontonummer);
-			einAuszahlungDurchführenPanel.getNeuerKontostandField().setText("" + ControllerUtils.getKonto(kontonummer).getKontostand());
+			einAuszahlungDurchführenPanel.getNeuerKontostandField().setText(
+					"" + ControllerUtils.getKonto(kontonummer).getKontostand());
 		} catch (AccountNotFoundException e) {
 			JOptionPane.showMessageDialog(einAuszahlungDurchführenPanel, "Konto ist nicht vorhanden!");
 			return;
@@ -93,7 +97,8 @@ public class EinAuszahlungDurchführenController {
 		try {
 			kontonummer = Long.valueOf(kontoNummer);
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenPanel, "Bitte Zahl als Kontonummer eingeben.");
+			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenPanel,
+					"Bitte Zahl als Kontonummer eingeben.");
 
 			if (result != null) {
 				btEinzahlenActionPerformed(value, result);
@@ -105,7 +110,8 @@ public class EinAuszahlungDurchführenController {
 		try {
 			betrag = Double.valueOf(value);
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenPanel, "Bitte Zahl als Betrag eingeben.");
+			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenPanel,
+					"Bitte Zahl als Betrag eingeben.");
 
 			if (result != null) {
 				btEinzahlenActionPerformed(result, kontoNummer);
@@ -117,13 +123,15 @@ public class EinAuszahlungDurchführenController {
 		einAuszahlungDurchführenPanel.getBetragField().setText(value);
 
 		try {
-			einAuszahlungDurchführenPanel.getAlterKontostandField().setText("" + ControllerUtils.getKonto(kontonummer).getKontostand());
+			einAuszahlungDurchführenPanel.getAlterKontostandField().setText(
+					"" + ControllerUtils.getKonto(kontonummer).getKontostand());
 			Kunden.einzahlen(betrag, kontonummer);
-			einAuszahlungDurchführenPanel.getNeuerKontostandField().setText("" + ControllerUtils.getKonto(kontonummer).getKontostand());
+			einAuszahlungDurchführenPanel.getNeuerKontostandField().setText(
+					"" + ControllerUtils.getKonto(kontonummer).getKontostand());
 		} catch (AccountNotFoundException e) {
 			JOptionPane.showMessageDialog(einAuszahlungDurchführenPanel, "Konto ist nicht vorhanden!");
 			return;
-		}
+		} 
 
 		JOptionPane.showMessageDialog(einAuszahlungDurchführenPanel, "Einzahlung wurde durchgeführt!");
 	}

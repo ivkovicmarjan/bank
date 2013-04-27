@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import g18.it1a.controller.ControllerUtils;
 import g18.it1a.exceptions.AccountNotFoundException;
+import g18.it1a.exceptions.CustomerNotFoundException;
 import g18.it1a.exceptions.LiquidityException;
 import g18.it1a.model.KontoTyp;
 
@@ -20,8 +21,12 @@ public class Kunden {
 		return kunde;
 	}
 	
-	public static Kunde getKunde(int kundenNummer) {
-		return kunden.get(kundenNummer);
+	public static Kunde getKunde(int kundenNummer) throws CustomerNotFoundException {
+		Kunde kunde = kunden.get(kundenNummer);
+		if (kunde == null) {
+			throw new CustomerNotFoundException();
+		}
+		return kunde;
 	}
 	
 	public Konto anlegenKonto(int kundennummer, KontoTyp kontotyp, double dispoZins) throws NullPointerException {
