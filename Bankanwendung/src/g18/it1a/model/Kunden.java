@@ -32,6 +32,10 @@ public class Kunden {
 		}
 		return kunde;
 	}
+	
+	public static HashMap<Integer, Kunde> getKunden() {
+		return kunden;
+	}
 
 	public Konto anlegenKonto(int kundennummer, KontoTyp kontotyp, double dispoZins) throws NullPointerException {
 		Konto konto;

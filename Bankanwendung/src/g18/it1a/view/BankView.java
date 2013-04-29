@@ -25,6 +25,7 @@ public class BankView extends JFrame {
 	private JMenuItem durchf¸hrenUeberweisungen = null;
 	private JMenuItem anzeigenKontostand = null;
 	private JMenuItem anzeigenKontobewegung = null;
+	private JMenuItem kunden‹bersicht = null;
 	private JMenuItem ende = null;
 	private JLabel lblTest;
 
@@ -103,13 +104,14 @@ public class BankView extends JFrame {
 			Anwendungen = new JMenu();
 			Anwendungen.setText("Anwendungen");
 			Anwendungen.add(getAnlegenKunde());
+			Anwendungen.add(getKunden‹bersicht());
 			Anwendungen.add(getAnlegenKonto());
 			Anwendungen.add(getDurchfuehrenZahlungen());
 			Anwendungen.add(getDurchf¸hrenUeberweisungen());
 			Anwendungen.add(getAnzeigenKontostand());
 			Anwendungen.add(getAnzeigenKontobewegung());
 			Anwendungen.add(getEnde());
-			Anwendungen.insertSeparator(6);
+			Anwendungen.insertSeparator(7);
 		}
 		return Anwendungen;
 	}
@@ -177,5 +179,14 @@ public class BankView extends JFrame {
 			lblTest.setBounds(10, 128, 464, 14);
 		}
 		return lblTest;
+	}
+
+	public JMenuItem getKunden‹bersicht() {
+		if (kunden‹bersicht == null) {
+			kunden‹bersicht = new JMenuItem();
+			kunden‹bersicht.setText("Kunden ‹bersicht");
+		}
+		return kunden‹bersicht;
+
 	}
 }

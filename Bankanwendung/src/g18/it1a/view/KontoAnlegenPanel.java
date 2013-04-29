@@ -18,7 +18,6 @@ public class KontoAnlegenPanel extends JPanel {
 	private JTextField kundenNummerFeld;
 
 	public KontoAnlegenPanel() {
-		// setTitle("Konto anlegen");
 		setLayout(null);
 
 		JLabel kontoTypLabel = new JLabel("Kontotyp:");

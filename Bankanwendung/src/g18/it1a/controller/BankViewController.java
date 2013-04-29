@@ -27,21 +27,24 @@ public class BankViewController {
 
 		bankView.getAnzeigenKontostand().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final KontostandsübersichtAnzeigenController kontostandsübersichtController = new KontostandsübersichtAnzeigenController(bankView);
+				final KontostandsübersichtAnzeigenController kontostandsübersichtController = new KontostandsübersichtAnzeigenController(
+						bankView);
 				kontostandsübersichtController.anzeigenKontostandActionPerformed();
 			}
 		});
 
 		bankView.getDurchführenUeberweisungen().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final ÜberweisungDurchführenController überweisungDurchführenController = new ÜberweisungDurchführenController(bankView);
+				final ÜberweisungDurchführenController überweisungDurchführenController = new ÜberweisungDurchführenController(
+						bankView);
 				überweisungDurchführenController.überweisungDurchführenActionPerformed();
 			}
 		});
 
 		bankView.getDurchfuehrenZahlungen().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final EinAuszahlungDurchführenController einAuszahlungDurchführenController = new EinAuszahlungDurchführenController(bankView);
+				final EinAuszahlungDurchführenController einAuszahlungDurchführenController = new EinAuszahlungDurchführenController(
+						bankView);
 				einAuszahlungDurchführenController.einAuszahlenActionPerformed();
 			}
 		});
@@ -50,6 +53,13 @@ public class BankViewController {
 			public void actionPerformed(ActionEvent e) {
 				final KontobewegungController kontobewegungController = new KontobewegungController(bankView);
 				kontobewegungController.kontobewegungActionPerformed();
+			}
+		});
+
+		bankView.getKundenÜbersicht().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				final KundenÜbersichtController kundenÜbersichtController = new KundenÜbersichtController(bankView);
+				kundenÜbersichtController.kundenÜbersichtActionPerformed();
 			}
 		});
 
