@@ -100,7 +100,7 @@ public class Kunde {
 	public Konto anlegenKonto(KontoTyp kontoTyp) {
 		return anlegenKonto(kontoTyp, 0.0);
 	}
-	
+
 	public String toString() {
 		return getName() + " " + getKundenNummer();
 	}

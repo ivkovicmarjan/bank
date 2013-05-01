@@ -51,12 +51,9 @@ public class KontostandsübersichtAnzeigenController {
 			}
 
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(kontostandsübersichtAnzeigenPanel,
+			JOptionPane.showMessageDialog(kontostandsübersichtAnzeigenPanel,
 					"Bitte nur Zahlen eingeben:", "", JOptionPane.WARNING_MESSAGE);
-			if (result == null)
 				return;
-			btKontobersichtActionPerformed(result);
-			return;
 		} catch (CustomerNotFoundException e) {
 			JOptionPane.showMessageDialog(kontostandsübersichtAnzeigenPanel, "Dieser Kunde exisitert nicht!", "",
 					JOptionPane.ERROR_MESSAGE);

@@ -32,7 +32,7 @@ public class Kunden {
 		}
 		return kunde;
 	}
-	
+
 	public static HashMap<Integer, Kunde> getKunden() {
 		return kunden;
 	}

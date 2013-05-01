@@ -46,25 +46,14 @@ public class EinAuszahlungDurchführenController {
 		try {
 			kontonummer = Long.valueOf(kontoNummer);
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenPanel,
-					"Bitte Zahl als Kontonummer eingeben.");
-
-			if (result != null) {
-				btAuszahlenActionPerformed(value, result);
-			}
-
+			JOptionPane.showMessageDialog(einAuszahlungDurchführenPanel, "Bitte Zahl als Kontonummer eingeben.");
 			return;
 		}
 
 		try {
 			betrag = Double.valueOf(value);
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenPanel,
-					"Bitte Zahl als Betrag eingeben.");
-
-			if (result != null) {
-				btAuszahlenActionPerformed(result, kontoNummer);
-			}
+			JOptionPane.showMessageDialog(einAuszahlungDurchführenPanel, "Bitte Zahl als Betrag eingeben.");
 
 			return;
 		}
@@ -97,12 +86,7 @@ public class EinAuszahlungDurchführenController {
 		try {
 			kontonummer = Long.valueOf(kontoNummer);
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenPanel,
-					"Bitte Zahl als Kontonummer eingeben.");
-
-			if (result != null) {
-				btEinzahlenActionPerformed(value, result);
-			}
+			JOptionPane.showMessageDialog(einAuszahlungDurchführenPanel, "Bitte Zahl als Kontonummer eingeben.");
 
 			return;
 		}
@@ -110,12 +94,8 @@ public class EinAuszahlungDurchführenController {
 		try {
 			betrag = Double.valueOf(value);
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(einAuszahlungDurchführenPanel,
-					"Bitte Zahl als Betrag eingeben.");
+			JOptionPane.showMessageDialog(einAuszahlungDurchführenPanel, "Bitte Zahl als Betrag eingeben.");
 
-			if (result != null) {
-				btEinzahlenActionPerformed(result, kontoNummer);
-			}
 			return;
 		}
 
@@ -131,7 +111,7 @@ public class EinAuszahlungDurchführenController {
 		} catch (AccountNotFoundException e) {
 			JOptionPane.showMessageDialog(einAuszahlungDurchführenPanel, "Konto ist nicht vorhanden!");
 			return;
-		} 
+		}
 
 		JOptionPane.showMessageDialog(einAuszahlungDurchführenPanel, "Einzahlung wurde durchgeführt!");
 	}

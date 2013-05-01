@@ -42,13 +42,8 @@ public class KontobewegungController {
 		try {
 			kontoNummer = Integer.parseInt(kontoNummerString);
 		} catch (NumberFormatException e) {
-			String result = JOptionPane.showInputDialog(kontobewegungPanel, "Bitte Zahl als Kontonummer eingeben!");
-			if (result == null) {
-				return;
-			}
-			btKontobewegungActionPerformed(result);
+			JOptionPane.showMessageDialog(kontobewegungPanel, "Bitte Zahl als Kontonummer eingeben!");
 			return;
-
 		}
 
 		Kunde kunde = null;
@@ -64,11 +59,13 @@ public class KontobewegungController {
 
 			for (Kontobewegung kontobewegung : kontoBewegungen) {
 
-				model.addRow(new Object[] { kontobewegung.getDatum().toString(), kontobewegung.getBetrag(), kontobewegung.getBemerkung() });
+				model.addRow(new Object[] { kontobewegung.getDatum().toString(), kontobewegung.getBetrag(),
+						kontobewegung.getBemerkung() });
 
 			}
 		} catch (AccountNotFoundException e) {
-			JOptionPane.showMessageDialog(kontobewegungPanel, "Konto ist nicht vorhanden!", "", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(kontobewegungPanel, "Konto ist nicht vorhanden!", "",
+					JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
 	}

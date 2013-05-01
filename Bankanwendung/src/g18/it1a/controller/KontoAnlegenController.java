@@ -17,8 +17,7 @@ public class KontoAnlegenController {
 	private KontoAnlegenPanel kontoAnlegenPanel;
 	private BankHandler bankHandler;
 
-	public KontoAnlegenController(final BankHandler bankHandler,
-			BankView bankView) {
+	public KontoAnlegenController(final BankHandler bankHandler, BankView bankView) {
 		this.bankHandler = bankHandler;
 		kontoAnlegenPanel = new KontoAnlegenPanel();
 		bankView.setContentPane(kontoAnlegenPanel);
@@ -28,27 +27,41 @@ public class KontoAnlegenController {
 
 	public void anlegenKontoActionPerformed() {
 
-		kontoAnlegenPanel.getAnlegenButton().addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						try {
+		kontoAnlegenPanel.getGiroButton().addActionListener(new ActionListener() {
 
-							btAnlegenKontoActionPerformed(
-									KontoTyp.valueOf(kontoAnlegenPanel
-											.getButtonGroup().getSelection()
-											.getActionCommand()),
-									kontoAnlegenPanel.getKundenNummerFeld()
-											.getText());
-						} catch (NullPointerException e) {
-							JOptionPane.showMessageDialog(kontoAnlegenPanel,
-									"bitte wählen Sie einen Kontotyp aus!");
-						}
+			@Override
+			public void actionPerformed(ActionEvent newE) {
+				kontoAnlegenPanel.getDispoZinsLabel().setText("Dispo");
+
+			}
+		});
+		kontoAnlegenPanel.getSparButton().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent newE) {
+				kontoAnlegenPanel.getDispoZinsLabel().setText("Zinssatz");
+			}
+		});
+
+		kontoAnlegenPanel.getAnlegenButton().addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				try {
+					kontoAnlegenPanel.getDispoZinsField().setVisible(true);
+					if (KontoTyp.valueOf(kontoAnlegenPanel.getButtonGroup().getSelection().getActionCommand()).equals(
+							KontoTyp.Girokonto)) {
+
 					}
-				});
+					btAnlegenKontoActionPerformed(
+							KontoTyp.valueOf(kontoAnlegenPanel.getButtonGroup().getSelection().getActionCommand()),
+							kontoAnlegenPanel.getKundenNummerField().getText());
+				} catch (NullPointerException e) {
+					JOptionPane.showMessageDialog(kontoAnlegenPanel, "bitte wählen Sie einen Kontotyp aus!");
+				}
+			}
+		});
 	}
 
-	private void btAnlegenKontoActionPerformed(KontoTyp kontotyp,
-			String kundennummer) {
+	private void btAnlegenKontoActionPerformed(KontoTyp kontotyp, String kundennummer) {
 		double dispoZins = 0;
 		int kundenNummer = 0;
 		try {
@@ -56,14 +69,10 @@ public class KontoAnlegenController {
 			kundenNummer = Integer.parseInt(kundennummer);
 
 		} catch (NumberFormatException e) {
-			kontoAnlegenPanel.getKundenNummerFeld().setText("");
-			String result = JOptionPane.showInputDialog(kontoAnlegenPanel,
-					"Bitte Zahl als Kundennummer eingeben:", "Ungültiger Wert",
-					JOptionPane.WARNING_MESSAGE);
-			if (result == null) {
-				return;
-			}
-			btAnlegenKontoActionPerformed(kontotyp, result);
+			kontoAnlegenPanel.getKundenNummerField().setText("");
+			JOptionPane.showMessageDialog(kontoAnlegenPanel, "Bitte Zahl als Kundennummer eingeben.",
+					"Ungültiger Wert", JOptionPane.WARNING_MESSAGE);
+
 			return;
 		}
 
@@ -71,38 +80,24 @@ public class KontoAnlegenController {
 			Kunden.getKunde(kundenNummer);
 
 		} catch (CustomerNotFoundException e) {
-			JOptionPane.showMessageDialog(kontoAnlegenPanel,
-					"Dieser Kunde existiert nicht!", "Fehler",
+			JOptionPane.showMessageDialog(kontoAnlegenPanel, "Dieser Kunde existiert nicht!", "Fehler",
 					JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
 		try {
-			if (kontotyp.equals(KontoTyp.Girokonto)) {
-				String dispoResult = JOptionPane
-						.showInputDialog(kontoAnlegenPanel,
-								"Bitte geben sie den gewünschten Dispo ein(Als Kommazahl Bsp.: 150.0):");
-				if (dispoResult == null)
-					return;
-				dispoZins = Double.parseDouble(dispoResult);
-			} else {
-				String zinsResult = JOptionPane
-						.showInputDialog(kontoAnlegenPanel,
-								"Bitte geben sie den gewünschten Zinssatz ein(Als kommazahl Bsp.: 15.0)");
-				if (zinsResult == null)
-					return;
-				dispoZins = Double.parseDouble(zinsResult);
-			}
+
+			String dispoResult = kontoAnlegenPanel.getDispoZinsField().getText();
+			dispoZins = Double.parseDouble(dispoResult);
+
 		} catch (NumberFormatException e) {
-			dispoZins = Double.parseDouble(JOptionPane.showInputDialog(
-					kontoAnlegenPanel, "Bitte nur Zahlenwerte eingeben:", "",
-					JOptionPane.ERROR_MESSAGE));
+			JOptionPane.showMessageDialog(kontoAnlegenPanel, "Bitte nur Zahlenwerte eingeben.", "",
+					JOptionPane.ERROR_MESSAGE);
+			return;
 		}
-		Konto konto = bankHandler.anlegenKonto(kundenNummer, kontotyp,
-				dispoZins);
-		JOptionPane.showMessageDialog(
-				kontoAnlegenPanel,
-				"Ihr Konto wurde angelegt!\n Ihre Kontonummer lautet: "
-						+ konto.getKontoNummer());
+
+		Konto konto = bankHandler.anlegenKonto(kundenNummer, kontotyp, dispoZins);
+		JOptionPane.showMessageDialog(kontoAnlegenPanel, "Ihr Konto wurde angelegt!\n Ihre Kontonummer lautet: "
+				+ konto.getKontoNummer());
 	}
 }

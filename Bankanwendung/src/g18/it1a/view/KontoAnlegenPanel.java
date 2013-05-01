@@ -15,12 +15,14 @@ public class KontoAnlegenPanel extends JPanel {
 	private ButtonGroup buttonGroup;
 	private JRadioButton giroButton;
 	private JRadioButton sparButton;
-	private JTextField kundenNummerFeld;
+	private JTextField kundenNummerField;
+	private JTextField dispoZinsField;
+	private JLabel dispoZinsLabel;
 
 	public KontoAnlegenPanel() {
 		setLayout(null);
 
-		JLabel kontoTypLabel = new JLabel("Kontotyp:");
+		JLabel kontoTypLabel = new JLabel("Kontotyp");
 		kontoTypLabel.setBounds(10, 16, 79, 14);
 		add(kontoTypLabel);
 
@@ -41,18 +43,27 @@ public class KontoAnlegenPanel extends JPanel {
 		add(giroButton);
 		add(sparButton);
 
-		JLabel lblNewLabel = new JLabel("Kundennummer:");
-		lblNewLabel.setBounds(10, 70, 97, 20);
-		add(lblNewLabel);
+		JLabel kundenNummerLabel = new JLabel("Kundennummer");
+		kundenNummerLabel.setBounds(10, 70, 97, 20);
+		add(kundenNummerLabel);
 
-		kundenNummerFeld = new JTextField();
-		kundenNummerFeld.setBounds(109, 70, 115, 20);
-		add(kundenNummerFeld);
-		kundenNummerFeld.setColumns(1);
+		kundenNummerField = new JTextField();
+		kundenNummerField.setBounds(110, 70, 115, 20);
+		add(kundenNummerField);
+		kundenNummerField.setColumns(1);
+		
+		dispoZinsLabel = new JLabel("Dispo");
+		dispoZinsLabel.setBounds(10, 100, 97, 20);
+		add(dispoZinsLabel);
+		
+		dispoZinsField = new JTextField();
+		dispoZinsField.setBounds(110, 100, 115, 20);
+		dispoZinsField.setColumns(1);
+		add(dispoZinsField);
 
 		anlegenButton = new JButton("Anlegen");
 		anlegenButton.setSize(110, 20);
-		anlegenButton.setLocation(105, 116);
+		anlegenButton.setLocation(110, 130);
 		add(anlegenButton);
 
 	}
@@ -61,8 +72,8 @@ public class KontoAnlegenPanel extends JPanel {
 		return anlegenButton;
 	}
 
-	public JTextField getKundenNummerFeld() {
-		return kundenNummerFeld;
+	public JTextField getKundenNummerField() {
+		return kundenNummerField;
 	}
 
 	public ButtonGroup getButtonGroup() {
@@ -75,5 +86,13 @@ public class KontoAnlegenPanel extends JPanel {
 
 	public JRadioButton getSparButton() {
 		return sparButton;
+	}
+
+	public JTextField getDispoZinsField() {
+		return dispoZinsField;
+	}
+
+	public JLabel getDispoZinsLabel() {
+		return dispoZinsLabel;
 	}
 }
