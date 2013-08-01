@@ -22,8 +22,8 @@ public class Kunden‹bersichtController {
 	}
 
 	public void kunden‹bersichtActionPerformed() {
-		DefaultListModel<Kunde> listModel = new DefaultListModel<Kunde>();
-		JList<Kunde> kundenList = new JList<Kunde>(listModel);
+		DefaultListModel listModel = new DefaultListModel();
+		JList kundenList = new JList(listModel);
 		for (Entry<Integer, Kunde> entry : Kunden.getKunden().entrySet()) {
 			listModel.addElement(entry.getValue());
 		}
